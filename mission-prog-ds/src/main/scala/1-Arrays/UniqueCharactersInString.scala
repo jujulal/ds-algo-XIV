@@ -10,25 +10,14 @@
 
 object UniqueCharactersInString {
 	def isUniqueCharacters(sentence : String ) : Boolean = {
-		val charSet = new Array[Boolean](255) //space of length n
-		//Array[Boolean] charSet = new Array[Boolean](255)
+		val characterSet = new Array[Boolean](255) //space of length n
 		for ( i <- 0 until sentence.length() by 1) {
 			val character = sentence.charAt(i)
-			if ( charSet(character) ) 
+			if ( characterSet(character) )
 				return false
-			charSet(character) = true
+			characterSet(character) = true
 		}
 		return true
-	}
-
-	def main (args : Array[String]) {
-		val sentence = args(0)
-		val isUnique = isUniqueCharacters(sentence)
-		if(isUnique)
-			println(s"$sentence is unique")
-		else
-			println(s"$sentence is not unique")
-
 	}
 }
 

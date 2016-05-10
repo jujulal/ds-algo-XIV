@@ -14,10 +14,9 @@ import scala.util.control._
   * usage : scala UniqueCharacters.scala prayag
   */
 
-
 object RemoveDuplicatesFromString {
 	def removeDuplicate(word : String ) : String = {
-		val len :Int = word.length();
+		val len :Int = word.length()
 		//if ( len < 2 ) {
 		//	return ""
 		//}
@@ -46,11 +45,5 @@ object RemoveDuplicatesFromString {
 
 		wordArray(tailIndex)=0
 		return new String(wordArray)
-	}
-
-	def main (args : Array[String]) {
-		val sentence = args(0)
-		val word = removeDuplicate(sentence)
-		println(s"$sentence => $word")
 	}
 }

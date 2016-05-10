@@ -7,14 +7,15 @@ import scala.collection.mutable
   *
   * Solution: Repetitive Queries
   */
+
 object FrequencyOfWords {
 
-	def frequencyTable ( book : Array[String] ) : mutable.HashMap[String, Integer] = {
+	def buildFrequencyTable ( book : Array[String] ) : mutable.HashMap[String, Integer] = {
 		val hashTable = mutable.HashMap.empty[String, Integer] //Space complexity < n (length of dictionary array)
 		
 		//Time complexity (n)
 		book.foreach { word =>
-			if (word.toLowerCase().trim() != "" ) {  
+			if (word.toLowerCase.trim() != "" ) {
 				if(!hashTable.contains(word.toLowerCase)) {
 					hashTable(word.toLowerCase) = 0
 				}
@@ -22,21 +23,21 @@ object FrequencyOfWords {
 			}
 		}
 		println(hashTable)
-		return hashTable
+		hashTable
 	}
 
 	def getFrequency (frequencyTable : mutable.HashMap[String, Integer], word : String) : Int = {
 		if(frequencyTable.contains(word.toLowerCase)) {
 			return frequencyTable(word.toLowerCase)
 		}
-		return 0
+		0
 	}
 
 	def main (args : Array[String]) {
-		val word = "Steven"
-		val book = Array ("Steven", "HandCannotErase", "Steven", "steven", word)
-		val frequencyTable_ = frequencyTable (book)
-		val f = getFrequency(frequencyTable_, word)
-		println(s"frequency of $word => $f")
+		val wordToFind = "Steven"
+		val book = Array ("Steven", "HandCannotErase", "Steven", "steven", wordToFind)
+		val frequencyTable_ = buildFrequencyTable (book)
+		val f = getFrequency(frequencyTable_, wordToFind)
+		println(s"frequency of $wordToFind => $f")
 	}
 }

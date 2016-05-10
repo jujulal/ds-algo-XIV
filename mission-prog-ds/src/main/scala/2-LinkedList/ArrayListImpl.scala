@@ -13,7 +13,9 @@ import scala.collection.mutable
   *
   **/
 
-class ArrayList ( var size : Int , val INIT_ARR_SIZE : Int = 2 , var array : mutable.ArrayBuffer[String]) {
+class ArrayList ( var size : Int ,
+									val INIT_ARR_SIZE : Int = 2 ,
+									var array : mutable.ArrayBuffer[String]) {
 
 	def this(){
 		this(0, 2, new mutable.ArrayBuffer[String](2))
