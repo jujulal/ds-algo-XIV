@@ -1,4 +1,4 @@
-package threads
+package parallelism
 
 import scala.collection.mutable.ListBuffer
 

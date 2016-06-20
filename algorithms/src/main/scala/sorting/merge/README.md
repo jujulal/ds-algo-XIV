@@ -1,3 +1,13 @@
+[What is Merge sort?](http://www.ee.ryerson.ca/~courses/coe428/sorting/mergesort.html)
+
+The merge sort algorithm:
+
+ - Divide the list in half
+ - Merge sort the first half
+ - Merge sort the second half
+ - Merge both halves back together
+
+
 ![](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 
 Refs

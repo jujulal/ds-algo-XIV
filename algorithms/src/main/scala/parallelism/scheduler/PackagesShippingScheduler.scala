@@ -1,6 +1,8 @@
-package threads
+package parallelism.scheduler
 
 import java.util.Date
+
+import parallelism.Database
 
 import scala.collection.mutable.ArrayBuffer
 

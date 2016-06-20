@@ -1,6 +1,7 @@
-package threads
+package parallelism
 
 import org.scalatest.FunSuite
+import parallelism.locking.ShipPackagesUsingLock
 
 /**
  * Created by prayagupd
@@ -14,21 +15,21 @@ class ShipPackagesUsingLockSpec extends FunSuite {
     "popFromStackAsync should pop and add back to list") {
 
     val ship = new ShipPackagesUsingLock()
-    ship.list = Database.packagesList
+    ship.packageList = Database.packagesList
 
     //op1
     ship.pushToStackAsync()
 
     Thread.sleep(1000)
-    assert(ship.stack.nonEmpty)
-    assert(ship.stack.top.head == ("shippingAddress", "Los Angeles, CA"))
-    assert(ship.list.size == 5)
+    assert(ship.releaseStack.nonEmpty)
+    assert(ship.releaseStack.top.head == ("shippingAddress", "Los Angeles, CA"))
+    assert(ship.packageList.size == 5)
 
     //op2
     ship.popFromStackAsync()
     Thread.sleep(1000)
 
-    assert(ship.stack.isEmpty)
-    assert(ship.list.size == 6)
+    assert(ship.releaseStack.isEmpty)
+    assert(ship.packageList.size == 6)
   }
 }

@@ -1,8 +1,9 @@
-package threads
+package parallelism
 
 import java.util.Date
 
 import org.scalatest.FunSuite
+import parallelism.scheduler.PackagesShippingScheduler
 
 /**
  * Created by prayagupd

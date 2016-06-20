@@ -61,25 +61,25 @@ object HeapSort {
   }
 
   def bubbleDown(array: Array[Int], start: Int, end: Int){
-    var root = start
+    var rootIndex = start
 
-    while (root * 2 + 1 <= end) { // at least one child exists
-      var swap = root
-      val child = root * 2 + 1
-      val rchild = root * 2 + 2
-      if(array(swap) < array(child)){
-        swap = child
+    while (rootIndex * 2 + 1 <= end) { // at least one child exists
+      var swapIndex = rootIndex
+      val leftChild = rootIndex * 2 + 1
+      val rightChild = rootIndex * 2 + 2
+      if(array(swapIndex) < array(leftChild)){
+        swapIndex = leftChild
       }
-      if(rchild<=end && array(swap)<array(rchild)){
-        swap = rchild
+      if(rightChild<=end && array(swapIndex)<array(rightChild)){
+        swapIndex = rightChild
       }
-      if(swap!=root){
+      if(swapIndex!=rootIndex){
         // swap here
-        val temp = array(root)
-        array(root) = array(swap)
-        array(swap) = temp
-        root = swap
-      }else
+        val temp = array(rootIndex)
+        array(rootIndex) = array(swapIndex)
+        array(swapIndex) = temp
+        rootIndex = swapIndex
+      } else
         return
     }
   }
