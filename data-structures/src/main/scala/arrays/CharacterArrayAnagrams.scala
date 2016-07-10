@@ -23,7 +23,7 @@ package arrays
  * 03-26-2015, Iowa
  */
 
-object Anagrams {
+object CharacterArrayAnagrams {
 
   /**
    * time : O(n) + O(n)

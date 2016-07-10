@@ -148,7 +148,6 @@ case class BinaryNode[T](
     currentNode.left == null && currentNode.right == null
   }
 
-
   def notEmpty(currentNode: BinaryNode[T]): Boolean = {
     currentNode != null
   }

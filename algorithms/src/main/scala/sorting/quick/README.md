@@ -7,7 +7,7 @@
 ```
 - Choose a pivot value. 
     We take the value of the middle element as pivot value, but it can be any value, which is in range of sorted values, even if it doesn't present in the array.
-- Partition. (INT)
+- Partition. (INTV)
     Rearrange elements in such a way, that all elements lesser than the pivot go to the left part of the array and all elements greater than the pivot, go to the right part of the array. 
     Values equal to the pivot can stay in any part of the array. Notice, that array may be divided in non-equal parts.
 - Sort both parts. 
@@ -32,13 +32,30 @@
 [Lecture - 10 Quick Sort, Dr. Naveen Garg](https://www.youtube.com/watch?v=gtWw_8VvHjk&index=59&list=PL40361139FDD683CE)
 
 
-Time Comlexity analysis
------------------------
+[Time Comlexity analysis](https://en.wikipedia.org/wiki/Quicksort#Formal_analysis)
+--------------------------
 
 ```
 
-O(n logn)
+Best - O(n logn)
+Avg  - O(n logn)
+Worst - O(n2)
 
+```
+
+[Space complexity](https://en.wikipedia.org/wiki/Quicksort#Space_complexity)
+------------------------
+
+```
+The in-place version of quicksort has a space complexity of O(log n), even in the worst case, 
+when it is carefully implemented using the following strategies:
+
+- in-place partitioning is used. This unstable partition requires O(1) space.
+
+- After partitioning, the partition with the fewest elements is (recursively) sorted first, 
+requiring at most O(log n) space. Then the other partition is sorted using tail recursion or iteration, 
+which doesn't add to the call stack. This idea, as discussed above, was described by R. Sedgewick, 
+and keeps the stack depth bounded by O(log n)
 ```
 
 [Lecture - 22 Average case Analysis of Quicksort, Prof.Abhiram Ranade](https://www.youtube.com/watch?v=-kh9oFK8R7s)

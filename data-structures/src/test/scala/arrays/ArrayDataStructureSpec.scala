@@ -17,15 +17,15 @@ class ArrayDataStructureSpec extends FlatSpec {
 
   "uniqChars" should "count uniq chars" in {
     assert(!UniqueCharactersInString.hasUniqueCharacters("I am a dreamer in Portland"))
-    assert(UniqueCharactersInString.hasUniqueCharacters("abc"))
+    assert(UniqueCharactersInString.hasUniqueCharacters("satle"))
   }
 
 
   "given identical words, areAnagrams" should "return true" in {
-    assert(Anagrams.areAnagrams("package", "agepack"))
+    assert(CharacterArrayAnagrams.areAnagrams("package", "agepack"))
   }
 
   "given different words, areAnagrams" should "return false" in {
-    assert(!Anagrams.areAnagrams("package", "items to ship"))
+    assert(!CharacterArrayAnagrams.areAnagrams("package", "items to ship"))
   }
 }

@@ -4,14 +4,32 @@ binary heap is a `complete binary tree` which satisfies the `heap ordering prope
 
 The ordering can be one of two types:
 
- - the min-heap property: the value of each node is greater than or equal to the value of its parent, with the minimum-value element at the root.
- - the max-heap property: the value of each node is less than or equal to the value of its parent, with the maximum-value element at the root.
+ - **the min-heap property**: the value of **each node is >=** the **value of its parent**, with the minimum-value element at the root.
+ - **the max-heap property**: the value of **each node is <=** the **value of its parent**, with the maximum-value element at the root.
 
 [What is Heap sort?](http://web.cse.ohio-state.edu/software/2231/web-sw2/extras/slides/14.Heaps-Heapsort.pdf)
 
+```
 Heapsort is a comparison-based sorting algo, and is part of the selection sort family.
 
+Heapsort is an in-place algorithm, but it is not a stable sort.
+
+```
+
 ![](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
+
+Algo
+----
+
+[The steps are:](https://en.wikipedia.org/wiki/Heapsort#Algorithm)
+
+```
+- Call the heapify() or buildMaxHeap() function on the list, this builds a heap 
+from a list in O(n) operations.
+- Swap the first element of the list with the final element. Decrease the considered range of the list by one.
+- Call the siftDown() function on the list to sift the new first element to its appropriate index in the heap.
+- Go to step (2) unless the considered range of the list is one element.
+```
 
 ```clojure
 defn heapSort[array count] is
@@ -76,5 +94,16 @@ time complexity
 
 
 ```
-O(n logn)
+
+Best case performance	    - O(n log n)
+Average case performance    - O(n log n)
+Worst case performance	    - O(n log n)
+
+Worst case space complexity - O(1) auxiliary
 ```
+
+
+INTV
+----
+
+https://leetcode.com/tag/sort/
