@@ -56,4 +56,19 @@ case class LinkedList[T](var root: LinkedNode[T] = null) {
   def next(next: LinkedNode[T]) : Unit = {
     root.next = next
   }
+
+  def reverse(currentNode: LinkedNode[T]) : LinkedNode[T] = {
+    if(currentNode==null || currentNode.next == null)
+      return currentNode
+
+    //get second node
+    val nextNode = currentNode.next
+    //set first's next to be null
+    currentNode.next = null
+
+    val rest = reverse(nextNode)
+    nextNode.next = currentNode
+
+    rest
+  }
 }

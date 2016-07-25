@@ -1,10 +1,11 @@
 [Synchronous parallelism](https://goo.gl/mf05u4)
 ----------------------------------------------------------------------------------
-
+```
 In parallel computing, a barrier is a type of synchronization method. 
 
 A barrier (for a group of threads/processes) means any thread/process must stop at this point 
 and cannot proceed until all other threads/processes reach this barrier.
+```
 
 [Parallel Programming With Barrier Synchronization, JVM](http://blogs.sourceallies.com/2012/03/parallel-programming-with-barrier-synchronization/)
 

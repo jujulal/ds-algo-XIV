@@ -24,7 +24,7 @@ Worst - O(n logn)
 -------------------------------------------------------------
 
 ```
-Merge Sort space complexity will always be O(n) including with arrays
+Merge Sort space complexity will always be O(n) as you have to store the elements somewhere
 ```
 
 [Merge sort analysis, youtube, UCDavis](https://www.youtube.com/watch?v=yKp7dok7-Bg)

@@ -18,7 +18,10 @@ object PairSum {
       arraySum = arraySum + item //time1
     }
     println("sum => " + arraySum)
-    val hashTable = mutable.HashMap.empty[Int, Int] //space2
+
+    val hashTable = mutable.HashMap.empty[Int, Int] //spaceN
+
+    //O(n2)?? = terrible
     for (index <- 0 until array.length - 1 by 1) {
       //time2
       for (nextIndex <- index + 1 until array.length by 1) {

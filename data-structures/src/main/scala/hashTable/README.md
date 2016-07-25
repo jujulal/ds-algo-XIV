@@ -1,3 +1,5 @@
+[Hash table]()
+----------
 
 ```
 a data structure used to implement an associative array, a structure that can map keys to values. 
@@ -6,7 +8,11 @@ A hash table uses a hash function to compute an index into an array of buckets o
 from which the desired value can be found.
 ```
 
-[Hash functions](https://en.wikipedia.org/wiki/Hash_table#Hashing) (INTV apple Aug 2015, streamsets, 2015)
+![hashtable](https://upload.wikimedia.org/wikipedia/commons/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg)
+
+[Hash functions](https://en.wikipedia.org/wiki/Hash_table#Hashing) (AAPL 08-2015, streamsets, 2015)
+----
+
 ```
  hash = hashfunc(key)
  index = hash % array_size
@@ -14,8 +20,17 @@ from which the desired value can be found.
  
  - [Java](https://goo.gl/eFtaEL)/ [scala](http://www.scala-lang.org/api/2.7.2/scala/AnyRef.html#hashCode%28%29) uses hashCode() method
  - [Java's hashCode() in String uses odd-prime 31 as a multiplier](http://stackoverflow.com/a/299748/432903)
+    ```
+     s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+    ```
  
-[Hash collision resolution](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution) 
+[Hash functions](http://www.azillionmonkeys.com/qed/hash.html)
+[Bob Jenkin's hash function](http://burtleburtle.net/bob/hash/doobs.html)
+[Murmur hash](https://en.wikipedia.org/wiki/MurmurHash)
+
+[Hash collision resolution](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution), AAPL 2015
+---
+
  - Hashing with linear probing.
  - Hashing with separate chaining.
  
@@ -55,7 +70,7 @@ eventLog += ("event5" -> "Item shipped")
 
 [how to sort a scala.collection.Map[java.lang.String, Int] by its values?](http://stackoverflow.com/q/2972871/432903)
 
-[Difference between JVM HashMap, LinkedHashMap and TreeMap](http://stackoverflow.com/a/2889800/432903), (SF, 09-2015)
+[Difference between JVM HashMap, LinkedHashMap and TreeMap(Binary Tree)](http://stackoverflow.com/a/2889800/432903), (SF, 09-2015 + SEA, 07-2016)
 
 [3.4 Hash Tables, Princeton](http://algs4.cs.princeton.edu/34hash/)
 
@@ -63,11 +78,59 @@ eventLog += ("event5" -> "Item shipped")
 
 https://en.wikipedia.org/wiki/Hash_table
 
-analysis
+[analysis](https://en.wikipedia.org/wiki/Hash_table#Performance_analysis)
 --------
 
+http://www.cs.cornell.edu/courses/cs312/2008sp/lectures/lec20.html
+
+| operation | complexity |
+------------|--------------
+add       | O(1)
+search    | O(1) // better than searching an array which takes O(n) // [Hash table - why is it faster than arrays?](http://stackoverflow.com/a/12025456/432903)
+delete    | O(1)
+
+
+[Consistent Hashing](https://en.wikipedia.org/wiki/Consistent_hashing)
+----
 ```
+a special kind of hashing such that when a hash table(with K keys, and n number of slots) is resized, 
+only K/n keys need to be remapped on average
 ```
+
+[Cassandra Consistent hashing](https://docs.datastax.com/en/cassandra/2.0/cassandra/architecture/architectureDataDistributeHashing_c.html)
+
+```
+Consistent hashing allows distributing data across a cluster which minimizes reorganization 
+when nodes are added or removed. 
+
+Consistent hashing partitions data based on the partition key. 
+```
+
+![](https://docs.datastax.com/en/cassandra/2.0/cassandra/images/arc_hashValueRange.svg)
+
+[Cassandra Partitioners](https://docs.datastax.com/en/cassandra/2.0/cassandra/architecture/architecturePartitionerAbout_c.html)
+
+```
+A partitioner determines how data is distributed across the nodes in the cluster (including replicas). 
+
+Basically, a partitioner is a function for deriving a token representing a row from its partion key[~=PK], 
+typically by hashing. Each row of data is then distributed across the cluster by the value of the token.
+```
+
+https://docs.datastax.com/en/cassandra/2.0/cassandra/architecture/architecturePartitionerM3P_c.html
+
+
+[Mongodb data distribution](https://docs.mongodb.com/manual/sharding/)
+-----
+
+```
+To distribute the documents in a collection, MongoDB partitions the collection using the shard key. 
+The shard key consists of an immutable field/fields that exist in every document in the target collection.
+
+The choice of shard key cannot be changed after sharding.
+```
+
+https://docs.mongodb.com/manual/sharding/#sharding-strategy
 
 INTV
 ----
@@ -88,3 +151,6 @@ Given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT",
 Return:
 ["AAAAACCCCC", "CCCCCAAAAA"].
 ```
+
+
+Given one billion URLs with a score, describe a distributed application that can return the top ten URLs by score. sharethis, 2015

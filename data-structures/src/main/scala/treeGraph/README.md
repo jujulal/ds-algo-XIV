@@ -1,6 +1,6 @@
 
-Binary Tree
------------
+[Binary Tree](https://en.wikipedia.org/wiki/Binary_tree)
+------------
 
 ```
 A binary tree is made of nodes, where each node contains a "left" pointer, a "right" pointer, and a data element
@@ -17,6 +17,16 @@ case class BinaryNode[T](
 
 [Binary Trees, Victor Adamchik, CMU](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html)
 
+[BST Complexity](http://stackoverflow.com/a/15586871/432903)
+-------------
+
+```
+Insertion, deletion and searching in a binary search tree are:
+
+O(N) in the worst case;
+O(log(N)) in the average case.
+```
+
 [BST](https://www.cs.usfca.edu/~galles/visualization/BST.html)/ ordered binary tree
 -------------------
 
@@ -29,15 +39,44 @@ all nodes in that node's right subtree.
 Tree Operations
 ---------------
 
-traversal
-DFS
-- Pre-order (root, left, right)
-- In-order
-- Post-order
+```
+           item1
+          /   \
+        item2  item3
+      /  \
+   item4  item5
+```
 
-BFS
+Tree traversal
+--------------
 
-https://en.wikipedia.org/wiki/B-tree
+[DFS](http://www.geeksforgeeks.org/618/)
+--------
+
+- [Pre-root-order (root, left, right)](http://algoviz.org/OpenDSA/Books/OpenDSA/html/BinaryTreeTraversal.html#preorder-traversal)
+
+```
+item1, (item2, item4, item5), ... item3
+```
+
+- [In-root-order](http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/)
+
+```
+(item4, item2, item5), ... item1, item3
+```
+
+- Post-root-order
+
+```
+(item4, item5, item2), item3, ... item1
+```
+
+[BFS](https://en.wikipedia.org/wiki/Breadth-first_search#Example)
+------
+
+![](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
+
+[B-Tree](https://en.wikipedia.org/wiki/B-tree)
 
 ```
 a self-balancing tree DS that keeps data sorted and allows searches, sequential access, insertions, and deletions in logarithmic time. 
@@ -52,6 +91,17 @@ Search	 O(log n)	  O(log n)
 Insert	 O(log n)	  O(log n)
 Delete	 O(log n)	  O(log n)
 
+```
+
+[Fractal tree index](https://en.wikipedia.org/wiki/Fractal_tree_index)
+
+```
+a tree data structure that keeps data sorted and allows searches and sequential access in the same time as a B-tree but 
+with insertions and deletions that are asymptotically faster than a B-tree. 
+
+Like a B-tree, a Fractal Tree index is a generalization of a BST in that a node can have more than two children. 
+Furthermore, unlike a B-tree, a Fractal Tree index has buffers at each node, which allow insertions, deletions and other 
+changes to be stored in intermediate locations.
 ```
 
 https://en.wikipedia.org/wiki/Inverted_index

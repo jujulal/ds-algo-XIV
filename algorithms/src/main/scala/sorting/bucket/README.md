@@ -1,7 +1,10 @@
-[What is Bucket sort?](https://en.wikipedia.org/wiki/Bucket_sort)
+[What is Bucket sort/ Shuffle sort?](https://en.wikipedia.org/wiki/Bucket_sort)
 
-- Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an array into a number of buckets. 
-- Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm.
+- Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an array 
+into a number of buckets. 
+
+- Each bucket is then sorted individually, either using a different sorting algorithm, or 
+by recursively applying the bucket sorting algorithm.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/6/61/Bucket_sort_1.png)
 
@@ -30,9 +33,14 @@
 time complexity
 ---------------
 ```
-O(n)
+O(n + k)
 ```
 
+Space complexity
+----------------
+```
+O(n.k)
+```
 
 Top-down radix sort can be seen as a special case of bucket sort where both the range of values and the number of buckets is 
 constrained to be a power of two.

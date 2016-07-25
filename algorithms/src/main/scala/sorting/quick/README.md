@@ -41,7 +41,19 @@ Best - O(n logn)
 Avg  - O(n logn)
 Worst - O(n2)
 
+Worst Performance Condition: //http://stackoverflow.com/a/4022806/432903
+
+When each time pivot chosen is 'greatest' or 'smallest' and this pattern repeats 
+
+So for [1 3 5 4 2]
+
+If pivots are chosen in order [1,2,3,4,5] ....... Or...... [5,4,3,2,1]
+
+then the worst case running time is O(n*n)
+
 ```
+
+[When does the worst case of Quicksort occur?](http://www.geeksforgeeks.org/when-does-the-worst-case-of-quicksort-occur/)
 
 [Space complexity](https://en.wikipedia.org/wiki/Quicksort#Space_complexity)
 ------------------------
