@@ -62,8 +62,8 @@ http://microservices.io/patterns/data/database-per-service.html
 
 http://www.stuttaford.me/2016/01/15/how-cognician-uses-onyx/?utm_source=dlvr.it&utm_medium=twitter
 
-EventStore
-----------
+EventStore/ Inversion of communication
+--------------------------------------
 
 state = foldL(currentState, history, eventToApply)
 
@@ -93,4 +93,4 @@ http://microservices.io/patterns/data/cqrs.html
 
 http://eventuate.io/whyeventsourcing.html
 
-http://www.stuttaford.me/2016/01/15/how-cognician-uses-onyx/?utm_source=dlvr.it&utm_medium=twitter
+http://www.stuttaford.me/2016/01/15/how-cognician-uses-onyx/
