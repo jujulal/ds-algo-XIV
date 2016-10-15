@@ -100,9 +100,11 @@ Thread.start() is required to actually create a new thread so that the runnable'
 [Hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading)
 
 ```
-Architecturally, a processor with Hyper-Threading Technology consists of two logical processors per core, each of which has its own processor architectural state. 
-Each logical processor can be individually halted, interrupted or directed to execute a specified thread, independently from the other logical processor sharing 
-the same physical core.
+Architecturally, a processor with Hyper-Threading Technology consists of two logical processors per core, 
+each of which has its own processor architectural state. 
+
+Each logical processor can be individually halted, interrupted or directed to execute a specified thread, 
+independently from the other logical processor sharing the same physical core.
 
 $ sysctl -a | grep hw.
 hw.ncpu: 8
@@ -158,6 +160,16 @@ memory), but its a hard problem to have every thread behave well with others whe
 multithreading is the ability of a CPU or a single core in a multi-core processor to execute multiple processes 
 or threads concurrently, appropriately supported by the operating system.
 ```
+
+[Dead lock](https://en.wikipedia.org/wiki/Deadlock)
+---------
+
+```
+In concurrent computing, a deadlock occurs when two competing actions wait for the other to finish, 
+and thus neither ever does.
+```
+
+http://stackoverflow.com/a/34520/432903
 
 
 [Why is Node.js single threaded?](http://stackoverflow.com/a/17959746/432903), [What is heck is EventLoop? - The JavaScript Event Loop: Explained](http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/) sharethis, 2015
