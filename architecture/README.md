@@ -315,6 +315,7 @@ Normally you register event listeners.
 ```
 var button = document.querySelector('button');
 button.addEventListener('click', () => console.log('Clicked!'));
+```
 
 Using RxJS you create an observable instead.
 
