@@ -41,6 +41,13 @@ Status codes
 5xx: Server error
 ```
 
+[What is HTTP1.0/HTTPs/WebSocket?](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP_session)
+--------------
+
+```
+
+```
+
 [How can I prevent browsers from caching my page/script?](http://www.garshol.priv.no/download/text/http-tut.html)
 
 This is done by setting the correct HTTP headers. If the Expiration header is set to a date/time in the past the output from the request will not be cached. (Note that HTTP requires browsers to keep the result in the browser history, so that going back to a non-cached page does not cause a new request.)
@@ -194,7 +201,7 @@ $.ajax({
 });
 ```
 
-Request Identification in J8 RESTful service
+[Request Identification in J8/any RESTful service](http://stackoverflow.com/a/19896997/432903)
 --------------------------------------------
 
 You first need to understand that HTTP is a stateless protocol. (WebArchitecture, 2016)
@@ -207,11 +214,12 @@ A - bank application, for example, only wants you to be able to see and manage y
 
 To achieve this, the CookieMap (Spec) and Session concepts were introduced. 
 - Cookies are KVPs, but with a specific format (see the links). 
-- Sessions are server-side entities that store information (in memory or persisted) that spans multiple requests/responses between the server and the client.
+- Sessions are server-side entities that store information (in memory or persisted) that spans multiple 
+requests/responses between the server and the client.
 
-The Servlet HTTP session uses a cookie with the key name JSESSIONID and a value that identifies the session.
+The Servlet `HttpSession` uses a cookie with the key name `JSESSIONID` and a value that identifies the session.
 
-The Servlet container keeps a map (YMMV) of HttpSession objects and these identifiers. 
+The Servlet container keeps a map (YMMV) of `HttpSession` objects and these identifiers. 
 - When a client first makes a request, the server creates an HttpSession object with a unique identifier and stores it in its map. 
 - It then adds a --Set-Cookie header in the response. It sets the cookie's name to JSESSIONID and its value to the identifier it just created.
 - Set-Cookie: JSESSIONID=64 byte string; expires=10/28/1989;
@@ -225,36 +233,20 @@ it yourself with the HttpServletResponse#addHeader(String, String) method.
 ------------------------------------------------------------------------------
 
 How Server identifies its client?
-- The client receives these cookies and can store them somewhere, typically in a text file. 
-When sending a new request to the server, it can use that cookie in the request's --Cookie header 
+
+- The client receives the `CookiesMap` and can store them somewhere, typically in a text file. 
+When sending a new request to the server, it can use that cookie in the request's `--Cookie` header 
 to notify the server that it might have done a previous request.
 
-- When the Servlet container receives the request, it extracts the Cookie header value and tries to 
-retrieve an HttpSession object from its map by using the key in the JSESSIONID cookie. 
+- When the Servlet container receives the request, it extracts the `--Cookie` header value and tries to 
+retrieve an HttpSession object from its map by using the key in the `JSESSIONID` cookie. 
 
-- This HttpSession object is then attached to the HttpServletRequest object that the Servlet 
-container creates and passes to your Servlet. 
-You can use the setAttribute(String, Object) and getAttribute(String) methods to manage state.
+- This `HttpSession` object is then attached to the `HttpServletRequest` object that the Servlet 
+container creates and passes to your Servlet.
+You can use the `setAttribute(String, Object)` and `getAttribute(String)` methods to manage state.
 
 GET Response header fields
 -----------------------------
-
-```
-$ curl --HEAD https://www.tumblr.com/docs/en/api/v2
-HTTP/1.1 200 OK
-Server: nginx
-Date: Sat, 03 Oct 2015 06:40:55 GMT
-Content-Type: text/html; charset=utf-8
-Connection: keep-alive
-Vary: Accept-Encoding
-Vary: Accept-Encoding
-Set-Cookie: tmgioct=560f78777bdd660268588940; expires=Tue, 30-Sep-2025 06:40:55 GMT; Max-Age=315360000; path=/; httponly
-P3P: CP="Tumblr's privacy policy is available here: https://www.tumblr.com/policy/en/privacy"
-X-Frame-Options: deny
-X-UA-Compatible: IE=Edge,chrome=1
-```
-
-update on above --HEAD request in 10/2016
 
 ```
 $ curl --HEAD https://www.tumblr.com/docs/en/api/v2
@@ -271,9 +263,83 @@ X-UA-Compatible: IE=Edge,chrome=1
 Accept-Ranges: bytes ;; https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 ```
 
+```
+curl -iX OPTIONS https://www.tumblr.com/docs/en/api/v2
+HTTP/1.1 200 OK
+Server: openresty
+Date: Mon, 24 Oct 2016 07:36:40 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 4
+Connection: keep-alive
+Vary: Accept-Encoding
+Set-Cookie: tmgioct=580dba082b52000104091160; expires=Thu, 22-Oct-2026 07:36:40 GMT; Max-Age=315360000; path=/; domain=.tumblr.com; HttpOnly
+X-UA-Compatible: IE=Edge,chrome=1
+Accept-Ranges: bytes
+
+done
+```
+
 [What are request scopes in http requests?](http://www.java-samples.com/showtutorial.php?tutorialid=1009) (WebArchitecture, Jan2016)
 ```
 scope="request" (same both in jsp/ spring)
 scope="session" (same both in jsp/ spring)
 scope="application" (global-session in spring)
 ```
+
+Suggested readings
+--------------------
+
+https://en.wikipedia.org/wiki/Request%E2%80%93response
+
+https://en.wikipedia.org/wiki/Futures_and_promises
+
+http://reactivesocket.io/
+
+http://jsuereth.com/scala-arm/sockets.html
+
+https://www.playframework.com/documentation/2.5.x/ScalaWebSockets
+
+[HTTP/REST vs WebSocket/Reactive proramming](https://www.pubnub.com/blog/2015-01-05-websockets-vs-rest-api-understanding-the-difference/)
+
+```
+WebSockets are just an extension of the socket idea. While HTTP was invented for the World Wide Web, and has been used by browsers since then, it had limitations. 
+It was a particular protocol that worked in a particular way, and wasn’t well suited for every need. In particular was how HTTP handled connections. Whenever you made a request, say to download html, or an image, a port/socket was opened, data was transferred, and then it was closed.
+
+The opening and closing creates overhead, and for certain applications, especially those that want rapid responses or real time interactions or display streams of data, this just doesn’t work.
+```
+
+http://reactivex.io/rxjs/manual/overview.html#introduction
+
+Normally you register event listeners.
+
+```
+var button = document.querySelector('button');
+button.addEventListener('click', () => console.log('Clicked!'));
+
+Using RxJS you create an observable instead.
+
+```
+var button = document.querySelector('button');
+Rx.Observable.fromEvent(button, 'click')
+  .subscribe(() => console.log('Clicked!'));
+```
+
+http://doc.akka.io/docs/akka/2.3.3/scala/io-tcp.html
+
+http://spray.io/msug/#/
+
+http://socket.io/
+
+http://www.eclipse.org/jetty/
+
+```
+a Web server and javax.servlet container, plus support for HTTP/2, WebSocket
+```
+
+[Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
+--------------------
+
+```
+restricts how a document or script loaded from one origin can interact with a resource from another origin. It is a critical security mechanism for isolating potentially malicious documents.
+```
+![](http://www.lucadentella.it/blog/wp-content/uploads/2013/07/cross-blocked.jpg)

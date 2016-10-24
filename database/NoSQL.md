@@ -1,6 +1,12 @@
 NoSQL
 -----
 
+http://programmers.stackexchange.com/a/175546/31060
+
+Relation DB                                                             | NoSQL
+------------------------------------------------------------------------|-----------------
+
+
 CAP theorem, AXP 2015, JWN 2016
 -------------------------------
 
@@ -23,12 +29,12 @@ same state as it was on completion of operation A, or a newer state.
 eg. [MongoDB Write/Read consistency](http://stackoverflow.com/a/11297667/432903), HBase
 
 ```
-MongoDB is strongly consistent by default - if you do a write and then do a read, assuming the write was 
-successful you will always be able to read the result of the write you just read. This is because MongoDB 
-is a single-master system and all reads go to the primary by default. 
+MongoDB is strongly consistent by default - if you do a write and then do a read, assuming the write 
+was successful you will always be able to read the result of the write you just read. 
+This is because MongoDB is a single-master system and all reads go to the primary by default. 
 
-If you optionally enable reading from the secondaries then MongoDB becomes eventually consistent where it's 
-possible to read out-of-date results.
+If you optionally enable reading from the secondaries then MongoDB becomes eventually consistent 
+where it's possible to read out-of-date results. (MWA, 2016)
 
 MongoDB also gets high-availability through automatic failover in replica sets: 
 http://www.mongodb.org/display/DOCS/Replica+Sets
@@ -55,15 +61,15 @@ https://aphyr.com/posts/283-jepsen-redis
 A
 ---
 ```
-Availability in CAP is defined as “every request received by a non-failing [database] node in the system must result 
-in a [non-error] response”. 
-It’s not sufficient for some node to be able to handle the request: any non-failing node needs to be able to handle 
-it. 
+Availability in CAP is defined as “every request received by a non-failing [database] node in the 
+system must result in a [non-error] response”. 
+It’s not sufficient for some node to be able to handle the request: any non-failing node needs to 
+be able to handle it. 
 
 Many so-called “highly available” (i.e. low downtime) systems actually do not meet this definition of availability.
 ```
 
-![](http://robertgreiner.com/uploads/images/2014/CAP-AP.png)
+![CAP](http://robertgreiner.com/uploads/images/2014/CAP-AP.png)
 
 eg. [Cassandra](https://wiki.apache.org/cassandra/ArchitectureOverview) - A but also provides C, based on tuning
 
@@ -77,9 +83,9 @@ P
 ---
 
 ```
-Partition Tolerance (terribly mis-named) basically means that you’re communicating over an asynchronous network that may 
-delay or drop messages. The internet and all our datacenters have this property, so you don’t really have any choice in 
-this matter.
+Partition Tolerance (terribly mis-named) basically means that you’re communicating over an 
+asynchronous network that may delay or drop messages. The internet and all our datacenters have this 
+property, so you don’t really have any choice in this matter.
 ```
 
 ![]()
@@ -94,6 +100,8 @@ this matter.
 
 [MongoDB/NoSQL - CP](https://docs.google.com/document/d/10byC4oKozabZ7lqnr1_UVRGR_HavEppiSYSROTzYDR0/edit)
 --------------
+
+https://codahale.com/you-cant-sacrifice-partition-tolerance/
 
 http://blog.nahurst.com/visual-guide-to-nosql-systems
 

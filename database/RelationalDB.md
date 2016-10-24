@@ -1,8 +1,25 @@
 
-[JOINs](https://goo.gl/cH4lSN)
-------
+Relational Algebra/ [JOINs](https://goo.gl/cH4lSN)
+--------------------------------------------------
 
-[What is the difference between LEFT JOIN and LEFT OUTER JOIN?](http://stackoverflow.com/a/4401540/432903)
+[What is Cartesian product in relational algebra?](https://en.wikipedia.org/wiki/Relational_algebra)
+
+```
+weights = { [packageA1, 100g], [packageA2, 200g]}
+shippingDates = { [packageB1, 07-2016], [packageB2, 08-2016], [packageB3, 09-2016]}
+
+weights * shippingDates = { {[packageA1, 100g], [packageB1, 07-2016]}, 
+                            {[packageA1, 100g], [packageB2, 08-2016]},
+                            {[packageA1, 100g], [packageB3, 09-2016]},
+                            
+                            {[packageA2, 200g], [packageB1, 07-2016]},
+                            {[packageA2, 200g], [packageB2, 08-2016]},
+                            {[packageA2, 200g], [packageB3, 09-2016]}
+                            
+                            
+```
+
+[What is the difference between LEFT JOIN and LEFT OUTER JOIN?](http://stackoverflow.com/a/4401540/432903), JWN, 07-2016
 
 [X INNER JOIN](https://goo.gl/qZUi8K)
 
@@ -77,7 +94,20 @@ Disadvantage
 ```
 The greatest disadvantage of the 2PC protocol is that it is a blocking protocol. 
 
-If the master(coordinator) fails permanently, some secondaries(cohorts) will never resolve their transactions: 
-After a secondary has sent an agreement message to the master, 
-it will block until a commit or rollback is received.
+If the master(coordinator) fails permanently, some secondaries(cohorts) will never resolve their 
+transactions: 
+After a secondary has sent an agreement message to the master, it will block until a commit or 
+rollback is received.
 ```
+
+Database pooling
+-------------------
+
+http://stackoverflow.com/a/4041136/432903
+
+```
+Database connection pooling is a method used to keep database connections open so they can be 
+reused by others.
+```
+
+https://en.wikipedia.org/wiki/Relational_algebra#Aggregation
