@@ -1,6 +1,11 @@
+[data types memory sizes](http://cs.fit.edu/~ryan/java/language/java-data.html)
+------------------------
+
 
 Object Memory allocation
 -------------------------
+
+http://prayagupd-dreamspace.blogspot.com/2013/03/java-hotspot-vm-options.html
 
 [Object allocation/ Thread Local Areas](https://goo.gl/DtW1kn)
 
@@ -14,7 +19,7 @@ http://stackoverflow.com/a/9058201/432903
 http://stackoverflow.com/a/21276727/432903
 
 ```
-Java objects reside in an area called the heap. 
+Java objects reside in an area called the heap(heap = newgen + oldgen heap). 
 
 The heap is created when the JVM starts up and may increase or decrease in size while the 
 application runs. 
@@ -22,8 +27,12 @@ application runs.
 When the heap becomes full, garbage is collected. 
 During the gc, objects that are no longer used are cleared, thus making space for new objects.
 
-Note that the JVM uses more memory than just the heap. 
-For example Java methods, thread stacks and native handles are allocated in memory 
+Note
+---------
+
+JVM uses more memory than just the heap.(PermGen) 
+
+For example _Java methods, thread stacks and native handles_ are allocated in memory 
 separate from the heap, as well as JVM internal data structures.
 ```
 
@@ -51,7 +60,7 @@ It is only using such pauses that it is the most effective.
 
 Using the "low-pauses collector (CMS)", you clean the old-gen concurrently, without pausing 
 your app. 
-The drawback is with CMS is that the old-gen become fragmented. If it is too fragmented and need 
+The drawback with CMS is that the old-gen become fragmented. If it is too fragmented and need 
 a compaction(C), a "Full GC (STW)" happens. 
 
 However, you can always tune your application so that you "do not get any Full GC".
