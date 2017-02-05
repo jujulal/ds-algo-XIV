@@ -22,7 +22,7 @@ https://github.com/prayagupd/scala-interview-questions
 
 What's the difference between override and overload? (HUM 06-2016)
 
-[Design a system to initialize a card game.](https://www.glassdoor.com/Interview/Nordstrom-Software-Engineer-Interview-Questions-EI_IE1704.0,9_KO10,27.htm) (INTV, nordstrom)
+[Design a system to initialize a card game.](https://www.glassdoor.com/Interview/Nordstrom-Software-Engineer-Interview-Questions-EI_IE1704.0,9_KO10,27.htm) (JWN, 2014)
 
 [Design a Garage Parking system?](https://www.careercup.com/question?id=5750856565653504) JWN 07-2016
 

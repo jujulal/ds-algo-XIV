@@ -1,4 +1,32 @@
 
+Object Memory allocation
+-------------------------
+
+[Object allocation/ Thread Local Areas](https://goo.gl/DtW1kn)
+
+```
+Small objects are allocated in thread local areas (TLAs). The thread local areas are free chunks 
+reserved from the heap and given to a Java thread for exclusive use.
+```
+
+http://stackoverflow.com/a/9058201/432903
+
+http://stackoverflow.com/a/21276727/432903
+
+```
+Java objects reside in an area called the heap. 
+
+The heap is created when the JVM starts up and may increase or decrease in size while the 
+application runs. 
+
+When the heap becomes full, garbage is collected. 
+During the gc, objects that are no longer used are cleared, thus making space for new objects.
+
+Note that the JVM uses more memory than just the heap. 
+For example Java methods, thread stacks and native handles are allocated in memory 
+separate from the heap, as well as JVM internal data structures.
+```
+
 GC
 ---
 
@@ -10,8 +38,52 @@ It is a form of automatic memory management.
 ```
 
 ```
-Garbage Collector is part of JRE that makes sure that object that are not referenced will be freed from memory.
+Garbage Collector is part of JRE that makes sure that object that are not referenced 
+will be freed from memory.
 ```
+
+[STW pauses/ Full GC](http://stackoverflow.com/a/16718346/432903)
+--------------------
+
+```
+Using the throughput GC, the JVM needs "STW pauses" to be the free as much memory as possible. 
+It is only using such pauses that it is the most effective.
+
+Using the "low-pauses collector (CMS)", you clean the old-gen concurrently, without pausing 
+your app. 
+The drawback is with CMS is that the old-gen become fragmented. If it is too fragmented and need 
+a compaction(C), a "Full GC (STW)" happens. 
+
+However, you can always tune your application so that you "do not get any Full GC".
+
+G1 GC is a special case. Its current primary goal is to have a low fragmentation on the heap, 
+while still being concurrent (like CMS). When it cannot reach this goal, the JVM also reverts to 
+a STW pause so that the heap is entirely cleaned and compacted.
+```
+
+[What is OS fragmentation](https://goo.gl/lAvdFd)
+---------------------------
+
+```
+When a computer program requests blocks of memory from the computer system, the blocks are allocated 
+in chunks. 
+When the computer program is finished with a chunk, it can free the chunk back to the system, 
+making it available to later be allocated again to another or the same program. 
+
+The size and the amount of time a chunk is held by a program varies. During its lifespan, a 
+computer program can request and free many chunks of memory.
+
+When a program is started, the free memory areas are long and contiguous/in sequence. Over time 
+and with use, the long contiguous regions become fragmented into smaller and smaller contiguous areas. 
+Eventually, it may become impossible for the program to obtain large contiguous chunks of memory.
+
+```
+
+[How is data stored in Filesystems(ext2, ext3 etc)? Say, I saved file1.log and then file2.log. Later I added info 
+to file1.log, how the memory is allocated?](http://unix.stackexchange.com/a/75667/17781)
+
+JVM GC
+========
 
 http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html
 
