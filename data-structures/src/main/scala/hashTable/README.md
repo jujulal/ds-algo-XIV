@@ -25,8 +25,13 @@ from which the desired value can be found.
     ```
  
 [Hash functions](http://www.azillionmonkeys.com/qed/hash.html)
-[Bob Jenkin's hash function](http://burtleburtle.net/bob/hash/doobs.html)
-[Murmur hash](https://en.wikipedia.org/wiki/MurmurHash)
+
+- [Bob Jenkin's hash function](http://burtleburtle.net/bob/hash/doobs.html)
+- [Murmur hash](https://en.wikipedia.org/wiki/MurmurHash)
+
+[hashmap capacity - Integer.MAX_VALUE (231-1(-1 for 0) = 2147483647) elements](http://stackoverflow.com/a/4123811/432903)
+
+- An instance of HashMap has two parameters that affect its performance: initial capacity and load factor. 
 
 [Hash collision resolution](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution), AAPL 2015
 ---
@@ -85,16 +90,21 @@ http://www.cs.cornell.edu/courses/cs312/2008sp/lectures/lec20.html
 
 | operation | complexity |
 ------------|--------------
-add       | O(1)
-search    | O(1) // better than searching an array which takes O(n) // [Hash table - why is it faster than arrays?](http://stackoverflow.com/a/12025456/432903)
-delete    | O(1)
+add         | hash complexity + O(1)
+search      | O(1) // better than searching an array which takes O(n) // [Hash table - why is it faster than arrays?](http://stackoverflow.com/a/12025456/432903)
+delete      | O(1)
 
 
 [Consistent Hashing](https://en.wikipedia.org/wiki/Consistent_hashing)
 ----
+
 ```
 a special kind of hashing such that when a hash table(with K keys, and n number of slots) is resized, 
 only K/n keys need to be remapped on average
+
+eg. K = 50 keys, 
+    n = 100 slots
+    K/n = 1/2
 ```
 
 [Cassandra Consistent hashing](https://docs.datastax.com/en/cassandra/2.0/cassandra/architecture/architectureDataDistributeHashing_c.html)
@@ -132,6 +142,8 @@ The choice of shard key cannot be changed after sharding.
 
 https://docs.mongodb.com/manual/sharding/#sharding-strategy
 
+http://www.jakubkorab.net/2015/12/message-distribution-and-topic-partitioning-in-kafka.html
+
 INTV
 ----
 https://leetcode.com/tag/hash-table/
@@ -153,4 +165,7 @@ Return:
 ```
 
 
-Given one billion URLs with a score, describe a distributed application that can return the top ten URLs by score. sharethis, 2015
+Given one billion URLs with a score, describe a distributed application that can return 
+the top ten URLs by score. sharethis, 2015
+
+(score -> URL)

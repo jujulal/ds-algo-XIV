@@ -1,6 +1,13 @@
 [data types memory sizes](http://cs.fit.edu/~ryan/java/language/java-data.html)
 ------------------------
 
+| type              | size    |
+|-------------------|----------
+| boolean           | 1 bit   |
+| byte              | 1 byte  |
+| char/short-int    | 2 bytes |
+| int/float         | 4 byte  |
+| long/double       | 8 byte  |
 
 Object Memory allocation
 -------------------------
@@ -14,9 +21,9 @@ Small objects are allocated in thread local areas (TLAs). The thread local areas
 reserved from the heap and given to a Java thread for exclusive use.
 ```
 
-http://stackoverflow.com/a/9058201/432903
+[Memory allocation on C++ object creation](http://stackoverflow.com/a/9058201/432903)
 
-http://stackoverflow.com/a/21276727/432903
+[Understanding JVM Memory Allocation and Java Out of Memory: Heap Space](http://stackoverflow.com/a/21276727/432903)
 
 ```
 Java objects reside in an area called the heap(heap = newgen + oldgen heap). 
@@ -32,9 +39,20 @@ Note
 
 JVM uses more memory than just the heap.(PermGen) 
 
-For example _Java methods, thread stacks and native handles_ are allocated in memory 
+For example _java #methods, thread stacks and native handles_ are allocated in memory
 separate from the heap, as well as JVM internal data structures.
 ```
+
+[What is Stack/ Heap](http://stackoverflow.com/a/80113/432903)
+---------------------
+
+![](https://i.stack.imgur.com/i6k0Z.png)
+
+The stack is the memory set aside as scratch space for a thread of execution. 
+When a function is called, a block is reserved on the top of the stack for local variables and some 
+bookkeeping data. 
+
+[The heap is memory set aside for dynamic allocation.](http://stackoverflow.com/a/79936/432903)
 
 GC
 ---

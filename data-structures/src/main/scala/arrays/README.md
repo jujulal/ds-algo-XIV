@@ -12,6 +12,21 @@
  Unlike array, which are always of a fixed size, Vector can be grown.
 ```
 
+[Where is array saved in memory in java?](http://stackoverflow.com/a/7015836/432903)/ [what does java array look like?](https://dzone.com/articles/what-does-java-array-look)
+
+_In theory, the stack has a single pointer to a location in the heap that contains the array itself._
+
+And you know, [Java heap lives in RAM](http://stackoverflow.com/a/5276257/432903)
+
+```scala
+                                      // This array object is
+                                      // stored on the HEAP.
+val scores                            = new int[5]
+// This reference (scores) is stored
+// in a variable on the STACK.
+```
+
+
 [Array Data Structure, Computer Science 121, Fall 2009, Carnegie Mellon University](https://www.cs.cmu.edu/~./adamchik/15-121/lectures/Arrays/arrays.html)
 
 [mutable.StringBuilder](http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html) vs [mutable.Thread-safe StringBuffer](http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.html), INTV, 07-08-2016
@@ -66,9 +81,10 @@ object Solution {
 
 stupid solution to achieve O(n) time, 0 space
 
-http://stackoverflow.com/a/16837342/432903
+[Find duplicate element in array in time O(n)](http://stackoverflow.com/a/16837342/432903)
+Can it be efficient for 1m records?
 
-```
+```scala
 int a[]  = {2,100,2,3,4};
 
 //for index, 0 => update index 2
@@ -82,6 +98,8 @@ int a[] = {2,100,-2,3,4};
 
 I'd rather use array bucketing [O(n) space] to get count of each element
 
-https://www.careercup.com/question?id=5638261762424832
+[Given an array int a[]={2,5,1,9,3,7,2,8,9,3}, Find the max number that can be formed using swap operations](https://www.careercup.com/question?id=5638261762424832)
+
 [Minimum number of swaps required for arranging pairs adjacent to each other](http://www.geeksforgeeks.org/minimum-number-of-swaps-required-for-arranging-pairs-adjacent-to-each-other/)
+
 [Algorithm to find smallest integer by swapping a pair of digits in given integer](http://stackoverflow.com/a/17175322/432903)

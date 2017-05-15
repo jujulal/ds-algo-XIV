@@ -53,19 +53,21 @@ Tree traversal
 [DFS](http://www.geeksforgeeks.org/618/)
 --------
 
-- [Pre-root-order (root, left, right)](http://algoviz.org/OpenDSA/Books/OpenDSA/html/BinaryTreeTraversal.html#preorder-traversal)
+![](https://wcipeg.com/wiki/images/8/85/DFS.gif)
+
+- [Pre-root order (root, left, right)](http://algoviz.org/OpenDSA/Books/OpenDSA/html/BinaryTreeTraversal.html#preorder-traversal)
 
 ```
 item1, (item2, item4, item5), ... item3
 ```
 
-- [In-root-order](http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/)
+- [In-root order](http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/)
 
 ```
 (item4, item2, item5), ... item1, item3
 ```
 
-- Post-root-order
+- Post-root order
 
 ```
 (item4, item5, item2), item3, ... item1
@@ -76,10 +78,15 @@ item1, (item2, item4, item5), ... item3
 
 ![](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
 
-[B-Tree](https://en.wikipedia.org/wiki/B-tree)
+[B-Tree](https://en.wikipedia.org/wiki/B-tree) = generalization of a BST
+-------------------------------------------------
+
+![](https://upload.wikimedia.org/wikipedia/en/0/03/Btree_index.PNG)
 
 ```
-a self-balancing tree DS that keeps data sorted and allows searches, sequential access, insertions, and deletions in logarithmic time. 
+a self-balancing tree DS that 
+- keeps data sorted and allows searches, sequential access, insertions, and deletions 
+in logarithmic time. 
 
 The B-tree is a generalization of a BST in that a node can have more than two children
 
@@ -93,22 +100,30 @@ Delete	 O(log n)	  O(log n)
 
 ```
 
-[Fractal tree index](https://en.wikipedia.org/wiki/Fractal_tree_index)
+[Fractal tree index](https://en.wikipedia.org/wiki/Fractal_tree_index) = a generalization of a BST
+-----------------------
+
+![](https://image.slidesharecdn.com/tokumxtalk-130717091709-phpapp02/95/introducing-tokumx-mongodb-with-fractal-tree-indexing-5-638.jpg)
 
 ```
-a tree data structure that keeps data sorted and allows searches and sequential access in the same time as a B-tree but 
-with insertions and deletions that are asymptotically faster than a B-tree. 
+a tree data structure that keeps data sorted and allows searches and sequential access 
+in the same time as a B-tree but with insertions and deletions that are asymptotically faster 
+than a B-tree. 
 
-Like a B-tree, a Fractal Tree index is a generalization of a BST in that a node can have more than two children. 
-Furthermore, unlike a B-tree, a Fractal Tree index has buffers at each node, which allow insertions, deletions and other 
-changes to be stored in intermediate locations.
+- Like a B-tree, a Fractal Tree index is a generalization of a BST in that a node can have more than 
+two children. 
+- Furthermore, unlike a B-tree, a Fractal Tree index has buffers at each node, 
+which allow insertions, deletions and other changes to be stored in intermediate locations.
 ```
 
-https://en.wikipedia.org/wiki/Inverted_index
+https://en.wikipedia.org/wiki/TokuMX
+
+[Inverted index](https://en.wikipedia.org/wiki/Inverted_index)
+----------------------------------------------------------------
 
 ```
-an index data structure storing a mapping from content, such as words or numbers, to its locations in a database file, 
-or in a document or a set of documents
+an index data structure storing a mapping from content, such as words or numbers, to its locations 
+in a database file, or in a document or a set of documents
 ```
 
 Shortest Path
