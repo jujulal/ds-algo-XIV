@@ -177,6 +177,8 @@ findFirstNonRepeating()
 
 ```
 
+[Given two linked lists, find the node at which they merge.](https://www.careercup.com/question?id=12842661), [offerup, 16](https://www.glassdoor.com/Interview/OfferUp-Senior-Software-Engineer-Interview-Questions-EI_IE854884.0,7_KO8,32.htm)
+
 [Given a very long list of URLs, find the first URL which is unique ( occurred exactly once ).](https://www.careercup.com/question?id=11856466) 
 
 _I gave a O(n) extra space and O(2n) time solution, but he was expecting O(n) time, one traversal._
