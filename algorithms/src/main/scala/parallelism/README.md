@@ -29,15 +29,15 @@ Execution Model
     
     % [Difference between static and dynamic schedule in openMP in C](http://stackoverflow.com/a/5864834/432903)
     
-- Java/Scala concurrency library java.util.concurrent/ scala.concurrent
+- Java/Scala concurrency library `java.util.concurrent`/ `scala.concurrent`
 
 //Static vs Dynamic Loop scheduling in OpenMp
 
 Static Loop Scheduling           | Dynamic Loop Scheduling | Guided Loop Scheduling 
 ----------------- | ------------------------- | --------------------------------------
-All iterations are allocated to threads -> before they execute any iterations | Some of the iterations allocated to threads -> at start of execution. Threads that complete their iterations are eligible to get additional work. | Large chunks initially assigned to Threads, Additional chunks of progressively smaller size assigned dynamically to Threads as needed
-has low overhead, but may have high load imbalance. | has higher overhead, but can reduce load imbalance. | 
-# pragma omp parallel for private(tid) schedule(static, ChunkSize) | # pragma omp parallel for private(tid) schedule(dynamic, ChunkSize) | schedule(guided)
+|All iterations are allocated to threads -> before they execute any iterations | Some of the iterations allocated to threads -> at start of execution. Threads that complete their iterations are eligible to get additional work. | Large chunks initially assigned to Threads, Additional chunks of progressively smaller size assigned dynamically to Threads as needed
+| has low overhead, but may have high load imbalance. | has higher overhead, but can reduce load imbalance. | 
+| # pragma omp parallel for private(tid) schedule(static, ChunkSize) | # pragma omp parallel for private(tid) schedule(dynamic, ChunkSize) | schedule(guided)
 
 
 [Thread states](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.State.html) JWN, 07-2016
@@ -80,6 +80,7 @@ shipOrders.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
                                        })
 shipOrders.start()
 ```
+
 [sleep vs wait](http://stackoverflow.com/q/1036754/432903) JWN 07-2016
 
 .sleep | .notify(.publish)/ .wait(.subscribe)/ Observer pattern in OO
@@ -91,13 +92,41 @@ In sleep() the thread stops working for the specified duration. | In wait() the 
 
 [Runnable.run(method call) vs Thread.start(start a thread)](http://stackoverflow.com/a/8579702/432903)
 --------------
+
 ```
 Runnable.run() is executed on the calling thread, just like any other method call. 
 
 Thread.start() is required to actually create a new thread so that the runnable's run method is executed in parallel
 ```
 
+[Shutting down threads cleanly](http://www.javaspecialists.eu/archive/Issue056.html)
+
+[Why Are Thread.stop, Thread.suspend, Thread.resume and Runtime.runFinalizersOnExit Deprecated?](http://docs.oracle.com/javase/1.5.0/docs/guide/misc/threadPrimitiveDeprecation.html)
+
+http://stackoverflow.com/a/3194618/432903
+
+```scala
+
+   val processor = new Thread(new Runnable(){
+        
+        override def run() {
+            while(!Thread.currentThread().isInterrupted()){
+                // do stuff         
+            }   
+        }})
+    t.start()
+
+    // Sleep a second, and then interrupt
+    try {
+        Thread.sleep(1000);
+    } catch { 
+        case e: InterruptedException => println("Processor is interrupted")
+    }
+    t.interrupt()
+```
+
 [Hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading)
+----------------
 
 ```
 Architecturally, a processor with Hyper-Threading Technology consists of two logical processors per core, 
@@ -215,3 +244,6 @@ As with any distributed system it requires some effort to make it work.
 
 If you are looking for the silver bullet that will fit with any scenario without any effort, you will end up with a bullet in your foot.
 ```
+
+
+[In Java, threading is supported at the language level with the synchronized and volatile keywords.](http://stackoverflow.com/a/3306752/432903)
