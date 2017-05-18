@@ -1,7 +1,7 @@
 Principles to follow writing an API / choosing API
 -----------------------------------------------------
 
-Standard Software engineering Principles([Uncle Bob](https://sites.google.com/site/unclebobconsultingllc/)) I follow
+Standard [Software engineering Philosophies](http://principles-wiki.net/collections:principles_in_the_pragmatic_programmer)/Principles([Uncle Bob](https://sites.google.com/site/unclebobconsultingllc/)) I follow
 
 1) Single Responsibility Principle
   * one component should do one thing

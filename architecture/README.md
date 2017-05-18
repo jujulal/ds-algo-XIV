@@ -1,6 +1,30 @@
 
 https://github.com/prayagupd/Scala-SOA
 
+[How two computers can communicate?](https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol/answer/Daniel-Miller-7)
+--------------------------------------------
+
+Essentially, there are different protocols that let a computer talk at different distances and 
+different layers of abstraction.
+
+- At the very bottom of the network stack is the physical layer. This is where electrical signals 
+or light pulses or radio waves actually transmit information from place to place.
+
+You can transmit information directly this way, but you need a lot of power or a dedicated line, 
+and without higher layers you won't be able to share bandwidth.
+
+- The next layer up is the link layer. 
+This layer covers communication with devices that share a physical communications medium. 
+
+Here, protocols like Ethernet, 802.11a/b/g/n, and Token Ring specify how to handle multiple 
+concurrent accesses to the physical medium and how to direct traffic to one device instead of another.
+
+- The third layer is the network layer. 
+In the majority of cases, this is dominated by Internet Protocol (IP). 
+This is where the magic of the Internet happens, and you get to talk to a computer halfway around 
+the world, without needing to know where it is. 
+
+https://softwareengineering.stackexchange.com/a/214251/31060
 
 [How web works?](http://www.garshol.priv.no/download/text/http-tut.html) / What happens when I follow a link?
 ----------------------------------------------------

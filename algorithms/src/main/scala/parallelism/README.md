@@ -53,6 +53,20 @@ Static Loop Scheduling           | Dynamic Loop Scheduling | Guided Loop Schedul
 | TERMINATED | A thread that has exited is in this state.|
 
 
+[Where is Thread Object created? Stack or JVM Heap Memory?](http://stackoverflow.com/a/19433994/432903)
+
+```
+val processor = new Thread() //new means always in heap memory
+```
+
+![](https://i.stack.imgur.com/kKDL2.gif)
+
+[Why do threads share the heap space?](http://stackoverflow.com/a/3321554/432903)
+
+```
+Because otherwise they would be processes. That is the whole idea of threads, to share memory.
+```
+
 [How to catch an Exception from a thread (in JVM)](http://stackoverflow.com/questions/6546193/how-to-catch-an-exception-from-a-thread), JWN 2016
 
 http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Thread.UncaughtExceptionHandler.html
@@ -171,7 +185,7 @@ the slowest task will determine the overall performance.
 ```
 
 [MultiThreading](https://goo.gl/CCb2wa), HUM 07-2016
---------------
+--------------------------------------------------------
 
 
 [What is a multithreaded application, stackoverflow](http://stackoverflow.com/a/1313122/432903)
@@ -191,15 +205,23 @@ or threads concurrently, appropriately supported by the operating system.
 ```
 
 [Dead lock](https://en.wikipedia.org/wiki/Deadlock)
----------
+---------------------------------------------------
 
 ```
 In concurrent computing, a deadlock occurs when two competing actions wait for the other to finish, 
 and thus neither ever does.
 ```
 
-http://stackoverflow.com/a/34520/432903
 
+[Deadlock example](http://stackoverflow.com/a/34520/432903)
+
+```
+Process1     ---> locks table1
+Process1 & 2 ---> want to process table2
+Process2     ---> wins lock on table2     <--- Process1 is waiting
+             ---> wants to process table1 <---- locked by Process1
+             ---> waits in table2
+```
 
 [Why is Node.js single threaded?](http://stackoverflow.com/a/17959746/432903), [What is heck is EventLoop? - The JavaScript Event Loop: Explained](http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/) sharethis, 2015
 
@@ -244,6 +266,5 @@ As with any distributed system it requires some effort to make it work.
 
 If you are looking for the silver bullet that will fit with any scenario without any effort, you will end up with a bullet in your foot.
 ```
-
 
 [In Java, threading is supported at the language level with the synchronized and volatile keywords.](http://stackoverflow.com/a/3306752/432903)
