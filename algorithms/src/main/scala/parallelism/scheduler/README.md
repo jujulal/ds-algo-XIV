@@ -1,12 +1,14 @@
 [JVM Thread Scheduling](http://lass.cs.umass.edu/~shenoy/courses/fall01/labs/talab2.html)
 
 ```
-- The JVM schedules using a pre-emptive MT, priority based scheduling algorithm.
+- The JVM schedules using a Pre-emptive MT(MultiThreading), priority based scheduling algorithm.
 
-   JVM would simply use the underlying threading mechanism provided by the OS, which would imply POSIX Threads (pthreads) on UNIX (Mac OS X, Linux, etc.) 
-   and would imply WIN32 threads on Windows. Typically, those systems use a round-robin strategy by default.
+   JVM would simply use the underlying threading mechanism provided by the OS, which would imply 
+   POSIX Threads (pthreads) on UNIX (Mac OS X, Linux, etc.) and would imply WIN32 threads on Windows. 
+   Typically, those systems use a round-robin strategy by default.
    
-- All Java threads have a priority and the thread with he highest priority is scheduled to run by the JVM.
+- All Java threads have a priority(1 to 10) and the thread with he highest priority is scheduled to 
+  run by the JVM.
   -- In case two threads have the same priority a FIFO ordering is followed.
 ```
 
@@ -23,12 +25,18 @@ Solution to starvation is called "fairness" - that all threads are fairly grante
 [Ticket lock](https://en.wikipedia.org/wiki/Ticket_lock)
 
 ```
-the method that many bakeries and delis use to serve customers in the order that they arrive, without making them stand in a line. 
+the method that many bakeries and delis use to serve customers in the order that they arrive, 
+without making them stand in a line. 
 ```
 
-[Spinlock](https://en.wikipedia.org/wiki/Spinlock)
+[Spinlock](https://en.wikipedia.org/wiki/Spinlock), PP 2016
 
 ```
-a lock which causes a thread trying to acquire it to simply wait in a loop ("spin") while repeatedly checking if the lock is available. 
-Since the thread remains active but is not performing a useful task, the use of such a lock is a kind of busy waiting. 
+a lock which causes a thread trying to acquire it to simply wait in a loop ("spin") while 
+repeatedly checking if the lock is available. 
+
+Since the thread remains active but is not performing a useful task, the use of such a lock is a 
+kind of busy waiting. 
 ```
+
+http://stackoverflow.com/a/19850551/432903

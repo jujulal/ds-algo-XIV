@@ -6,39 +6,41 @@ channels/ message passing
 - [shared memory/ in use with lock/semaphores](https://behelmy.wordpress.com/parrallel-computing/shared-memory-vs-message-passing-programming-model/)
 
 ```
-An advantage of this model from the programmer’s point of view is that the notion of data “ownership” is lacking, 
-so there is no need to specify explicitly the communication of data between tasks. 
+An advantage of this model from the programmer’s point of view is that the notion of data “ownership” 
+is lacking, so there is no need to specify explicitly the communication of data between tasks. 
 
 Program development can often be simplified.
 ```
 
 ```
-An important disadvantage in terms of performance is that it becomes more difficult to understand and manage 
-data locality. 
+An important disadvantage in terms of performance is that it becomes more difficult to understand 
+and manage data locality. 
 
-Keeping data local to the processor that works on it conserves memory accesses, cache refreshes and bus traffic 
-that occurs when multiple processors use the same data.
+Keeping data local to the processor that works on it conserves memory accesses, cache refreshes 
+and bus traffic that occurs when multiple processors use the same data.
 
-Unfortunately, controlling data locality is hard to understand and beyond the control of the average user.
+Unfortunately, controlling data locality is hard to understand and beyond the control of the 
+average user.
 ```
 
-- channels/ Producer consumer pattern/ Java BlockingQueue
+- channels/ sockets(IO)/ Producer consumer pattern/ Java BlockingQueue
 
 ```
-A channel is a message queue into which a sender can place messages and from which a receiver can remove messages, 
-blocking if messages are not available. 
+A channel is a message queue into which a sender can place messages and from which a receiver can i
+remove messages, blocking if messages are not available. 
 ```
 
-Joe Armstrong, 
+Joe Armstrong quotes, 
 
 ```
 With shared memory, you communicate by SHARING DATA, with messaging, you share data by COMMUNICATING.
 ```
 
-[When I should I use message passing over shared memory?](http://programmers.stackexchange.com/a/116887/31060)
+[When should I use message passing over shared memory?](http://programmers.stackexchange.com/a/116887/31060)
 
 ```
-The message passing model is considerably simpler to understand — you just have a stream of messages coming in that you want to process — 
+The message passing model is considerably simpler to understand — you just have a stream of messages 
+coming in that you want to process — 
 and it maps much more nicely to what is actually possible with networks so it obviously can scale up massively.
 ```
 
@@ -51,27 +53,29 @@ such as files and sockets;
 selector for multiplexed, non-blocking I/O operations.
 ```
 
-```
-    val data = new RandomAccessFile("warehouse/shipping-items", "rw")
-    val inChannel : FileChannel = data.getChannel() 
+[file channel example](http://tutorials.jenkov.com/java-nio/buffers.html)
 
-    val buffer = ByteBuffer.allocate(48)
+```scala
+    val sourcedata = new RandomAccessFile("warehouse/shipping-items", "rw")
+    val inChannel : FileChannel = sourcedata.getChannel() 
 
-    int bytesRead = inChannel.read(buffer) //always reads from buffer
-    while (bytesRead != -1) {
+    val inbuffer = ByteBuffer.allocate(48) //bytes
 
-      println("Read " + bytesRead)
-      buf.flip() // switches a Buffer from writing mode to reading mode. 
-                 // sets the position back to 0, 
+    int hasBytes = inChannel.read(inbuffer) //always reads from buffer
+    while (hasBytes != -1) {
 
-      while(buffer.hasRemaining()){
-          print((char) buffer.get())
+      println("Read " + hasBytes)
+      inbuffer.flip() // switches a Buffer from writing mode to reading mode. 
+                      // sets the position back to 0, 
+
+      while(inbuffer.hasRemaining()){
+          print((char) inbuffer.get())
       }
 
-      buf.clear()
-      bytesRead = inChannel.read(buffer)
+      inbuffer.clear()
+      hasBytes = inChannel.read(inbuffer)
     }
-    data.close()
+    sourcedata.close()
 ```
 
 ![](http://tutorials.jenkov.com/images/java-nio/buffers-modes.png)

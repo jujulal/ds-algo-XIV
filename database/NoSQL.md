@@ -14,12 +14,15 @@ C
 ---
 
 ```
-Consistency in CAP actually means linearizability, which is a very specific (and very strong) notion of consistency. 
-In particular it has got nothing to do with the C in ACID, even though that C also stands for “consistency”. 
+Consistency in CAP actually means linearizability, which is a very specific (and very strong) 
+notion of consistency. 
+In particular it has got nothing to do with the C in ACID, even though that C also stands for 
+“consistency”. 
+
 The meaning of linearizability below.
 
-If operation B started after operation A successfully completed, then operation B must see the the system in the 
-same state as it was on completion of operation A, or a newer state.
+If operation B started after operation A successfully completed, then operation B must see the the 
+system in the same state as it was on completion of operation A, or a newer state.
 ```
 
 ![](http://robertgreiner.com/uploads/images/2014/CAP-CP.png)
@@ -60,13 +63,15 @@ https://aphyr.com/posts/283-jepsen-redis
 
 A
 ---
+
 ```
 Availability in CAP is defined as “every request received by a non-failing [database] node in the 
 system must result in a [non-error] response”. 
 It’s not sufficient for some node to be able to handle the request: any non-failing node needs to 
 be able to handle it. 
 
-Many so-called “highly available” (i.e. low downtime) systems actually do not meet this definition of availability.
+Many so-called “highly available” (i.e. low downtime) systems actually do not meet this definition 
+of availability.
 ```
 
 ![CAP](http://robertgreiner.com/uploads/images/2014/CAP-AP.png)

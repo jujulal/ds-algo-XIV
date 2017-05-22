@@ -25,20 +25,23 @@ and cannot proceed until all other threads/processes reach this barrier.
 - A CyclicBarrier is useful for more complex co-ordination tasks. An example of such a thing would be parallel computation - where multiple subtasks are involved in the computation - kind of like MapReduce.
 
 [CountDownLatch vs. Semaphore](http://stackoverflow.com/a/184566/432903)
+
 ```
-val countdown = new CountDownLatch(1)
+//all start simultaneously when the countown reached zero.
+
+val carraceCountdown = new CountDownLatch(1)
 
 for (i <- 0 until 10){
    val racecar = new Thread() {    
-      public void run()    {
-         countdown.await() //all threads waiting
+      def run()    {
+         carraceCountdown.await() //all threads waiting
          println("Vroom!")
       }
    };
    racecar.start()
 }
 println("Go")
-countdown.countDown()   //all threads start now!
+carraceCountdown.countDown()   //all threads start now!
 ```
 
 Usage

@@ -103,6 +103,7 @@ Factors to consider choosing API
 - problem (endpoint to print hello world vs massive computational endpoint)
 - engineering resources (I only know Servlet API, but not Spring API, massive computational endpoint with 5 components, they will be reusable in future)
 - delivery time (1 month)
+- culture (never leave a bad code, optimize, fix something or keep blaming )
  
 Engineering References
 -----------

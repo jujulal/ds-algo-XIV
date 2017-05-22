@@ -61,11 +61,11 @@ https://en.wikipedia.org/wiki/ACID#Characteristics
 
 [ACID and database transactions?](http://stackoverflow.com/a/3740307/432903)
 
-[2 Phase commit(2PC) in Database Transactions](https://en.wikipedia.org/wiki/Two-phase_commit_protocol#Basic_algorithm)
+[Consensus Protocol/2 Phase commit(2PC) in Database Transactions](https://en.wikipedia.org/wiki/Two-phase_commit_protocol#Basic_algorithm)
 --------------------------------------------
 _DB, LMU 2013_
 
-- Commit request phase, voting phase
+- [Commit request phase](http://the-paper-trail.org/blog/consensus-protocols-two-phase-commit/), voting phase
 - Commit phase, completion phase
 
 ```
@@ -88,6 +88,8 @@ commit*/abort*                COMMIT/ROLLBACK
 end
 ```
 
+![](http://the-paper-trail.org/blog/wp-content/uploads/2010/01/tpc-fault-free-phase-1.png)
+
 Disadvantage
 ------------
 
@@ -100,14 +102,18 @@ After a secondary has sent an agreement message to the master, it will block unt
 rollback is received.
 ```
 
-Database pooling
+[Database pooling](http://stackoverflow.com/a/4041136/432907)
 -------------------
 
-http://stackoverflow.com/a/4041136/432903
+```
+Database connection pooling is a method used to keep database TCP connections open so they can 
+be reused by others.
+```
 
-```
-Database connection pooling is a method used to keep database connections open so they can be 
-reused by others.
-```
+[databases connection transport protocals](https://unix.stackexchange.com/a/32138/17781)
+ - TCP
+ - Socket (Unix socket file connection to local server)
+
+https://www.datastax.com/dev/blog/binary-protocol
 
 https://en.wikipedia.org/wiki/Relational_algebra#Aggregation

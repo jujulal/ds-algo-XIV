@@ -1,11 +1,12 @@
-[Reentrant mutex](https://en.wikipedia.org/wiki/Reentrant_mutex)
+[Reentrant MutEx](https://en.wikipedia.org/wiki/Reentrant_mutex)/ Recursive MutEx
+----------------------------------------------------------------------------------
 
 ```
 reentrant mutex (recursive mutex, recursive lock) is particular type of mutual exclusion (mutex) 
 device that may be locked multiple times by the same process/thread, without causing a deadlock.
 ```
 
-[Mutex vs Semaphore](http://stackoverflow.com/questions/4039899/when-should-we-use-mutex-and-when-should-we-use-semaphore)
+[MutEx vs Semaphore](http://stackoverflow.com/questions/4039899/when-should-we-use-mutex-and-when-should-we-use-semaphore)
 ----------------------
 
 ```
@@ -33,6 +34,11 @@ using synchronized methods and statements, but with extended capabilities.
 
 [In JVM, Why use a ReentrantLock if one can use synchronized(x)?](http://stackoverflow.com/a/11821900/432903)
 
+```
+A ReEntrantLock is unstructured, unlike synchronized constructs -- 
+i.e. you don't need to use a block structure for locking and can even hold a lock across methods
+```
+
 [ReentrantLock and the Dining Philosophers](https://dzone.com/articles/reentrantlock-and-dining-philo)
 
 [Simplifying ReadWriteLock with Java 8 and lambdas](http://www.nurkiewicz.com/2014/03/simplifying-readwritelock-with-java-8.html)
@@ -48,7 +54,8 @@ And it may not have a requirement that it be released by the same thread that cl
 (but, if not, you have to carefully track who currently has responsibility for it, much like allocated memory).
 
 So, if you have a number of instances of a resource (say three tape drives), you could use a semaphore 
-with a count of 3. Note that this doesn't tell you which of those tape drives you have, just that you have a certain number.
+with a count of 3. Note that this doesn't tell you which of those tape drives you have, 
+just that you have a certain number.
 
 Also with semaphores, it's possible for a single locker to lock multiple instances of a resource, 
 such as for a tape-to-tape copy. If you have one resource (say a memory location that you don't want to corrupt), 
