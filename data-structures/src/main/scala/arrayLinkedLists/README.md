@@ -111,6 +111,23 @@ insert | O(1) => iff pointer to insert is known, otherwise O(n)
 search | O(n)
 remove | search time + O(1)
 
+[LinkedList cache locality/ 5 reasons to be Anti-LinkedList](http://highscalability.com/blog/2013/5/22/strategy-stop-using-linked-lists.html)
+
+```
+
+http://www.futurechips.org/thoughts-for-researchers/quick-post-linked-lists.html#more-818
+
+In The Secret To 10 Million Concurrent Connections one of the important strategies is not scribbling 
+data all over memory via pointers because following pointers increases cache misses which reduces perf.
+
+0. They reduce the benefit of out-of-order execution.
+1. They throw off hardware prefetching.
+2. They reduce DRAM and TLB locality.
+3. They cannot leverage Single instruction, multiple data - [SIMD](https://en.wikipedia.org/wiki/SIMD).
+4. They are harder to send to GPUs.
+ 
+```
+
 space analysis
 --------------
 

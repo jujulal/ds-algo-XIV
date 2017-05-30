@@ -4,12 +4,22 @@
 * inplace sort algo unlike [Merge sort](http://algs4.cs.princeton.edu/22mergesort/) which required additional space
 * suitable for sorting big data volumes
 
+Algo
+----
+
 ```
+Divide
 - Choose a pivot value. 
-    We take the value of the middle element as pivot value, but it can be any value, which is in range of sorted values, even if it doesn't present in the array.
+    take the value of the middle element as pivot value, but it can be any value, which is in 
+    range of sorted values, even if it doesn't present in the array.
 - Partition. (INTV)
-    Rearrange elements in such a way, that all elements lesser than the pivot go to the left part of the array and all elements greater than the pivot, go to the right part of the array. 
-    Values equal to the pivot can stay in any part of the array. Notice, that array may be divided in non-equal parts.
+    Rearrange elements in such a way, that all elements lesser than the pivot go to the left 
+    part of the array and all elements greater than the pivot, go to the right part of the array. 
+    
+    Values equal to the pivot can stay in any part of the array. Notice, that array may be divided 
+    in non-equal parts.
+
+Conquer
 - Sort both parts. 
     Apply quicksort algorithm recursively to the left and the right parts.
 
@@ -17,7 +27,7 @@
 
 [Why is quick sort [O(n logn)] better than merge sort [O(n logn)]?](http://cs.stackexchange.com/a/10/17252)
 
- - Quicksort in particular [requires little additional space](http://stackoverflow.com/a/70631/432903) and exhibits good cache locality, 
+ - Quicksort in particular [requires little additional space](http://stackoverflow.com/a/70631/432903) and exhibits good [cache locality](https://en.wikipedia.org/wiki/Locality_of_reference), 
    and this makes it faster than merge sort in many cases.
  - In addition, it’s very easy to avoid quicksort’s worst-case run time of O(n2) almost entirely 
    by using an appropriate choice of the pivot – such as picking it at random (this is an excellent strategy)

@@ -21,9 +21,14 @@ weights * shippingDates = { {[packageA1, 100g], [packageB1, 07-2016]},
 
 [What is the difference between LEFT JOIN and LEFT OUTER JOIN?](http://stackoverflow.com/a/4401540/432903), JWN, 07-2016
 
-[X INNER JOIN](https://goo.gl/qZUi8K)
+[Set1 INNER JOIN Set2](https://goo.gl/qZUi8K)
 
-[X OUTER JOIN](https://goo.gl/IbGzK3)
+[Set1 OUTER JOIN Set2](https://goo.gl/IbGzK3)
+
+```
+The result of a left outer join (or simply left join) for tables A and B always contains all rows 
+of the "left" table (A), even if the join-condition does not find any matching row in the "right" table (B). 
+```
 
 [LEFT OUTER JOIN operation](http://docs.oracle.com/javadb/10.4.2.1/ref/rrefsqlj18922.html) (INTV, HUM 06-08-2016)
 
@@ -35,12 +40,12 @@ joining them with a NULL row in the shape of the second (right) table.
 
 ![SQL joins](http://i.stack.imgur.com/VQ5XP.png)
 
-[Inner Join vs. Natural Join, speed-wise?](http://stackoverflow.com/a/4841554/432903)
+[Inner Join vs. Natural Join (JOIN ON), speed-wise?](http://stackoverflow.com/a/4841554/432903)
 
-[SET DIfference in SQL – M SQL Server](https://timsinajaya.wordpress.com/2010/09/30/set-difference-in-sql-m-sql-server/)
+[Sset DIfference(A-B) in SQL – M SQL Server](https://timsinajaya.wordpress.com/2010/09/30/set-difference-in-sql-m-sql-server/)
 
-```
-SELECT DISTINCT A.* 
+```sql
+SELECT DISTINCT A.*
   FROM (A LEFT OUTER JOIN B on A.ID=B.ID) 
     WHERE B.ID IS NULL
 ```
@@ -101,6 +106,13 @@ transactions:
 After a secondary has sent an agreement message to the master, it will block until a commit or 
 rollback is received.
 ```
+
+
+[When and why are relational database joins expensive?](https://stackoverflow.com/a/174047/432903)
+
+[The Join Operation](http://use-the-index-luke.com/sql/join)
+
+[Performance Considerations for Join Queries](https://www.cloudera.com/documentation/enterprise/5-9-x/topics/impala_perf_joins.html)
 
 [Database pooling](http://stackoverflow.com/a/4041136/432907)
 -------------------

@@ -78,7 +78,53 @@ selector for multiplexed, non-blocking I/O operations.
     sourcedata.close()
 ```
 
+[Message Delivery Reliability](http://doc.akka.io/docs/akka/current/scala/general/message-delivery-reliability.html)
+
+```
+semantics of a delivery mechanism, there are three basic categories:
+
+- at-most-once delivery (0..1) - cheapest, fire & forget, stateless sender, stateless transport
+- exactly-once delivery (1) - most expensive, stateful sender, transport, receiver processed state
+- at-least-once delivery (1..*) - expensive, stateful sender, transport, receiver
+```
+
+[10.9  If I send a message, is it guaranteed to reach the (erlang) receiver?](http://erlang.org/faq/academic.html)
+
+```
+It seems this issue of "guaranteed delivery" comes up every now and then, 
+but I've never managed to find out exactly what it is those that are asking for it actually want:
+
+1) A guarantee that the message is put into the receiver's input queue/mailbox/stream/channel? 
+But if the receiver dies before extracting it from there, that guarantee is useless, as the message 
+is lost anyway.
+
+2) A guarantee that the receiver extracts the message from its input queue/mailbox?
+Well, besides the obvious problem that depending on how the receiver is written,
+even if it lives happily ever after it may never extract that particular message,
+it suffers from a variant of the previous problem: Even if you "know" that the receiver has "consumed"
+the message, it may die before acting on it in any way, and then again it may as well never have been sent.
+
+3) A guarantee that the receiver actually processes the message? 
+Just kidding of course, hopefully it's obvious to everyone that the only way to obtain such a guarantee, 
+regardless of what communication system(or programming) you use, is that the receiver is programmed to send 
+an explicit acknowledgment when the processing is complete (of course this may be hidden below an 
+abstraction such as RPC, but the fundamental principle holds).
+```
+
+[Nobody needs reliable messaging in SOA/ Webservice](https://www.infoq.com/articles/no-reliable-messaging)
+
+```
+Reliable messaging is the guarantee that a message sent by a sending application is indeed 
+received at the other end, and received only once.
+```
+
+![](https://cdn.infoq.com/statics_s1_20170523-0350/resource/articles/no-reliable-messaging/en/resources/Biz-Transport-Level.png)
+
+[actor message delivery guarantees for local/remote transports](https://groups.google.com/forum/#!topic/akka-user/Ih9HqTbI9NM)
+
 ![](http://tutorials.jenkov.com/images/java-nio/buffers-modes.png)
+
+https://stackoverflow.com/q/8107612/432903
 
 https://golang.org/doc/effective_go.html#channels
 

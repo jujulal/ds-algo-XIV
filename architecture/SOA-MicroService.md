@@ -1,5 +1,5 @@
-SOA
----
+(micro)Service Orientened Architecture
+--------------------------------
 
 https://github.com/prayagupd/Scala-SOA
 
@@ -16,7 +16,7 @@ https://github.com/prayagupd/Scala-SOA
 
 3. Products not Projects
 
-4. Smart endpoints and dumb pipes
+4. [Smart endpoints and dumb pipes](https://martinfowler.com/articles/microservices.html#SmartEndpointsAndDumbPipes)
 
 5. Decentralized Governance
 

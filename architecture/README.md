@@ -24,15 +24,24 @@ In the majority of cases, this is dominated by Internet Protocol (IP).
 This is where the magic of the Internet happens, and you get to talk to a computer halfway around 
 the world, without needing to know where it is. 
 
-https://softwareengineering.stackexchange.com/a/214251/31060
+[Comparing TCP/IP applications vs HyperTextTP applications](https://softwareengineering.stackexchange.com/a/214251/31060)
 
-[How web works?](http://www.garshol.priv.no/download/text/http-tut.html) / What happens when I follow a link?
+```
+TCP is a protocol in the transport layer and HTTP is a protocol in the application layer.
+
+HTTP is over TCP/IP
+
+You want to add a application layer protocol over TCP (like HTTP) and then a content-type (like json, xml, html). 
+Netty let you use HTTP and content-type as protobuff which is equivalent to json, xml, html.
+```
+
+[How web works?](http://www.garshol.priv.no/download/text/http-tut.html) / What happens when I hit a http endpoint/ follow a link?
 ----------------------------------------------------
 
 **Step 1: Parsing the URL**
  - Most URLs have this basic form: `protocol://server/request-URI`
 
-**Step 2: Sending the request by browser** 
+**Step 2: Sending the request by browser with header infos** 
  - the browser transmits the following request to the server: 
 
 ```
@@ -54,7 +63,7 @@ Content-type: text/html
 ...followed by document content...
 ```
 
-Status codes
+HyperTextTP Status codes
 --------------
 
 ```
@@ -72,18 +81,22 @@ Status codes
 
 ```
 
-[How can I prevent browsers from caching my page/script?](http://www.garshol.priv.no/download/text/http-tut.html)
+[How can I prevent browsers from caching page/script responded from http server?](http://www.garshol.priv.no/download/text/http-tut.html)
 
-This is done by setting the correct HTTP headers. If the Expiration header is set to a date/time in the past the output from the request will not be cached. (Note that HTTP requires browsers to keep the result in the browser history, so that going back to a non-cached page does not cause a new request.)
+_This is done by setting the correct HTTP headers. If the Expiration header is set to a date/time 
+in the past the output from the request will not be cached. 
 
-The expiration time can be set with a server-script or possibly by configuring the server correctly.
+(Note that HTTP requires browsers to keep the result in the browser history, so that going back 
+to a non-cached page does not cause a new request.)
+
+The expiration time can be set with a server-script or possibly by configuring the server correctly._
 
 [Securing Web Services: REST over HTTPS vs SOAP with WS-Security. Which is better?](http://stackoverflow.com/a/853732/432903)
 
 SOAP
 ----
 
-- SOAP only support XML
+- SOAP only supports content-type XML
 - Microsoft originally developed SOAP to take the place of older technologies that don’t work well on the Internet such 
   as the Distributed Component Object Model (DCOM) and Common Object Request Broker Architecture (CORBA). 
   These technologies fail because they rely on binary messaging; the XML messaging that SOAP employs works better over 
@@ -156,7 +169,7 @@ REST
 
 - REST supports different media format like text, JSON, XML, RSS (Really Simple Syndication) etc.
 - if we use JSON then definitely we will be in better place in terms of payload.
-  [JSON and XML comparison](http://stackoverflow.com/a/4862530/432903)
+  [JSON and XML comparison](http://stackoverflow.com/a/4862530/432903) (4M vs 300K)
   JSON is both more compact and more readable - in transmission it can be "faster" simply 
   because less data is transferred.
 
@@ -172,12 +185,12 @@ REST
 
 - Supports only SSL(Secure Sockets Layer), gliffy 2015, JWN 2016
   
-  SSL is good only for P2P communication: 
-  SSL works by encrypting the transport data between two end points. 
-  For a Web Service, the call routes through more intermediaries nodes than just two end points. 
-  Where as, WS Security solves this problem and its an END-TO-END Solution.
+  TLS is good only for P2P communication: 
+  ! TLS works by encrypting the transport data between two end points. 
+  ! For a Web Service, the call routes through more intermediaries nodes than just two end points. 
+    where as, WS Security solves this problem and its an END-TO-END Solution.
 
-- As REST is limited by it's HTTP protocol so it’s transaction support is neither ACID compliant nor 
+- As REST is limited by it's HTTP protocol so it’s transaction support is neither ACID compliant nor
   can provide 2PC (two phase commit) across distributed transactional resources. JWN 2016
 
 https://docs.google.com/document/d/1H_Zv_8QECBlWsmlg5Hmu4MDwVuCKTuXdgRYoC9rsOI4/edit#
@@ -189,6 +202,8 @@ http://martinfowler.com/articles/microservices.html
 [What is HTTP request/ response header?](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)
 _HTTP header fields are -> components of the header section of request and response messages in the HTTP. 
 They define the operating parameters of an HTTP transaction._
+
+[Can REST be implemented over FTP?, not just HTTP](https://stackoverflow.com/a/35535386/432903)
 
 [HTTP Request Headers](http://webmasters.stackexchange.com/a/5661/14960) ;; some important headers for security purpose
 ------------------------
@@ -236,22 +251,32 @@ A - bank application, for example, only wants you to be able to see and manage y
 - A music streaming website might want to recommend some good beats based on what you've already heard.
 
 
-To achieve this, the CookieMap (Spec) and Session concepts were introduced. 
+<b>To achieve this, the CookieMap (Spec) and Session concepts were introduced.</b>
+
 - Cookies are KVPs, but with a specific format (see the links). 
-- Sessions are server-side entities that store information (in memory or persisted) that spans multiple 
-requests/responses between the server and the client.
+- `Session`s are server-side entities that store information (in memory or persisted) that spans multiple 
+requests/responses between the server and the client. (Intempt, 2015)
 
-The Servlet `HttpSession` uses a cookie with the key name `JSESSIONID` and a value that identifies the session.
+The HttpServlet `HttpSession` uses a cookie with the key name `JSESSIONID` and a value that identifies 
+the session.
 
-The Servlet container keeps a map (YMMV) of `HttpSession` objects and these identifiers. 
-- When a client first makes a request, the server creates an HttpSession object with a unique identifier and stores it in its map. 
-- It then adds a --Set-Cookie header in the response. It sets the cookie's name to JSESSIONID and its value to the identifier it just created.
-- Set-Cookie: JSESSIONID=64 byte string; expires=10/28/1989;
+The HttpServlet container keeps a map (YMMV) of `HttpSession` objects and these JSESSIONID identifiers. 
 
-This is the most basic Cookie that a server uses. You can set any number of them with any information you wish. 
+- When a client first makes a request, the server creates an HttpSession object with a unique identifier 
+and stores it in its map. 
+- It then adds a `--Set-Cookie` header in the response. It sets the cookie's name to `JSESSIONID` and 
+its value to the identifier it just created.
+- `Set-Cookie: JSESSIONID=64 byte string; expires=10/28/2039;`
 
-The Servlet API makes that a little simpler for you with the HttpServletResponse#addCookie(Cookie) method but you could do 
-it yourself with the HttpServletResponse#addHeader(String, String) method.
+- Then client store the JSESSIONID somewhere in filesystem. eg, chrome client, 
+
+`/Users/urayagppd/Library/Application\ Support/Google/Chrome/Default/Cookies`
+
+This is the most basic Cookie that a server uses. You can set any number of them with any 
+information you wish. 
+
+The HttpServlet API makes that a little simpler with the `HttpServletResponse#addCookie(Cookie)`
+method but you could do it yourself with the `HttpServletResponse#addHeader(String, String)` method.
 
 [How Java webcontainer spawns new thread for each request?](http://www.tutorialspoint.com/servlets/servlets-life-cycle.htm)
 ------------------------------------------------------------------------------
@@ -263,17 +288,17 @@ When sending a new request to the server, it can use that cookie in the request'
 to notify the server that it might have done a previous request.
 
 - When the Servlet container receives the request, it extracts the `--Cookie` header value and tries to 
-retrieve an HttpSession object from its map by using the key in the `JSESSIONID` cookie. 
+retrieve an `HttpSession` object from its map by using the key in the `JSESSIONID` cookie. 
 
 - This `HttpSession` object is then attached to the `HttpServletRequest` object that the Servlet 
 container creates and passes to your Servlet.
 You can use the `setAttribute(String, Object)` and `getAttribute(String)` methods to manage state.
 
-GET Response header fields
+HyperTextTP GET Response header fields
 -----------------------------
 
-```
-$ curl --HEAD https://www.tumblr.com/docs/en/api/v2
+```bash
+$ curl -v --HEAD https://www.tumblr.com/docs/en/api/v2
 HTTP/1.1 200 OK
 Server: openresty
 Date: Sat, 15 Oct 2016 01:37:16 GMT
@@ -303,7 +328,7 @@ Accept-Ranges: bytes
 done
 ```
 
-[What are request scopes in http requests?](http://www.java-samples.com/showtutorial.php?tutorialid=1009) (WebArchitecture, Jan2016)
+[What are request scopes in HTTP requests?](http://www.java-samples.com/showtutorial.php?tutorialid=1009) (WebArchitecture, Jan2016)
 ```
 scope="request" (same both in jsp/ spring)
 scope="session" (same both in jsp/ spring)
@@ -326,10 +351,16 @@ https://www.playframework.com/documentation/2.5.x/ScalaWebSockets
 [HTTP/REST vs WebSocket/Reactive proramming](https://www.pubnub.com/blog/2015-01-05-websockets-vs-rest-api-understanding-the-difference/)
 
 ```
-WebSockets are just an extension of the socket idea. While HTTP was invented for the World Wide Web, and has been used by browsers since then, it had limitations. 
-It was a particular protocol that worked in a particular way, and wasn’t well suited for every need. In particular was how HTTP handled connections. Whenever you made a request, say to download html, or an image, a port/socket was opened, data was transferred, and then it was closed.
+WebSockets are just an extension of the socket idea. While HyperTextTP was invented for the World Wide Web, 
+and has been used by browsers since then, it had limitations. 
 
-The opening and closing creates overhead, and for certain applications, especially those that want rapid responses or real time interactions or display streams of data, this just doesn’t work.
+It was a particular protocol that worked in a particular way, and wasn’t well suited for every need. 
+
+In particular was how HTTP handled connections. Whenever you made a request, say to download html bytes, 
+or an image bytes, a port/socket was opened, data was transferred, and then it was closed.
+
+The opening and closing creates overhead, and for certain applications, especially those that want 
+rapid responses or real time interactions or display streams of data, this just doesn’t work.
 ```
 
 http://reactivex.io/rxjs/manual/overview.html#introduction
@@ -365,6 +396,8 @@ a Web server and javax.servlet container, plus support for HTTP/2, WebSocket
 --------------------
 
 ```
-restricts how a document or script loaded from one origin can interact with a resource from another origin. It is a critical security mechanism for isolating potentially malicious documents.
+restricts how a document or script loaded from one origin can interact with a resource from another origin. 
+
+It is a critical security mechanism for isolating potentially malicious documents.
 ```
 ![](http://www.lucadentella.it/blog/wp-content/uploads/2013/07/cross-blocked.jpg)

@@ -2,20 +2,21 @@
 
 The merge sort algorithm:
 
- - Divide the list in half
- - Merge sort the first half
- - Merge sort the second half
- - Merge both halves back together
+ - Divide : Partition the list in half
+ - Conquer: 
+    Merge sort the first half
+    Merge sort the second half
+    Merge both halves back together
 
 ![](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 
 [time complexity](https://en.wikipedia.org/wiki/Merge_sort#Analysis)
 ---------------
 
-http://programmers.stackexchange.com/a/297203/31060
+_[Why is mergesort O(log n)?](http://programmers.stackexchange.com/a/297203/31060)_
 
 ```
-Best  - O(n logn)  // n items iterated log(n) times
+Best  - O(n logn)  // n items * iterated log(n) times
 Avg   - O(n logn)
 Worst - O(n logn)
 ```
@@ -35,6 +36,14 @@ Refs
 [MIT, 3. Insertion Sort, Merge Sort, MIT 6.006 Introduction to Algorithms, Fall 2011](http://youtu.be/Kg4bqzAqRBM?t=24m33s)
 
 [How does the MapReduce sort algorithm work?](http://stackoverflow.com/a/1152903/432903)
+
+```
+TeraSort is a standard map/reduce sort, except for a custom partitioner that uses a sorted list of 
+N − 1 sampled keys that define the key range for each reduce. In particular, all keys such that 
+sample[i − 1] <= key < sample[i] are sent to reduce i. 
+
+This guarantees that the output of reduce i are all less than the output of reduce i+1."
+```
 
 [http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/mergeSort.htm](http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/Gifs/img1A.gif)
 
