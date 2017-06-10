@@ -5,7 +5,7 @@
  Arrays is a data structure consisting of a collection of elements.
 ```
 
-Vector = growable Array
+[Vector = growable Array](https://en.wikipedia.org/wiki/Row_and_column_vectors)
 
 ```
  Vector is much like array. Operations on a vector offer the same big O as their counterparts on an array. 
@@ -67,10 +67,8 @@ eg. [1000, 3048, 5040, 7888] etc
 
 [mutable.StringBuilder](http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html) vs [mutable.Thread-safe StringBuffer](http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.html), INTV, 07-08-2016
 
-INTV
-----
-
-https://leetcode.com/tag/array/
+[INTV qns](https://leetcode.com/tag/array/)
+--------------------------------------------------
 
 [33. Search in Rotated Sorted Array - O(logn) ](https://leetcode.com/problems/search-in-rotated-sorted-array/), CRACKING CODE INTV 11.3
 
@@ -83,16 +81,19 @@ You are given a target value to search. If found in the array return its index, 
 
 You may assume no duplicate exists in the array.
 
-
 (defn search
    "search an element in rotated array"
    [nums, target]
    (0))   
 ```
 
-solution : http://www.programcreek.com/2014/06/leetcode-search-in-rotated-sorted-array-java/
+_Solution :_
 
-[287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
+http://www.programcreek.com/2014/06/leetcode-search-in-rotated-sorted-array-java/
+
+https://stackoverflow.com/a/4773960/432903
+
+[287. Find the Duplicate Number in array](https://leetcode.com/problems/find-the-duplicate-number/)
 
 ```
 Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), 
@@ -115,24 +116,26 @@ object Solution {
 
 ```
 
-stupid solution to achieve O(n) time, 0 space
-
 [Find duplicate element in array in time O(n)](http://stackoverflow.com/a/16837342/432903)
 Can it be efficient for 1m records?
 
+_Stupid solutions to achieve O(n) time, 0 space_(but it mutates original array)
+
 ```scala
-int a[]  = {2,100,2,3,4};
+int a[]  = {2,100,2,3,4}
 
 //for index, 0 => update index 2
-int a[] = {2,100,-2,3,4};
+int a[] = {2,100,-2,3,4}
 
 //for index 1 => update index 100, leave it I guess as it is out of bound
-int a[] = {2,100,-2,3,4};
+int a[] = {2,100,-2,3,4}
 
 //for index 2 => update index 2 which is alreay updated by someone => means there is duplicate
 ```
 
-I'd rather use array bucketing [O(n) space] to get count of each element
+[using XOR ](https://stackoverflow.com/a/14944957/432903)
+
+I'd rather use array bucketing [O(n) space = another array/ hashmap] to get count of each element
 
 [Given an array int a[]={2,5,1,9,3,7,2,8,9,3}, Find the max number that can be formed using swap operations](https://www.careercup.com/question?id=5638261762424832)
 

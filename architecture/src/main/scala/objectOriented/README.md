@@ -1,9 +1,8 @@
-abstraction/ encapsulation
-------------
+abstraction/ [encapsulation](https://en.wikipedia.org/wiki/Information_hiding#Encapsulation)
+-------------------------------
 
-https://en.wikipedia.org/wiki/Information_hiding#Encapsulation
 
-```
+```scala
 class ShippingPackage(packageId : String, items: List[Item]) {
 
    def ship(){
@@ -26,7 +25,7 @@ What's the difference between override and overload? (HUM 06-2016)
 
 [Design a Garage Parking system?](https://www.careercup.com/question?id=5750856565653504) JWN 07-2016
 
-http://stackoverflow.com/a/764955/432903
+_[Amazon Interview Question: Design an OO parking lot](http://stackoverflow.com/a/764955/432903)_
 
 https://coderanch.com/t/628047/patterns/Parking-Lot-Design
 
@@ -36,7 +35,7 @@ Objects relations
 1. association - has a
 -----------------------
 
-```
+```scala
 case class Chute(items : List[Item])
 case class Item(itemId : String)
 ```
@@ -44,15 +43,15 @@ case class Item(itemId : String)
 2.1 aggs
 --------
 
-```
-case class Package(items: List[Item]) ;;must have items in it to ship a package
+```scala
+case class Package(items: List[Item]) // must have items in it to ship a package
 case class Item(itemId: String)
 ```
 
 2.2 composition // strong aggs
 ------------------------------
 
-```
+```scala
 case Company(name: String, departments: List[Department]) ;; company has 1..* departments
 case Department(name : String)
 ```

@@ -7,19 +7,19 @@ https://github.com/prayagupd/Scala-SOA
 Essentially, there are different protocols that let a computer talk at different distances and 
 different layers of abstraction.
 
-- At the very bottom of the network stack is the physical layer. This is where electrical signals 
+- **At the very bottom of the network stack is the physical layer.** This is where electrical signals 
 or light pulses or radio waves actually transmit information from place to place.
 
 You can transmit information directly this way, but you need a lot of power or a dedicated line, 
 and without higher layers you won't be able to share bandwidth.
 
-- The next layer up is the link layer. 
+- **The next layer up is the link layer.**
 This layer covers communication with devices that share a physical communications medium. 
 
 Here, protocols like Ethernet, 802.11a/b/g/n, and Token Ring specify how to handle multiple 
 concurrent accesses to the physical medium and how to direct traffic to one device instead of another.
 
-- The third layer is the network layer. 
+- **The third layer is the network layer.** 
 In the majority of cases, this is dominated by Internet Protocol (IP). 
 This is where the magic of the Internet happens, and you get to talk to a computer halfway around 
 the world, without needing to know where it is. 
@@ -50,7 +50,7 @@ Netty let you use HTTP and content-type as protobuff which is equivalent to json
 
 [Step 3: CGI/ The server response](http://www.garshol.priv.no/download/text/http-tut.html)
 
-```
+```bash
 HTTP/1.0 200 OK
 Server: Netscape-Communications/1.1
 Date: Tuesday, 25-Nov-97 01:22:04 GMT
@@ -66,7 +66,7 @@ Content-type: text/html
 HyperTextTP Status codes
 --------------
 
-```
+```bash
 1xx: Reserved
 2xx: Successful // gliffy, 2015
 3xx: Redirection
@@ -77,8 +77,11 @@ HyperTextTP Status codes
 [What is HTTP1.0/HTTPs/WebSocket?](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP_session)
 --------------
 
-```
+https://stackoverflow.com/a/28592132/432903
 
+```
+HTTP 2.0 is a binary protocol that multiplexes numerous streams going over a single 
+(normally TLS-encrypted) TCP connection.
 ```
 
 [How can I prevent browsers from caching page/script responded from http server?](http://www.garshol.priv.no/download/text/http-tut.html)
@@ -93,10 +96,10 @@ The expiration time can be set with a server-script or possibly by configuring t
 
 [Securing Web Services: REST over HTTPS vs SOAP with WS-Security. Which is better?](http://stackoverflow.com/a/853732/432903)
 
-SOAP
+Simple Object Access Protocol - [SOAP](https://en.wikipedia.org/wiki/SOAP)
 ----
 
-- SOAP only supports content-type XML
+- SimpleOAP only supports content-type XML
 - Microsoft originally developed SOAP to take the place of older technologies that don’t work well on the Internet such 
   as the Distributed Component Object Model (DCOM) and Common Object Request Broker Architecture (CORBA). 
   These technologies fail because they rely on binary messaging; the XML messaging that SOAP employs works better over 
@@ -117,9 +120,9 @@ SOAP
   WS-Security offers protection from the creation of the message to it’s consumption. So for TLS whatever loophole 
   we found that can be prevented using WS-Security.
 
-- Atomicity in SOAP
-  http://docs.oracle.com/cd/E14571_01/web.1111/e13734/transaction.htm#WSADV409
-  http://stackoverflow.com/a/439621/432903
+- [Atomicity in SOAP](http://docs.oracle.com/cd/E14571_01/web.1111/e13734/transaction.htm#WSADV409)
+  
+  [Transaction rollback and web services](http://stackoverflow.com/a/439621/432903)
   
 SOAP request example
 
@@ -164,11 +167,11 @@ SOAP request example
 
 [Why SOAP? (WAA, Jan 2016)](http://www.dotnetblocks.com/post/2011/11/21/When-to-use-SOAP-over-REST.aspx)
 
-REST
-----
+[REp State Transfer](http://www.restapitutorial.com/lessons/whatisrest.html)
+-------------------------------------------------------------
 
 - REST supports different media format like text, JSON, XML, RSS (Really Simple Syndication) etc.
-- if we use JSON then definitely we will be in better place in terms of payload.
+- if I use JSON then definitely we will be in better place in terms of payload.
   [JSON and XML comparison](http://stackoverflow.com/a/4862530/432903) (4M vs 300K)
   JSON is both more compact and more readable - in transmission it can be "faster" simply 
   because less data is transferred.
@@ -181,7 +184,8 @@ REST
   
   So REST is not safer completely, right?
 
-- REST uses HTTP/HTTPS, but one of the advantages of SOAP is the use of the “generic” transport.
+- REST uses HTTP/HTTPS as application protocol, but one of the advantages of SOAP is the use of the 
+  “generic” transport. (most important to remember)
 
 - Supports only SSL(Secure Sockets Layer), gliffy 2015, JWN 2016
   
@@ -200,15 +204,29 @@ http://martinfowler.com/articles/microservices.html
 [crucial points to understand what REST is about](http://stackoverflow.com/a/19884975/432903) (AmEx, 2015)
 
 [What is HTTP request/ response header?](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)
+
 _HTTP header fields are -> components of the header section of request and response messages in the HTTP. 
 They define the operating parameters of an HTTP transaction._
 
-[Can REST be implemented over FTP?, not just HTTP](https://stackoverflow.com/a/35535386/432903)
+[Can REST be implemented over FTP, not just HTTP?](https://stackoverflow.com/a/35535386/432903)
+
+[HyperTextTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+---------------------
+
+| GET     |
+| HEAD    |
+| POST    |
+| PUT     |
+| DELETE  |
+| CONNECT |
+| OPTIONS |
+| TRACE   |
+| PATCH   |
 
 [HTTP Request Headers](http://webmasters.stackexchange.com/a/5661/14960) ;; some important headers for security purpose
 ------------------------
 
-```
+```bash
 # Don't allow any pages to be framed by my site or any others
 # Defends against Clickjacking!
 Header set X-Frame-Options DENY
@@ -240,10 +258,60 @@ $.ajax({
 });
 ```
 
-[Request Identification in J8/any RESTful service](http://stackoverflow.com/a/19896997/432903)
+HTTP Security/ HTTP auth
+--------------------
+
+risks - sessions sniffed in HTTP
+
+https://en.wikipedia.org/wiki/Transport_Layer_Security
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_Authentication2.html
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html#UsingTemporarySecurityCredentials
+
+[Crptograpgies vs Hashing](https://stackoverflow.com/a/4948393/432903)
+--------------------------
+
+_Encryption should only ever be used over hashing when it is a necessity to decrypt 
+the resulting message._
+
+payload -> encryption -> encrypted payload
+
+AEncS - 128bits
+SHA256 - 256 bits
+PGP
+
+Payload validation with checksum
+
+[Hash-based MAC](https://en.wikipedia.org/wiki/Hash-based_message_authentication_code)
+
+```scala
+val hash_based_auth_code = function hash_based_mac ("SHA-1" or "MD5", message) {
+}
+```
+
+Hash-based Mess auth code 
+
+```scala
+scala> import javax.crypto._
+import javax.crypto._
+
+scala> val key = KeyGenerator.getInstance("HmacMD5").generateKey()
+key: javax.crypto.SecretKey = javax.crypto.spec.SecretKeySpec@3d0dcd45
+
+scala> val m_auth_code = Mac.getInstance("HmacMD5")
+m_auth_code: javax.crypto.Mac = javax.crypto.Mac@151ef57f
+
+scala> m_auth_code.init(key)
+
+scala> m_auth_code.doFinal("prayagupd".getBytes())
+res1: Array[Byte] = Array(92, 124, 54, -100, -22, -122, 32, 43, 64, -41, -119, -20, 47, -94, 108, -6)
+```
+
+[Request Identification in RESTful/Java webservice](http://stackoverflow.com/a/19896997/432903)
 --------------------------------------------
 
-You first need to understand that HTTP is a stateless protocol. (WebArchitecture, 2016)
+You first need to understand that HyperTextTP is a stateless protocol. (WebArchitecture, 2016)
 
 - This means that each request that a client makes has no relation to any previous or future requests. 
 However, as users, we very much want some state when interacting with a web application. 
@@ -251,7 +319,7 @@ A - bank application, for example, only wants you to be able to see and manage y
 - A music streaming website might want to recommend some good beats based on what you've already heard.
 
 
-<b>To achieve this, the CookieMap (Spec) and Session concepts were introduced.</b>
+<b>To achieve this, the `CookieMap` (Spec) and Session concepts were introduced.</b>
 
 - Cookies are KVPs, but with a specific format (see the links). 
 - `Session`s are server-side entities that store information (in memory or persisted) that spans multiple 
@@ -295,10 +363,10 @@ container creates and passes to your Servlet.
 You can use the `setAttribute(String, Object)` and `getAttribute(String)` methods to manage state.
 
 HyperTextTP GET Response header fields
------------------------------
+---------------------------------------
 
 ```bash
-$ curl -v --HEAD https://www.tumblr.com/docs/en/api/v2
+$ curl -v --HEAD --http1.1 https://www.tumblr.com/docs/en/api/v2
 HTTP/1.1 200 OK
 Server: openresty
 Date: Sat, 15 Oct 2016 01:37:16 GMT
@@ -312,7 +380,7 @@ X-UA-Compatible: IE=Edge,chrome=1
 Accept-Ranges: bytes ;; https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 ```
 
-```
+```bash
 curl -iX OPTIONS https://www.tumblr.com/docs/en/api/v2
 HTTP/1.1 200 OK
 Server: openresty
@@ -401,3 +469,18 @@ restricts how a document or script loaded from one origin can interact with a re
 It is a critical security mechanism for isolating potentially malicious documents.
 ```
 ![](http://www.lucadentella.it/blog/wp-content/uploads/2013/07/cross-blocked.jpg)
+
+Caching
+--------
+
+https://en.wikipedia.org/wiki/HTTP_ETag
+
+```
+etag provides for web cache validation, which allows a client to make conditional requests
+
+
+```
+
+[What is the difference between a port and a socket?](https://stackoverflow.com/a/152863/432903)
+
+[](https://stackoverflow.com/a/6419968/432903)

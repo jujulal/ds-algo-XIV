@@ -66,9 +66,11 @@ https://en.wikipedia.org/wiki/ACID#Characteristics
 
 [ACID and database transactions?](http://stackoverflow.com/a/3740307/432903)
 
-[Consensus Protocol/2 Phase commit(2PC) in Database Transactions](https://en.wikipedia.org/wiki/Two-phase_commit_protocol#Basic_algorithm)
+[Strong consistency](https://distributedalgorithm.wordpress.com/2015/06/13/two-phase-commit/)/ [Consensus Protocol/2 Phase commit(2PC) in Database Transactions](https://en.wikipedia.org/wiki/Two-phase_commit_protocol#Basic_algorithm)
 --------------------------------------------
 _DB, LMU 2013_
+
+[Distributed algos and protocols](https://www.cl.cam.ac.uk/teaching/0809/DistSys/3-algs.pdf)
 
 - [Commit request phase](http://the-paper-trail.org/blog/consensus-protocols-two-phase-commit/), voting phase
 - Commit phase, completion phase
