@@ -39,7 +39,12 @@ Netty let you use HTTP and content-type as protobuff which is equivalent to json
 ----------------------------------------------------
 
 **Step 1: Parsing the URL**
- - Most URLs have this basic form: `protocol://server/request-URI`
+ - Most URLs have this basic form: `protocol://server/request-URI(Uniform Resource Identifier)`
+
+[UniformResource I vs L vs N](https://stackoverflow.com/a/28865728/432903)
+- a UniformResource I identifies, a UniformResource L identifies and locates.
+- eg. UniformResource I/N `urn:isbn:0-486-27557-4`
+- UniformResource I/L `file://hostname/sharename/RomeoAndJuliet.pdf`
 
 **Step 2: Sending the request by browser with header infos** 
  - the browser transmits the following request to the server: 
@@ -63,6 +68,8 @@ Content-type: text/html
 ...followed by document content...
 ```
 
+[Hypertext Transfer Protocol -- HTTP/1.1 Draft](http://greenbytes.de/tech/webdav/rfc2616.html#rfc.status)
+
 HyperTextTP Status codes
 --------------
 
@@ -76,6 +83,16 @@ HyperTextTP Status codes
 
 [What is HTTP1.0/HTTPs/WebSocket?](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP_session)
 --------------
+
+https://stackoverflow.com/a/247026/432903
+
+```
+| HTTP 1.0                                                        | HTTP 1.1
+| - have to open a new connection for each request/response pair. | - allows you to have persistent connections which means that you can have more than
+| And after each response the connection would be closed.         | one request/response on the same HTTP connection
+|                                                                 | - OPTIONS method - to determine the abilities of the HTTP server.
+| - had caching via `If-Modified-Since`                           | - added `ETag` - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
+```
 
 https://stackoverflow.com/a/28592132/432903
 
@@ -187,10 +204,12 @@ SOAP request example
 - REST uses HTTP/HTTPS as application protocol, but one of the advantages of SOAP is the use of the 
   “generic” transport. (most important to remember)
 
-- Supports only SSL(Secure Sockets Layer), gliffy 2015, JWN 2016
+- Supports only TLS/SSL(Secure Sockets Layer), gliffy 2015, JWN 2016
   
   TLS is good only for P2P communication: 
+  
   ! TLS works by encrypting the transport data between two end points. 
+  
   ! For a Web Service, the call routes through more intermediaries nodes than just two end points. 
     where as, WS Security solves this problem and its an END-TO-END Solution.
 
@@ -213,15 +232,20 @@ They define the operating parameters of an HTTP transaction._
 [HyperTextTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 ---------------------
 
+```
+| method  |
+|---------|
 | GET     |
 | HEAD    |
 | POST    |
 | PUT     |
 | DELETE  |
+|         |
 | CONNECT |
 | OPTIONS |
 | TRACE   |
 | PATCH   |
+```
 
 [HTTP Request Headers](http://webmasters.stackexchange.com/a/5661/14960) ;; some important headers for security purpose
 ------------------------
@@ -269,14 +293,15 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_Authentication2.html
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html#UsingTemporarySecurityCredentials
 
-[Crptograpgies vs Hashing](https://stackoverflow.com/a/4948393/432903)
+[Cryptographies vs Hashing](https://stackoverflow.com/a/4948393/432903)
 --------------------------
 
 _Encryption should only ever be used over hashing when it is a necessity to decrypt 
 the resulting message._
 
-payload -> encryption -> encrypted payload
-
+                         ----------------------------------------       ---------------------------
+payload -> encryption -> encrypted payload           connection tunnel  socket endpoint -> decryption -> payload
+                         ----------------------------------------       --------------------------
 AEncS - 128bits
 SHA256 - 256 bits
 PGP
@@ -290,7 +315,7 @@ val hash_based_auth_code = function hash_based_mac ("SHA-1" or "MD5", message) {
 }
 ```
 
-Hash-based Mess auth code 
+Hash-based Message auth code 
 
 ```scala
 scala> import javax.crypto._
@@ -306,7 +331,18 @@ scala> m_auth_code.init(key)
 
 scala> m_auth_code.doFinal("prayagupd".getBytes())
 res1: Array[Byte] = Array(92, 124, 54, -100, -22, -122, 32, 43, 64, -41, -119, -20, 47, -94, 108, -6)
+
+scala> import java.math.BigInteger
+import java.math.BigInteger
+
+scala> new BigInteger(m_auth_code.doFinal("prayagupd".getBytes()))
+res32: java.math.BigInteger = -19609729033103877021779594872999511452
+
+scala> new BigInteger(m_auth_code.doFinal("prayagupd".getBytes())).toString(16)
+res33: String = -ec0b2498a01c19031cdd580662e059c
 ```
+
+https://security.stackexchange.com/questions/36932/what-is-the-difference-between-ssl-and-x-509-certificates
 
 [Request Identification in RESTful/Java webservice](http://stackoverflow.com/a/19896997/432903)
 --------------------------------------------
@@ -442,7 +478,7 @@ button.addEventListener('click', () => console.log('Clicked!'));
 
 Using RxJS you create an observable instead.
 
-```
+```javascript
 var button = document.querySelector('button');
 Rx.Observable.fromEvent(button, 'click')
   .subscribe(() => console.log('Clicked!'));

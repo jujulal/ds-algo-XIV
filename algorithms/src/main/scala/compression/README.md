@@ -1,7 +1,10 @@
-http://stackoverflow.com/a/9856879/432903
+[Char/Data encoding](https://en.wikipedia.org/wiki/Character_encoding)
+----------------
 
-https://en.wikipedia.org/wiki/DEFLATE
-
+```
+Depending on the abstraction level and context, corresponding code points and the resulting code 
+space may be regarded as bit patterns, octets, natural numbers, electrical pulses, etc. 
+```
 
 [Base64 binary-to-text encoding](https://en.wikipedia.org/wiki/Base64)
 -------------------------------
@@ -37,5 +40,51 @@ of encodings.
 
 Why 64?
 Because you can generally rely on the same 64 characters being present in many character sets, 
-and you can be reasonably confident that your data's going to end up on the other side of the wire uncorrupted.
+and you can be reasonably confident that your data's going to end up on the other side of the wire 
+uncorrupted.
 ```
+
+eg.
+
+```scala
+scala> import java.nio.charset.StandardCharsets
+import java.nio.charset.StandardCharsets
+
+scala> java.util.Base64.getEncoder.encodeToString("username:password".getBytes(StandardCharsets.UTF_8))
+res0: String = dXNlcm5hbWU6cGFzc3dvcmQ=
+```
+
+https://en.wikipedia.org/wiki/8-bit_clean
+
+[Data compression](https://en.wikipedia.org/wiki/Data_compression)
+---------------------
+
+- lossy
+  eg. [JPEGroup compression](https://stackoverflow.com/a/25153481/432903)
+
+- lossless
+
+[Why use deflate compression instead of gzip for text files served by Apache?](http://stackoverflow.com/a/9856879/432903)
+
+```
+GZip is simply deflate plus a checksum and header/footer. Deflate is faster, though.
+```
+
+https://en.wikipedia.org/wiki/DEFLATE
+
+
+google snappy
+-----
+
+https://docs.mongodb.com/manual/reference/glossary/#term-snappy
+
+z-lib
+-------
+
+DES, symmetric-key algorithm, 70s
+------------------------------
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/DES-main-network.png/500px-DES-main-network.png)
+
+
+

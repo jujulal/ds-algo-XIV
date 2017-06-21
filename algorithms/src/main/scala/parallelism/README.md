@@ -2,8 +2,8 @@
 [What is thread?](https://goo.gl/A1a4Zu)
 -------------------------------------------
 
-a thread of execution is the smallest sequence of programmed instructions that can be managed independently by a scheduler, 
-which is typically a part of the OS.
+a thread of execution is the smallest sequence of programmed instructions that can be managed 
+independently by a scheduler, which is typically a part of the OS.
 
 Scheduling
 ------------
@@ -19,7 +19,7 @@ OS schedules threads either pre-emptively or co-operatively.
 Execution Model
 ---------------
 
-- [a set of C-function library call](shttps://en.wikipedia.org/wiki/POSIX_Threads)
+- [a set of C-function library call/ posix_thread](https://en.wikipedia.org/wiki/POSIX_Threads)
 
     % [Static vs. dynamic scheduling](https://courses.cs.washington.edu/courses/cse471/02au/lectures/dyn1.pdf)
     
@@ -29,7 +29,7 @@ Execution Model
     
     % [Difference between static and dynamic schedule in openMP in C](http://stackoverflow.com/a/5864834/432903)
     
-- Java/Scala concurrency library `java.util.concurrent`/ `scala.concurrent`
+- scalac/javac concurrency library `java.util.concurrent`/ `scala.concurrent`
 
 //Static vs Dynamic Loop scheduling in OpenMp
 
@@ -46,9 +46,11 @@ Static Loop Scheduling           | Dynamic Loop Scheduling | Guided Loop Schedul
 | state | description 
 |-------- | ------------ |
 |NEW | A thread that has not yet started is in this state. |
-|RUNNABLE | A thread executing in the Java virtual machine is in this state. |
+|RUNNABLE | A thread executing in the Java virtual machine is in this state.     |
+|         |                                                                      |
 |BLOCKED | A thread that is blocked waiting for a monitor lock is in this state. |
 |WAITING | A thread that is waiting indefinitely for another thread to perform a particular action is in this state. |
+|        |            |
 |TIMED_WAITING | A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state.|
 | TERMINATED | A thread that has exited is in this state.|
 
@@ -268,3 +270,16 @@ If you are looking for the silver bullet that will fit with any scenario without
 ```
 
 [In Java, threading is supported at the language level with the synchronized and volatile keywords.](http://stackoverflow.com/a/3306752/432903)
+
+Parallelism
+------------
+
+https://github.com/prayagupd/parallel-programming
+
+Data Partitioning
+- partitions are units of parallelism
+
+https://stackoverflow.com/a/39992430/432903
+
+[Kafka Streaming data partition](http://docs.confluent.io/current/streams/architecture.html#stream-partitions-and-tasks)
+

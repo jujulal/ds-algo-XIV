@@ -109,6 +109,7 @@ After a secondary has sent an agreement message to the master, it will block unt
 rollback is received.
 ```
 
+https://en.wikipedia.org/wiki/Partition_(database)
 
 [When and why are relational database joins expensive?](https://stackoverflow.com/a/174047/432903)
 
