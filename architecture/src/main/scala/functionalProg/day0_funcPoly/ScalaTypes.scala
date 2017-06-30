@@ -1,4 +1,4 @@
-package functionalProg.types
+package functionalProg.day0_funcPoly
 
 /**
  * Created by prayagupd
@@ -18,8 +18,7 @@ class Container[A <% Int] {
 }
 
 class ContainerEqualsTo[A](value: A) {
-  def weight(implicit evidence: A =:= Int) =
-    28 + value
+  def weight(implicit evidence: A =:= Int) = 28 + value
 }
 
 // viewable as doesn't work in 2.9+

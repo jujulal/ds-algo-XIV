@@ -1,13 +1,13 @@
-package functionalProg.types.poly
+package functionalProg.day0_funcPoly
 
-import org.scalatest.FlatSpec
+import org.scalatest.{FlatSpec, Matchers}
 
 /**
  * Created by prayagupd
  * on 1/23/16.
  */
 
-class AdhocPolySpec extends FlatSpec {
+class AdhocPolySpec extends FlatSpec with Matchers {
 
   implicit val IntMonoid: AppendableMonoid[Int] = new AppendableMonoid[Int] {
     def append(a: Int, b: Int): Int = a + b
@@ -34,16 +34,17 @@ class AdhocPolySpec extends FlatSpec {
   }
 
   "ad hoc poly" should "add string types" in {
-    assert(add(List("prayag", "dreams")) == "-prayag-dreams")
+    add(List("prayag", "upd")) shouldBe "-prayag-upd"
   }
 
   "ad hoc poly" should "doStuff defined in append method of anonymous monoid" in {
+
     val multiplyMonoid: AppendableMonoid[Int] = new AppendableMonoid[Int] {
       def append(a: Int, b: Int): Int = a * b
       def zero: Int = 1
     }
 
-    assert(add(List(1, 2, 3, 4)) == 10)
-    assert(add(List(1, 2, 3, 4))(multiplyMonoid) == 24)
+    add(List(1, 2, 3, 4)) shouldBe 10
+    add(List(1, 2, 3, 4))(multiplyMonoid) shouldBe 24
   }
 }

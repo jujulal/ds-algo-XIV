@@ -1,4 +1,4 @@
-package functionalProg.types.poly
+package functionalProg.day0_funcPoly
 
 /**
  * Created by prayagupd

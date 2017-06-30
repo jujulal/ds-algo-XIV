@@ -15,6 +15,7 @@ OS schedules threads either pre-emptively or co-operatively.
 | it allows the OS to determine when a context switch should occur.|               relies on the threads themselves to relinquish control once they are at a stopping point.   |
 | disadvantage of preemptive multithreading is that the system may make a context switch at an inappropriate time, causing lock convoy, priority inversion or other negative effects, which may be avoided by cooperative multithreading.| This can create problems if a thread is waiting for a resource to become available.  |
 
+[Normally use preemptive. If you find your design has a lot of thread-switching overhead, cooperative threads would be a possible optimization.](https://stackoverflow.com/a/4147474/432903)
 
 Execution Model
 ---------------

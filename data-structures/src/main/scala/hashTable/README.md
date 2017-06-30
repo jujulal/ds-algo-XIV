@@ -1,4 +1,4 @@
-[Hash table]()
+[Hash table](http://blog.higher-order.net/2009/09/08/understanding-clojures-persistenthashmap-deftwice.html)
 ----------
 
 ```
@@ -33,9 +33,18 @@ https://www.cs.hmc.edu/~geoff/classes/hmc.cs070.200101/homework10/hashfuncs.html
 - [Murmur hash2/3, 2008](https://en.wikipedia.org/wiki/MurmurHash)
   a non-cryptographic hash function suitable for general hash-based lookup.
   yields 32/64 bit hash
-  adopted by Elasticsearch, Cassandra, Guava
+  adopted by Elasticsearch, Cassandra, Guava, [Kafka partitioning](https://github.com/apache/kafka/blob/0.11.0/clients/src/main/java/org/apache/kafka/clients/producer/internals/DefaultPartitioner.java#L69)
+
+- [scala uses Murmur2 32bit hash](https://stackoverflow.com/a/40981032/432903) to create hashCode
+
+```
+most scala library classes that are not case classes do use MurmurHash--all the ordered collections 
+do, for instance.
+```
 
 [CRC32 vs Murmur2-32bit vs FNV-1 32bit - which hashing algo is good for uniqueness/ speed](https://softwareengineering.stackexchange.com/a/145633/31060)
+
+[MD5 yields hexadecimal digits (0-15 / 0-F), so they are four bits each. 128 / 4 = 32 characters.](https://stackoverflow.com/q/6317276/432903)
 
 [hashmap capacity - Integer.MAX_VALUE (2^31-1(-1 for 0) = 2147483647) elements](http://stackoverflow.com/a/4123811/432903)
 
