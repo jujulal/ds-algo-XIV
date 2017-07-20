@@ -504,6 +504,21 @@ restricts how a document or script loaded from one origin can interact with a re
 
 It is a critical security mechanism for isolating potentially malicious documents.
 ```
+
+[Why is same origin policy kicking in when making request from localhost to localhost?](https://stackoverflow.com/a/14263091/432903)
+
+```
+An origin is defined by the scheme://host:port of a URL
+```
+
+https://enable-cors.org/server.html
+
+```bash
+Access-Control-Allow-Origin: *
+```
+
+https://enable-cors.org/client.html
+
 ![](http://www.lucadentella.it/blog/wp-content/uploads/2013/07/cross-blocked.jpg)
 
 Caching
@@ -519,4 +534,8 @@ etag provides for web cache validation, which allows a client to make conditiona
 
 [What is the difference between a port and a socket?](https://stackoverflow.com/a/152863/432903)
 
-[](https://stackoverflow.com/a/6419968/432903)
+[Difference between socket connection and tcp connection?](https://stackoverflow.com/a/6419968/432903)
+
+```
+a socket is an endpoint in a (bidirectional) communication over the TCP/IP stack
+```
