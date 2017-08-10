@@ -229,7 +229,7 @@ They define the operating parameters of an HTTP transaction._
 
 [Can REST be implemented over FTP, not just HTTP?](https://stackoverflow.com/a/35535386/432903)
 
-[HyperTextTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+[HypertextTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 ---------------------
 
 ```
@@ -302,9 +302,14 @@ the resulting message._
                          ----------------------------------------       ---------------------------
 payload -> encryption -> encrypted payload           connection tunnel  socket endpoint -> decryption -> payload
                          ----------------------------------------       --------------------------
-AEncS - 128bits
+
+Adv Encrption Standard(AES) - 128bits
+
 SHA256 - 256 bits
-PGP
+
+[Pretty Good Privacy(PGP)](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) - http://www.pitt.edu/~poole/accessiblePGP703.htm
+
+[Security & Authentication: TLS protocol vs SASL framework](https://stackoverflow.com/a/11385658/432903)
 
 Payload validation with checksum
 
@@ -398,7 +403,7 @@ retrieve an `HttpSession` object from its map by using the key in the `JSESSIONI
 container creates and passes to your Servlet.
 You can use the `setAttribute(String, Object)` and `getAttribute(String)` methods to manage state.
 
-HyperTextTP GET Response header fields
+HypertextTP GET Response header fields
 ---------------------------------------
 
 ```bash
@@ -495,6 +500,8 @@ http://www.eclipse.org/jetty/
 ```
 a Web server and javax.servlet container, plus support for HTTP/2, WebSocket
 ```
+
+[Number of http server request threads (default 200 in tomcat)?](https://stackoverflow.com/a/14249848/432903)
 
 [Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
 --------------------

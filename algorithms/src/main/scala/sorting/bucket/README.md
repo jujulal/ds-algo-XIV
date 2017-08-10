@@ -8,6 +8,18 @@ by recursively applying the bucket sorting algorithm.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/6/61/Bucket_sort_1.png)
 
+eg. 
+
+```
+
+29, 25, 3, 45, 9, 37, 21, 43
+
+ [0 - (max => 45)]
+-------------------- => k => [0, 8], [9, 17], [18, 26], [27, 35], [36, 44], [45, 53] 
+  elements => n(8)
+
+```
+
 [algorithm](http://jng.imagine27.com/index.php/2010-05-24-214230_clojure_bucket_sort.html)
 
 ```clojure

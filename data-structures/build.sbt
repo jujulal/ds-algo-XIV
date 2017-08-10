@@ -12,9 +12,10 @@ libraryDependencies ++= Seq(
   "org.scalaz" %% "scalaz-core" % scalazVersion,
   "org.scalaz" %% "scalaz-effect" % scalazVersion,
   "org.scalaz" %% "scalaz-typelevel" % scalazVersion,
-  "org.scalaz" %% "scalaz-scalacheck-binding" % scalazVersion % "test",
   "org.scalactic" %% "scalactic" % "2.2.6",
-  "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+  "io.spray" %%  "spray-json" % "1.3.3",
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+  "org.scalaz" %% "scalaz-scalacheck-binding" % scalazVersion % "test"
 )
 
 resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"

@@ -2,10 +2,12 @@ package treeGraphs
 
 import org.scalatest.FunSuite
 
+import scala.collection.SortedMap
+
 /**
- * Created by prayagupd
- * on 6/2/16.
- */
+  * Created by prayagupd
+  * on 6/2/16.
+  */
 
 class BalancedTreeSpecs extends FunSuite {
 
@@ -92,5 +94,50 @@ class BalancedTreeSpecs extends FunSuite {
     assert(bfs(2) == "item1-3")
     assert(bfs(3) == "item1-2-1")
     assert(bfs.last == "item1-3-4")
+  }
+
+  test("sd3") {
+    val json =
+      """
+        |{
+        |  "titlename": "periodic",
+        |  "atom": [
+        |    {
+        |      "usage": "neutron",
+        |      "dailydata": [
+        |        {
+        |          "utcacquisitiontime": "2017-03-27T22:00:00Z",
+        |          "datatimezone": "+02:00",
+        |          "intervalvalue": 28128,
+        |          "intervaltime": 15
+        |        },
+        |        {
+        |          "utcacquisitiontime": "2017-03-27T22:15:00Z",
+        |          "datatimezone": "+02:00",
+        |          "intervalvalue": 25687,
+        |          "intervaltime": 15
+        |        }
+        |      ]
+        |    }
+        |  ]
+        |}
+      """.stripMargin
+
+    import spray.json._
+    import spray.json.DefaultJsonProtocol._
+
+    val jsonNode = json.parseJson.asJsObject
+
+    val intervalValuesForAtoms : Vector[JsObject] = jsonNode.fields("atom").asInstanceOf[JsArray].elements.map { atom =>
+      val sum = atom.asJsObject.fields("dailydata").asInstanceOf[JsArray].elements.map { daily =>
+        daily.asJsObject.fields("intervalvalue").convertTo[Long]
+      }.sum
+      JsObject(atom.asJsObject.fields + ("intervalvalue" -> JsNumber(sum)))
+    }
+
+    val newJson = jsonNode.fields + ("atom" -> intervalValuesForAtoms)
+
+    JsObject
+    println(newJson)
   }
 }

@@ -15,40 +15,65 @@ import scala.util.control._
   * usage : scala UniqueCharacters.scala prayag
   */
 
+import scala.util.control.Breaks._
+
+
 object RemoveDuplicatesFromString {
 
-	def removeDuplicate(word : String ) : String = {
-		val len :Int = word.length()
-		//if ( len < 2 ) {
-		//	return ""
-		//}
+  def removeDuplicate2(word: String): String = {
+    var newWord = ""
 
-		val wordArray = word.toArray
-		var tailIndex = 1
+    breakable {
+      for (leader <- 1 until word.length) {
 
-		for (compareToIndex <- 1 until word.length() by 1) {
-			val loop = new Breaks
-			var previousIndex = 0
+        for (follower <- 0 until leader) {
+          if (word(follower).equals(word(leader))) {
+            newWord = word.substring(0, leader) + word.substring(leader + 1, word.length)
 
-			loop.breakable {
-				  //for (previousIndex <- 0 until tailIndex)
-					while (previousIndex < tailIndex) {
-						println(s"compareIndex $previousIndex == compareToIndex $compareToIndex")
-						if (wordArray(previousIndex) == wordArray(compareToIndex)) {
-							loop.break
-						}
-						previousIndex += 1
-					} //end of duplicate char compare
-			}
-			println(s"for compareToIndex $compareToIndex => compare compareIndex $previousIndex== tailIndex $tailIndex")
-			if (previousIndex == tailIndex) {
-				wordArray(tailIndex) = wordArray(compareToIndex)
-				tailIndex+=1
-			}
-			println("=========================")
-		} //end of compareToIndex
+            println(s"dedup ${word}  => new word ${newWord}")
+            removeDuplicate2(newWord)
+            println(s"new word :: ${newWord}")
+            break()
+          }
+        }
+      }
+    }
+    newWord
+  }
 
-		wordArray(tailIndex)=0
-		return new String(wordArray)
-	}
+  def removeDuplicate(word: String): String = {
+    val len: Int = word.length()
+    //if ( len < 2 ) {
+    //	return ""
+    //}
+
+    val wordArray = word.toArray
+    var tailer = 1
+
+    for (header <- 1 until word.length() by 1) {
+      val loop = new Breaks
+      var previousIndex = 0
+
+      loop.breakable {
+        //for (previousIndex <- 0 until tailIndex)
+        while (previousIndex < tailer) {
+          println(s"compareIndex $previousIndex == compareToIndex $header")
+          if (wordArray(previousIndex) == wordArray(header)) {
+            loop.break
+          }
+          previousIndex += 1
+        } //end of duplicate char compare
+      }
+      println(s"for compareToIndex $header => compare compareIndex $previousIndex== tailIndex $tailer")
+      if (previousIndex == tailer) {
+        wordArray(tailer) = wordArray(header)
+        tailer += 1
+      }
+      println("=========================")
+    } //end of compareToIndex
+
+    wordArray(tailer) = 0
+    return new String(wordArray)
+
+  }
 }
