@@ -35,4 +35,5 @@ class BucketSortSpec extends FunSuite with Matchers {
     actualArray(5) shouldBe 50
     actualArray(6) shouldBe 89
   }
+
 }

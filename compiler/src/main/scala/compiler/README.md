@@ -1,13 +1,15 @@
 [data types memory sizes](http://cs.fit.edu/~ryan/java/language/java-data.html)
 ------------------------
 
-| type              | size    |
-|-------------------|----------
-| boolean           | 1 bit   |
-| byte              | 1 byte  |
-| char/short-int    | 2 bytes |
-| int/float         | 4 byte  |
-| long/double       | 8 byte  |
+| type              | size    | MIN          |  MAX          |
+|-------------------|---------|--------------|---------------|
+| boolean           | 1 bit   |              |               |
+| byte              | 1 byte  |              |               |
+| char/short-int    | 2 bytes |              |               |
+| [int](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html)  | 4 byte  | 2 ^ -31      | (2 ^ 31) -1             |
+| [float](https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html)  | 4 byte  | 2 ^ -149     | (2 - 2 ^ -23) * 2 ^ 127 |
+| [long](https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html)    | 8 byte  | 2 ^ -63      | (2 ^ 63) -1             |
+| [double](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html)| 8 byte  | 2 ^ -1074    | (2 - 2 ^ -52) * 2 ^ 1023|
 
 Object Memory allocation
 -------------------------

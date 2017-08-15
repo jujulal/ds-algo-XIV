@@ -68,6 +68,13 @@ Content-type: text/html
 ...followed by document content...
 ```
 
+what is [CommonGatewayInterface](https://stackoverflow.com/a/5058873/432903)?
+
+```
+a standard protocol for web servers to execute programs that execute like CLI programs 
+running on a server that generates web pages dynamically.
+```
+
 [Hypertext Transfer Protocol -- HTTP/1.1 Draft](http://greenbytes.de/tech/webdav/rfc2616.html#rfc.status)
 
 HyperTextTP Status codes

@@ -1,11 +1,12 @@
 
 [What is Heap?](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Binary%20Heaps/heaps.html)
+
 binary heap is a `complete binary tree` which satisfies the `heap ordering property`. 
 
 The ordering can be one of two types:
 
- - **the min-heap property**: the value of **each node is >=** the **value of its parent**, with the minimum-value element at the root.
- - **the max-heap property**: the value of **each node is <=** the **value of its parent**, with the maximum-value element at the root.
+ - **min-heap property**: the value of **each node is >=** the **value of its parent**, with the minimum-value element at the root.
+ - **max-heap property**: the value of **each node is <=** the **value of its parent**, with the maximum-value element at the root.
 
 [What is Heap sort?](http://web.cse.ohio-state.edu/software/2231/web-sw2/extras/slides/14.Heaps-Heapsort.pdf)
 
@@ -13,12 +14,22 @@ The ordering can be one of two types:
 Heapsort is a comparison-based sorting algo, and is part of the selection sort family.
 
 Heapsort is an in-place algorithm, but it is not a stable sort.
-
 ```
+
+**a) constructing heap**
+
+<img src="MaxHeapSorting.jpg" width="500" height="600" />
+
+**Array Impl**
+
+<img src="MaxHeapSorting_Impl.jpg" width="500" height="600" />
+
+**b) sorting max-heap**
+
 
 ![](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
 
-Algo
+algo
 ----
 
 [The steps are:](https://en.wikipedia.org/wiki/Heapsort#Algorithm)
@@ -91,7 +102,6 @@ defn heapSort[array count] is
 
 time complexity
 ---------------
-
 
 ```
 

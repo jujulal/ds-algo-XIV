@@ -7,81 +7,88 @@ import util.control.Breaks.breakable
 import util.control.Breaks.break
 
 /**
- * @author : prayagupd
- * http://qerub.se/purely-functional-heap-sort-in-scala
- * http://www.vogella.com/tutorials/JavaAlgorithmsMergesort/article.html
- */
+  * @author : prayagupd
+  * http://qerub.se/purely-functional-heap-sort-in-scala
+  * http://www.vogella.com/tutorials/JavaAlgorithmsMergesort/article.html
+  */
 
 object HeapSort {
 
-  def sort(array: Array[Int]) : Array[Int] = {
+  def sortAsc(array: Array[Int]): Array[Int] = {
 
-    println("original array : ")
-    array.foreach { case x : Int =>
-      println(s" $x")
-    }
-
-    constructHeap(array)
+    constructMaxHeap(array)
 
     // Now do Selection sort by retrieving max/min element and swapping with elements at top/END
+    //so that largest element is at the bottom
+    var largerIndex = array.length - 1
 
-    var endOfArray = array.length - 1
-
-    while (endOfArray > 0) {
+    while (largerIndex > 0) {
       // swap first elem with last
-      val temp = array(0)
-      array(0) = array(endOfArray)
-      array(endOfArray) = temp
-      bubbleDown(array, 0, endOfArray - 1)
-      endOfArray = endOfArray - 1
+      val swapHelper = array(0)
+      array(0) = array(largerIndex)
+      array(largerIndex) = swapHelper
+      bubbleElementDown(array, 0, largerIndex - 1)
+      largerIndex = largerIndex - 1
     }
 
-    println("sorted array : ")
-    for (i <- 0 until array.length) {
-      println(array(i))
-    }
-    
     array
   }
 
-  def constructHeap(array : Array[Int]) {
+  /**
+    *
+    */
+  def constructMaxHeap(array: Array[Int]): Array[Int] = {
     val endOfArray = array.length - 1
-    val middle = (array.length/2)-1
+    val middle = (array.length / 2) - 1
 
     breakable {
-      for (startIndexThatsLessThanMiddle <- middle to 0 by -1) {
-        bubbleDown(array, startIndexThatsLessThanMiddle, endOfArray)
-        if (startIndexThatsLessThanMiddle == 0)
-          break()
+
+      for (startIndex_ThatsLessThanMiddle <- middle to 0 by -1) {
+
+        bubbleElementDown(array, startIndex_ThatsLessThanMiddle, endOfArray)
+
+        if (startIndex_ThatsLessThanMiddle == 0) break()
       }
+
     }
 
     println("heap constructed : ")
-    array.foreach {case x => println(s" $x ")}
+    array.foreach { case x => print(s" $x ,") }
+
+    array
   }
 
-  def bubbleDown(array: Array[Int], start: Int, end: Int){
+  def bubbleElementDown(array: Array[Int], start: Int, end: Int) {
     var rootIndex = start
 
-    while (rootIndex * 2 + 1 <= end) { // at least one child exists
-      var swapIndex = rootIndex
-      val leftChild = rootIndex * 2 + 1
-      val rightChild = rootIndex * 2 + 2
-      if(array(swapIndex) < array(leftChild)){
-        swapIndex = leftChild
+    // iterate until there exists at least one child for a root
+    // eg. In [x, y, z], x has child y and z
+
+    while (rootIndex * 2 + 1 <= end) {
+      var largestNodeIndex = rootIndex
+      val leftChild = (rootIndex * 2) + 1
+      val rightChild = (rootIndex * 2) + 2
+
+      //if leftChild is greater than root, exchange
+      if (array(largestNodeIndex) < array(leftChild)) {
+        largestNodeIndex = leftChild
       }
-      if(rightChild<=end && array(swapIndex)<array(rightChild)){
-        swapIndex = rightChild
+
+      //if theres right child which is greater than root
+      if (rightChild <= end && array(largestNodeIndex) < array(rightChild)) {
+        largestNodeIndex = rightChild
       }
-      if(swapIndex!=rootIndex){
+
+      //if largest node and original root are same => no ops
+      //else swap values around
+      if (largestNodeIndex != rootIndex) {
         // swap here
-        val temp = array(rootIndex)
-        array(rootIndex) = array(swapIndex)
-        array(swapIndex) = temp
-        rootIndex = swapIndex
+        val swapHelper = array(rootIndex)
+        array(rootIndex) = array(largestNodeIndex)
+        array(largestNodeIndex) = swapHelper
+        rootIndex = largestNodeIndex
       } else
         return
     }
   }
 }
-
