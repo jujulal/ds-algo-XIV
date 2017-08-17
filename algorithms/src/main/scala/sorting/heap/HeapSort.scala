@@ -20,15 +20,15 @@ object HeapSort {
 
     // Now do Selection sort by retrieving max/min element and swapping with elements at top/END
     //so that largest element is at the bottom
-    var largerIndex = array.length - 1
+    var end = array.length - 1
 
-    while (largerIndex > 0) {
+    while (end > 0) {
       // swap first elem with last
       val swapHelper = array(0)
-      array(0) = array(largerIndex)
-      array(largerIndex) = swapHelper
-      bubbleElementDown(array, 0, largerIndex - 1)
-      largerIndex = largerIndex - 1
+      array(0) = array(end)
+      array(end) = swapHelper
+      bubbleElementDown(array, 0, end - 1)
+      end = end - 1
     }
 
     array
@@ -38,16 +38,16 @@ object HeapSort {
     *
     */
   def constructMaxHeap(array: Array[Int]): Array[Int] = {
-    val endOfArray = array.length - 1
+    val EndOfArray = array.length - 1
     val middle = (array.length / 2) - 1
 
     breakable {
 
-      for (startIndex_ThatsLessThanMiddle <- middle to 0 by -1) {
+      for (start <- middle to 0 by -1) {
 
-        bubbleElementDown(array, startIndex_ThatsLessThanMiddle, endOfArray)
+        bubbleElementDown(array, start, EndOfArray)
 
-        if (startIndex_ThatsLessThanMiddle == 0) break()
+        if (start == 0) break()
       }
 
     }

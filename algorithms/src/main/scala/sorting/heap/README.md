@@ -26,6 +26,19 @@ Heapsort is an in-place algorithm, but it is not a stable sort.
 
 **b) sorting max-heap**
 
+heapified array
+
+```
+| 8 | 6 | 7 | 4 | 5 | 3 | 2 | 1 |
+
+| 1 | 6 | 7 | 4 | 5 | 3 | 2 | 8 |
+
+| 1 | 6 | 7 | 4 | 5 | 3 | 2 | 8 |
+
+
+```
+
+<img src="HeapSort_1.jpg" width="500" height="600" />
 
 ![](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
 

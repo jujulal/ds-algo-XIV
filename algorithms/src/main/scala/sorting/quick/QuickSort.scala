@@ -1,21 +1,22 @@
 package sorting.quick
 
 /**
- * Created by prayagupd
- * on 6/8/16.
- * http://gauss.ececs.uc.edu/Courses/C321/html/quicksort.java.html
- * http://introcs.cs.princeton.edu/java/42sort/QuickSort.java
- */
+  * Created by prayagupd
+  * on 6/8/16.
+  * http://gauss.ececs.uc.edu/Courses/C321/html/quicksort.java.html
+  * http://introcs.cs.princeton.edu/java/42sort/QuickSort.java
+  */
 
 object QuickSort {
 
   var originalArray = Array[Int]()
 
   def startSorting(array: Array[Int]): Array[Int] = {
+
     if (array == null || array.length == 0) {
       return null
     }
-    
+
     this.originalArray = array
     sort(0, array.length - 1)
 

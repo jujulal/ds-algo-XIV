@@ -44,16 +44,16 @@ Static Loop Scheduling           | Dynamic Loop Scheduling | Guided Loop Schedul
 [Thread states](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.State.html) JWN, 07-2016
 --------------
 
-| state | description 
-|-------- | ------------ |
-|NEW | A thread that has not yet started is in this state. |
-|RUNNABLE | A thread executing in the Java virtual machine is in this state.     |
-|         |                                                                      |
-|BLOCKED | A thread that is blocked waiting for a monitor lock is in this state. |
-|WAITING | A thread that is waiting indefinitely for another thread to perform a particular action is in this state. |
-|        |            |
+| state        | description  |
+|--------------| ------------ |
+|NEW           | A thread that has not yet started is in this state. |
+|RUNNABLE      | A thread executing in the Java virtual machine is in this state.     |
+|              |                                                                      |
+|BLOCKED       | A thread that is blocked waiting for a monitor lock is in this state. |
+|WAITING       | A thread that is waiting indefinitely for another thread to perform a particular action is in this state. |
+|              |            |
 |TIMED_WAITING | A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state.|
-| TERMINATED | A thread that has exited is in this state.|
+| TERMINATED   | A thread that has exited is in this state.|
 
 
 [Where is Thread Object created? Stack or JVM Heap Memory?](http://stackoverflow.com/a/19433994/432903)
@@ -167,8 +167,10 @@ hw.logicalcpu_max: 8
 [Clock rate](https://en.wikipedia.org/wiki/Clock_rate)
 
 ```
-The clock rate typically refers to the frequency at which a chip like a central processing unit (CPU), one core of a multi-core processor, is running and 
-is used as an indicator of the processor's speed. It is measured in clock cycles per second or its equivalent, the SI unit hertz (Hz)
+The clock rate typically refers to the frequency at which a chip like a central processing unit (CPU),
+one core ofa multi-core processor, is running and is used as an indicator of the processor's speed.
+
+It is measured inclock cycles per second or its equivalent, the SI unit hertz (Hz)
 
 sysctl -n machdep.cpu.brand_string
 Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
@@ -179,7 +181,9 @@ Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
 ```
 Load Balancing
 
-Load balancing refers to the practice of distributing approximately equal amounts of work among tasks so that all tasks are kept busy all of the time. 
+Load balancing refers to the practice of distributing approximately equal amounts of work among tasks so that
+all tasksare kept busy all of the time.
+
 It can be considered a minimization of task idle time.
 
 Load balancing is important to parallel programs for performance reasons. 
@@ -192,6 +196,7 @@ the slowest task will determine the overall performance.
 
 
 [What is a multithreaded application, stackoverflow](http://stackoverflow.com/a/1313122/432903)
+
 ```
 a single process can have many different "functions" executing concurrently, allowing the app 
 to better use the available hardware (multiple cores/processors). 
@@ -233,15 +238,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
 https://en.wikipedia.org/wiki/Event_loop
 
 ```
-the event loop, message dispatcher, message loop, message pump, or run loop is a programming construct that waits for and 
-dispatches events or messages in a program. 
+the event loop, message dispatcher, message loop, message pump, or run loop is a programming construct that
+waits for and dispatches events or messages in a program.
 ```
 
 ![](http://blog.carbonfive.com/wp-content/uploads/2013/10/event-loop.png)
 
 ```
-The issue with the "one thread per request" model for a server is that they don't scale well for several scenarios 
-compared to the event loop thread model.
+The issue with the "one thread per request" model for a server is that they don't scale well for several
+scenarios compared to the event loop thread model.
 
 Typically, in I/O intensive scenarios the requests spend most of the time waiting for I/O to complete. 
 During this time, in the "one thread per request" model, the resources linked to the thread (such as memory) 
@@ -267,7 +272,8 @@ scalability with the development complexity to find the correct architecture (e.
 delegates to the backend for the CPU intensive tasks. The front end will use little resources waiting for the task result.) 
 As with any distributed system it requires some effort to make it work.
 
-If you are looking for the silver bullet that will fit with any scenario without any effort, you will end up with a bullet in your foot.
+If you are looking for the silver bullet that will fit with any scenario without any effort, you will end up with a
+bullet in your foot.
 ```
 
 [In Java, threading is supported at the language level with the synchronized and volatile keywords.](http://stackoverflow.com/a/3306752/432903)
@@ -280,7 +286,7 @@ https://github.com/prayagupd/parallel-programming
 Data Partitioning
 - partitions are units of parallelism
 
-https://stackoverflow.com/a/39992430/432903
+[How does Kafka streaming handle concurrency? Is everything run in a single thread?](https://stackoverflow.com/a/39992430/432903)
 
 [Kafka Streaming data partition](http://docs.confluent.io/current/streams/architecture.html#stream-partitions-and-tasks)
 

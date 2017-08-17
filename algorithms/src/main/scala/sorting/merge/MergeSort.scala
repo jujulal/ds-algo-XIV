@@ -1,16 +1,16 @@
 package sorting.merge
 
 /**
- * Created by prayagupd
- * on 6/6/16.
- */
+  * Created by prayagupd
+  * on 6/6/16.
+  */
 
 object MergeSort {
 
   var originalArray = Array[Int]()
   var tempArray = Array[Int]()
-  
-  def startSorting(array: Array[Int]) : Array[Int] = {
+
+  def startSorting(array: Array[Int]): Array[Int] = {
     this.originalArray = array
     val arraySize = array.length
     this.tempArray = Array.ofDim[Int](arraySize)
@@ -27,7 +27,7 @@ object MergeSort {
     }
   }
 
-  def merge (lowIndex: Int,middleIndex: Int, highIndex: Int) {
+  def merge(lowIndex: Int, middleIndex: Int, highIndex: Int) {
 
     for (index <- lowIndex to highIndex) {
       tempArray(index) = originalArray(index)
@@ -46,8 +46,8 @@ object MergeSort {
         middle = middle + 1
       }
       loww = loww + 1
-    }//end of while
-    
+    } //end of while
+
     while (low <= middleIndex) {
       originalArray(loww) = tempArray(low)
       loww = loww + 1

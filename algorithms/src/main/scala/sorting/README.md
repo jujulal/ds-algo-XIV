@@ -9,6 +9,8 @@
 INTV
 ----
 
+https://www.hackerrank.com/domains/algorithms/arrays-and-sorting
+
 https://leetcode.com/tag/sort/
 
 1. [Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).](https://leetcode.com/problems/insert-interval/)

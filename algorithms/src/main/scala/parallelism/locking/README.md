@@ -2,19 +2,31 @@
 ----------------------------------------------------------------------------------
 
 ```
-reentrant mutex (recursive mutex, recursive lock) is particular type of mutual exclusion (mutex) 
+reentrant mutex (recursive mutex, recursive lock) is particular type of MUTual EXclusion (mutex)
 device that may be locked multiple times by the same process/thread, without causing a deadlock.
 ```
 
 [MutEx vs Semaphore](http://stackoverflow.com/questions/4039899/when-should-we-use-mutex-and-when-should-we-use-semaphore)
 ----------------------
 
-```
-A mutex is a mutual exclusion semaphore, a special variant of a semaphore that only allows one locker at a time 
-and whose ownership restrictions may be more stringent than a normal semaphore.
+1. MutEx
+--------
 
-In other words, it's equivalent to a normal counting semaphore with a count of one and the requirement that 
-it can only be released by the same thread that locked it.
+```
+A MutEx is a mutual exclusion semaphore, a special variant of a semaphore that only allows
+one locker at a time and whose ownership restrictions may be more stringent than a normal semaphore.
+
+In other words, it's equivalent to a normal counting semaphore with a count of one and the requirement
+that it can only be released by the same thread that locked it.
+```
+
+```
+eg.
+
+Imagine that there are some albums to sell (item inventory).
+When any people buy the albums at the same time: each person is a thread to buy albums.
+
+Obviously we need to use the MutEx to protect the albums because it is the shared resource.
 ```
 
 
@@ -28,8 +40,9 @@ As with implicit locks, only one thread can own a Lock object at a time.
 [JVM ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html)
 
 ```
-A reentrant mutual exclusion Lock with the same basic behavior and semantics as the implicit monitor lock accessed 
-using synchronized methods and statements, but with extended capabilities.
+A reentrant Mutual Exclusion Lock with the same basic behavior and semantics
+as the implicit monitor lock accessed using synchronized methods and statements,
+but with extended capabilities.
 ```
 
 [In JVM, Why use a ReentrantLock if one can use synchronized(x)?](http://stackoverflow.com/a/11821900/432903)
@@ -45,8 +58,8 @@ i.e. you don't need to use a block structure for locking and can even hold a loc
 
 [Java 8 StampedLocks vs. ReadWriteLocks and Synchronized](http://blog.takipi.com/java-8-stampedlocks-vs-readwritelocks-and-synchronized/)
 
-Semaphore
----------
+2. Semaphore
+------------
 
 ```
 A semaphore, on the other hand, has a count and can be locked by that many lockers concurrently. 
@@ -61,6 +74,8 @@ Also with semaphores, it's possible for a single locker to lock multiple instanc
 such as for a tape-to-tape copy. If you have one resource (say a memory location that you don't want to corrupt), 
 a mutex is more suitable.
 ```
+
+https://blog.feabhas.com/2009/09/mutex-vs-semaphores-%E2%80%93-part-1-semaphores/
 
 [Mutex vs Semaphore in summary](http://stackoverflow.com/a/40282/432903)
 --------

@@ -4,10 +4,10 @@ import scala.collection.mutable.ArrayBuffer
 import scala.math._
 
 /**
- * https://www.hackerrank.com/challenges/fibonacci-fp
- * Created by prayagupd
- * on 5/28/15.
- */
+  * https://www.hackerrank.com/challenges/fibonacci-fp
+  * Created by prayagupd
+  * on 5/28/15.
+  */
 
 object FibonacciSeries {
 
@@ -50,31 +50,6 @@ object FibonacciSeries {
     //println(s"fib=${fib1}+${fib2}")
     fib1 + fib2
 
-  }
-
-  def main(args: Array[String]) {
-
-    print("Number of tests : ")
-    val tests = readInt()
-    var inputBuffer = ArrayBuffer[Int]()
-    for (counter <- 1 to tests) {
-      print("Input : ")
-      inputBuffer += readInt()
-    }
-
-    inputBuffer.foreach { input =>
-      val startTime: Long = System.currentTimeMillis()
-      val fib = fibonacci(input)
-      val pow_ = pow(10, 8) + 7.0
-
-      val divider: BigDecimal = pow_
-      val numerator = BigDecimal(fib + "")
-      val div = numerator % divider
-      //println(s"${input}th fib = ${fib}")
-      val endTime: Long = System.currentTimeMillis()
-      val time = (endTime - startTime) / 1000 //
-      println(s"${div}")
-    }
   }
 }
 

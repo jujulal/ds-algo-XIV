@@ -77,16 +77,21 @@ running on a server that generates web pages dynamically.
 
 [Hypertext Transfer Protocol -- HTTP/1.1 Draft](http://greenbytes.de/tech/webdav/rfc2616.html#rfc.status)
 
-HyperTextTP Status codes
+[HyperTextTP Status codes](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml), BBY, 2017
 --------------
 
-```bash
-1xx: Reserved
-2xx: Successful // gliffy, 2015
-3xx: Redirection
-4xx: Client error
-5xx: Server error
-```
+| code | for                         | desc                     |                    
+|------|-----------------------------|--------------------------|                                        
+|1xx   | Informational               | 102        Processing    |                                        
+|2xx   | Successful // gliffy, 2015  | 201        Created       |                               
+|      |                             | 202        Accepted        |                                 
+|      |                             | 208        Already Reported|                                        
+|3xx   | Redirection                 | 301        Moved Permanently |                                    
+|4xx   | Client error                | 400        Bad Request          |                                 
+|      |                             | 401        Unauthorized         |                                 
+|      |                             | 405        Method Not Allowed   |                                 
+|5xx   | Server error                | 500        Internal Server Error|                                 
+|      |                             | 501        Not Implemented      |
 
 [What is HTTP1.0/HTTPs/WebSocket?](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP_session)
 --------------
@@ -101,7 +106,7 @@ https://stackoverflow.com/a/247026/432903
 | - had caching via `If-Modified-Since`                           | - added `ETag` - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
 ```
 
-https://stackoverflow.com/a/28592132/432903
+[difference between HTTP 1.1 and HTTP 2.0](https://stackoverflow.com/a/28592132/432903)
 
 ```
 HTTP 2.0 is a binary protocol that multiplexes numerous streams going over a single 
@@ -236,42 +241,48 @@ They define the operating parameters of an HTTP transaction._
 
 [Can REST be implemented over FTP, not just HTTP?](https://stackoverflow.com/a/35535386/432903)
 
-[HypertextTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+[HypertextTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), BBY, 2017
 ---------------------
 
 ```
-| method  |
-|---------|
-| GET     |
-| HEAD    |
-| POST    |
-| PUT     |
-| DELETE  |
-|         |
-| CONNECT |
-| OPTIONS |
-| TRACE   |
-| PATCH   |
+| method  | 
+|---------|-------------------
+| GET     | R
+| HEAD    | 
+| POST    | C
+| PATCH   | U/Mofidy
+| PUT     | U/Replace
+| DELETE  | D
+|         | 
+| CONNECT | 
+| OPTIONS | 
+| TRACE   | 
 ```
 
-[HTTP Request Headers](http://webmasters.stackexchange.com/a/5661/14960) ;; some important headers for security purpose
-------------------------
+http://www.restapitutorial.com/lessons/httpmethods.html
 
-```bash
-# Don't allow any pages to be framed by my site or any others
-# Defends against Clickjacking!
-Header set X-Frame-Options DENY
+[HTTP Request Headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html), BBY, 2017
 
-# Only allow JavaScript from the same domain to be run.
-# Also, don't allow inline JavaScript to run. 
-Header set X-Content-Security-Policy "allow 'self';"
-
-# Turns on IE 8 XSS prevention tools
-Header set X-XSS-Protection "1; mode=block"
-
-# Don't send out the Server header. This way no one knows what 
-# version of Apache and PHP I am using
-Header unset Server
+```
+request-header = Accept             
+              | Accept-Charset      
+              | Accept-Encoding     
+              | Accept-Language     
+              | Authorization       
+              | Expect              
+              | From                
+              | Host                
+              | If-Match            
+              | If-Modified-Since   
+              | If-None-Match       
+              | If-Range            
+              | If-Unmodified-Since 
+              | Max-Forwards        
+              | Proxy-Authorization 
+              | Range               
+              | Referer             
+              | TE                  
+              | User-Agent
 ```
 
 ```js
@@ -281,7 +292,7 @@ $.ajax({
          type: "GET",
          beforeSend: function(xhr){
               xhr.setRequestHeader('Accept': 'text/plain', 
-                                      'Cache-Control':    'no-cache');
+                                   'Cache-Control': 'no-cache');
          },
          success: function() { 
                console.log('Success!' + authHeader); 
@@ -443,6 +454,26 @@ Accept-Ranges: bytes
 
 done
 ```
+
+[Security headers](http://webmasters.stackexchange.com/a/5661/14960)
+
+```bash
+# Don't allow any pages to be framed by my site or any others
+# Defends against Clickjacking!
+Header set X-Frame-Options DENY
+
+# Only allow JavaScript from the same domain to be run.
+# Also, don't allow inline JavaScript to run. 
+Header set X-Content-Security-Policy "allow 'self';"
+
+# Turns on IE 8 XSS prevention tools
+Header set X-XSS-Protection "1; mode=block"
+
+# Don't send out the Server header. This way no one knows what 
+# version of Apache and PHP I am using
+Header unset Server
+```
+
 
 [What are request scopes in HTTP requests?](http://www.java-samples.com/showtutorial.php?tutorialid=1009) (WebArchitecture, Jan2016)
 ```

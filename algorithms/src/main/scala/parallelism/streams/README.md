@@ -124,7 +124,7 @@ received at the other end, and received only once.
 
 ![](http://tutorials.jenkov.com/images/java-nio/buffers-modes.png)
 
-https://stackoverflow.com/q/8107612/432903
+[The actor model: Why is erlang special? Or, why do you need another language for it?](https://stackoverflow.com/q/8107612/432903)
 
 https://golang.org/doc/effective_go.html#channels
 

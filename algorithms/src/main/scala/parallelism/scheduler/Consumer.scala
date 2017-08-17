@@ -1,10 +1,9 @@
 package parallelism.scheduler
 
 /**
- * Created by prayagupd
- * on 7/17/16.
- */
-
+  * Created by prayagupd
+  * on 7/17/16.
+  */
 
 class Consumer extends Thread {
 

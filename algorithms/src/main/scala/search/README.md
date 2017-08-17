@@ -2,7 +2,7 @@
 --------------
 
 ```
- a search algorithm that finds the position of a target value within a sorted array
+a search algorithm that finds the position of a target value within a sorted array
 ```
 
 ![](https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_search_into_array.png)
@@ -11,6 +11,7 @@ http://quiz.geeksforgeeks.org/binary-search/
  
 [Complexity](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
 -------------
+
 ```
 Since each comparison binary search uses halves the search space, we can assert and easily prove 
 that binary search will never use more than O(log N) comparisons to find the target value.
@@ -23,12 +24,12 @@ http://interactivepython.org/runestone/static/pythonds/SortSearch/TheBinarySearc
 alternatives
 ------------
 
-store and search movies and description
-
 Hash table
 ----------
 
-takes O(1) to search by search term
+takes O(1) to search by "search term"
+
+Q. store and search movies and description
 
 ```
 val movies = Map(
@@ -61,24 +62,30 @@ are conceived as sets of terms. Retrieval is based on whether or not the documen
 
 https://en.wikipedia.org/wiki/Inverted_index
 
+```
+Content -> Location
+```
+
 http://stackoverflow.com/a/32878318/432903
 
 ```
-an index data structure storing a mapping from content, such as words or numbers, to its locations in a 
+an index data structure storing a mapping from content( such as words or numbers) to its locations in a
 database file, or in a document or a set of documents 
 
 eg. tweet document text "Porcupine Tree is fucking amazing band" is indexed as
 
 posting list -> document/file
-[Porcupine] → someId
-[Tree] → someId
-[is] → someId
-[fucking] → someId
-[amazing] → someId
-[band] → someId
+[Porcupine] → somePostId
+[Tree]      → somePostId
+[is]        → somePostId
+[fucking]   → somePostId
+[amazing]   → somePostId
+[band]      → somePostId
 ```
 
 INTV
 ----
+
+https://www.hackerrank.com/domains/algorithms/search
 
 https://leetcode.com/tag/binary-search/

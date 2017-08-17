@@ -4,7 +4,7 @@
 * inplace sort algo unlike [Merge sort](http://algs4.cs.princeton.edu/22mergesort/) which required additional space
 * suitable for sorting big data volumes
 
-Algo
+algo
 ----
 
 ```
@@ -47,11 +47,11 @@ Conquer
 
 ```
 
-Best - O(n logn)
-Avg  - O(n logn)
+Best  - O(n logn)
+Avg   - O(n logn)
 Worst - O(n2)
 
-Worst Performance Condition: //http://stackoverflow.com/a/4022806/432903
+Worst Performance Condition: // http://stackoverflow.com/a/4022806/432903
 
 When each time pivot chosen is 'greatest' or 'smallest' and this pattern repeats 
 
@@ -60,6 +60,13 @@ So for [1 3 5 4 2]
 If pivots are chosen in order [1,2,3,4,5] ....... Or...... [5,4,3,2,1]
 
 then the worst case running time is O(n*n)
+
+solutions
+---------
+
+* median of medians, or
+* median of three or
+* randomization
 
 ```
 

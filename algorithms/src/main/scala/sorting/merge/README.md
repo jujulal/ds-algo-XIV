@@ -4,9 +4,9 @@ The merge sort algorithm:
 
  - Divide : Partition the list in half
  - Conquer: 
-    Merge sort the first half
-    Merge sort the second half
-    Merge both halves back together
+    - Merge sort the first half
+    - Merge sort the second half
+    - Merge both halves back together
 
 ![](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 
