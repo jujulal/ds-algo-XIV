@@ -248,14 +248,16 @@ They define the operating parameters of an HTTP transaction._
 | method  | 
 |---------|-------------------
 | GET     | R
-| HEAD    | 
+| HEAD    | requests the headers that are returned if the specified resource 
+|         | would be requested with an [HTTP GET method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD)
 | POST    | C
 | PATCH   | U/Mofidy
 | PUT     | U/Replace
 | DELETE  | D
+|         |
+| OPTIONS | describe the communication [options for the target resource](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS) 
 |         | 
-| CONNECT | 
-| OPTIONS | 
+| CONNECT | starts two-way [communications with the requested resource](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT)
 | TRACE   | 
 ```
 
@@ -317,9 +319,11 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html#UsingTemp
 _Encryption should only ever be used over hashing when it is a necessity to decrypt 
 the resulting message._
 
+```
                          ----------------------------------------       ---------------------------
 payload -> encryption -> encrypted payload           connection tunnel  socket endpoint -> decryption -> payload
                          ----------------------------------------       --------------------------
+```
 
 Adv Encrption Standard(AES) - 128bits
 
@@ -366,6 +370,10 @@ res33: String = -ec0b2498a01c19031cdd580662e059c
 ```
 
 https://security.stackexchange.com/questions/36932/what-is-the-difference-between-ssl-and-x-509-certificates
+
+example:
+
+https://github.com/prayagupd/tls.kotlin
 
 [Request Identification in RESTful/Java webservice](http://stackoverflow.com/a/19896997/432903)
 --------------------------------------------
