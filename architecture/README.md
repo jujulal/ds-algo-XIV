@@ -302,7 +302,7 @@ $.ajax({
 });
 ```
 
-HTTP Security/ HTTP auth
+HTTPSecurity/ HTTP auth
 --------------------
 
 risks - sessions sniffed in HTTP
@@ -313,11 +313,13 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/S3_Authentication2.html
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html#UsingTemporarySecurityCredentials
 
-[Cryptographies vs Hashing](https://stackoverflow.com/a/4948393/432903)
+[TLS/ Communication Cryptography](https://stackoverflow.com/a/4948393/432903)
 --------------------------
 
 _Encryption should only ever be used over hashing when it is a necessity to decrypt 
 the resulting message._
+
+- TLS only secures the comminication
 
 ```
                          ----------------------------------------       ---------------------------
@@ -327,7 +329,7 @@ payload -> encryption -> encrypted payload           connection tunnel  socket e
 
 Adv Encrption Standard(AES) - 128bits
 
-SHA256 - 256 bits
+SecureHAash256 - 256 bits
 
 [Pretty Good Privacy(PGP)](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) - http://www.pitt.edu/~poole/accessiblePGP703.htm
 
@@ -342,7 +344,7 @@ val hash_based_auth_code = function hash_based_mac ("SHA-1" or "MD5", message) {
 }
 ```
 
-Hash-based Message auth code 
+* Hash-based Message auth code (HMAC)
 
 ```scala
 scala> import javax.crypto._
@@ -371,11 +373,11 @@ res33: String = -ec0b2498a01c19031cdd580662e059c
 
 https://security.stackexchange.com/questions/36932/what-is-the-difference-between-ssl-and-x-509-certificates
 
-example:
+TLS transmission example:
 
 https://github.com/prayagupd/tls.kotlin
 
-[Request Identification in RESTful/Java webservice](http://stackoverflow.com/a/19896997/432903)
+[Auth/ Request Identification in RESTful/Java webservice](http://stackoverflow.com/a/19896997/432903)
 --------------------------------------------
 
 You first need to understand that HyperTextTP is a stateless protocol. (WebArchitecture, 2016)
@@ -412,6 +414,17 @@ information you wish.
 
 The HttpServlet API makes that a little simpler with the `HttpServletResponse#addCookie(Cookie)`
 method but you could do it yourself with the `HttpServletResponse#addHeader(String, String)` method.
+
+Request Auth
+--------------
+
+* Basic Auth over TLS
+* Digest Auth
+* [OpenAuth(orization) standard](https://stormpath.com/blog/what-the-heck-is-oauth)
+
+   http://www.cubrid.org/blog/dancing-with-oauth-understanding-how-authorization-works
+
+![](https://oauth.net/core/diagram.png)
 
 [How Java webcontainer spawns new thread for each request?](http://www.tutorialspoint.com/servlets/servlets-life-cycle.htm)
 ------------------------------------------------------------------------------
