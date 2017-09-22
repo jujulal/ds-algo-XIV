@@ -179,6 +179,7 @@ Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
 [Introduction to Parallel Computing, Blaise Barney, Lawrence Livermore National Laboratory](https://computing.llnl.gov/tutorials/parallel_comp/)
 
 ```
+
 Load Balancing
 
 Load balancing refers to the practice of distributing approximately equal amounts of work among tasks so that
@@ -290,3 +291,19 @@ Data Partitioning
 
 [Kafka Streaming data partition](http://docs.confluent.io/current/streams/architecture.html#stream-partitions-and-tasks)
 
+[Actor Model](http://doc.akka.io/docs/akka/snapshot/scala/general/actors.html)/ Process
+-------
+
+[How does Actors work compared to threads?](https://stackoverflow.com/a/3587250/432903)
+
+```
+The actor model operates on message passing. Individual processes (actors) are allowed to send messages 
+asynchronously to each other. What distinguishes this from what we normally think of as the threading model, 
+is that there is (in theory at least) no shared state.
+ 
+And if one believes that shared state is the root of all evil, then the actor model becomes very attractive.
+```
+
+[How, if at all, do Erlang Processes map to Kernel Threads?](https://stackoverflow.com/a/605631/432903)
+
+[akka jvm threads vs os threads when performing io](https://stackoverflow.com/a/7458958/432903)

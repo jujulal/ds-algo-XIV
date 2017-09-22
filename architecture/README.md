@@ -101,7 +101,7 @@ https://stackoverflow.com/a/247026/432903
 ```
 | HTTP 1.0                                                        | HTTP 1.1
 | - have to open a new connection for each request/response pair. | - allows you to have persistent connections which means that you can have more than
-| And after each response the connection would be closed.         | one request/response on the same HTTP connection
+| And after each response the connection would be closed.         | one request/response on the same HTTP connection - https://en.wikipedia.org/wiki/HTTP_persistent_connection
 |                                                                 | - OPTIONS method - to determine the abilities of the HTTP server.
 | - had caching via `If-Modified-Since`                           | - added `ETag` - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
 ```
@@ -112,6 +112,17 @@ https://stackoverflow.com/a/247026/432903
 HTTP 2.0 is a binary protocol that multiplexes numerous streams going over a single 
 (normally TLS-encrypted) TCP connection.
 ```
+
+[HTTP 1.1/2.0 Stay-Alive connection vs WebSocket connection](https://stackoverflow.com/a/7620721/432903)
+
+```
+WebSocket is used to setup a persistent, full-duplex connection. 
+
+With this full-duplex connection, server side can push data to client and 
+client should be expected to process data from server side at any time.
+```
+
+http://doc.akka.io/docs/akka-http/current/scala/http/server-side/websocket-support.html
 
 [How can I prevent browsers from caching page/script responded from http server?](http://www.garshol.priv.no/download/text/http-tut.html)
 
