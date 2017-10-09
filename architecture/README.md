@@ -89,6 +89,7 @@ running on a server that generates web pages dynamically.
 |3xx   | Redirection                 | 301        Moved Permanently |                                    
 |4xx   | Client error                | 400        Bad Request          |                                 
 |      |                             | 401        Unauthorized         |                                 
+|      |                             | 403        access forbidden , BBY 2017 |
 |      |                             | 405        Method Not Allowed   |                                 
 |5xx   | Server error                | 500        Internal Server Error|                                 
 |      |                             | 501        Not Implemented      |
@@ -316,6 +317,8 @@ $.ajax({
 HTTPSecurity/ HTTP auth
 --------------------
 
+Encrypt/Decrypt Examples - https://github.com/prayagupd/enc-dec-scala
+
 risks - sessions sniffed in HTTP
 
 https://en.wikipedia.org/wiki/Transport_Layer_Security
@@ -338,9 +341,25 @@ payload -> encryption -> encrypted payload           connection tunnel  socket e
                          ----------------------------------------       --------------------------
 ```
 
-Adv Encrption Standard(AES) - 128bits
+1) [Rivest–Shamir–Adleman public key cryptosystem(asymmetric), 1977](https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Padding)
 
-SecureHAash256 - 256 bits
+_In such a cryptosystem, the encryption key is public and it is different from the decryption key 
+which is kept secret (private)._
+
+2) [Advanced Encrption Standard(AES) - symmetric 128bits Block size](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), 2007
+
+_The algorithm described by AES is a symmetric-key algorithm, meaning the same key is used for 
+both encrypting and decrypting the data._
+
+[How to choose an AES encryption mode (CBC ECB CTR OCB CFB)?](https://stackoverflow.com/a/1220869/432903)
+
+[Electronic Code Block](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_Codebook_.28ECB.29)
+
+_The message is divided into blocks, and each block is encrypted separately._
+
+![](https://upload.wikimedia.org/wikipedia/commons/d/d6/ECB_encryption.svg)
+
+[Secure Hash Algos 2 - 256 bits](https://stackoverflow.com/a/990775/432903)
 
 [Pretty Good Privacy(PGP)](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) - http://www.pitt.edu/~poole/accessiblePGP703.htm
 
