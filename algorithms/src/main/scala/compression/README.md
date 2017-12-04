@@ -53,6 +53,14 @@ uncorrupted.
 
 eg.
 
+```clj
+user=> (let [encoder (java.util.Base64/getEncoder)] (.encodeToString encoder (.getBytes "ABCD")))
+"QUJDRA=="
+
+user=> (.length (.encodeToString (java.util.Base64/getEncoder) (.getBytes "ABCD")))
+8 bytes
+```
+
 ```scala
 scala> import java.nio.charset.StandardCharsets
 import java.nio.charset.StandardCharsets
@@ -61,7 +69,10 @@ scala> java.util.Base64.getEncoder.encodeToString("username:password".getBytes(S
 res0: String = dXNlcm5hbWU6cGFzc3dvcmQ=
 ```
 
-https://en.wikipedia.org/wiki/8-bit_clean
+[8-bit clean computer system](https://en.wikipedia.org/wiki/8-bit_clean)
+
+_a computer system that correctly handles 8-bit character encodings, such as the ISO 8859 series 
+and the UTF-8 encoding of Unicode_
 
 [Data compression](https://en.wikipedia.org/wiki/Data_compression)
 ---------------------

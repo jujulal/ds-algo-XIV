@@ -12,7 +12,7 @@ package functionalProg.day0_funcPoly
  *
  * The opposite holds for type parameters that are tagged with a -.
  *
- * @reference http://docs.scala-lang.org/tutorials/tour/variances.html
+ * @reference http://docs.scala-lang.org/tour/variances.html
  */
 
 class CovarientStack[+A] {
@@ -21,8 +21,7 @@ class CovarientStack[+A] {
 
   def pop: CovarientStack[A] = error("no element on stack")
 
-  override
-  def toString() = ""
+  override def toString() = ""
 
   // What's the difference between  S < : T and [+T] in Scala?
   // http://stackoverflow.com/a/4531696/432903
@@ -45,4 +44,6 @@ class CovarientStack[+A] {
         CovarientStack.this.toString()
     }
   }
+
+  def error(str: String) = throw new Exception(str)
 }

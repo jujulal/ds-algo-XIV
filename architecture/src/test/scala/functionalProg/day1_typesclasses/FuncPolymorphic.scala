@@ -10,14 +10,15 @@ import org.scalatest.{FunSuite, Matchers}
 
 class FuncPolymorphic extends FunSuite with Matchers {
 
+  def process = new Function[String, String] {
+    override def apply(v1: String) = "processed"
+  }
+
   test("Non generic method that needs to defined each time for new Type") {
 
-    def sumInt(xs: List[Int]): Int = xs.foldLeft(0) {
-      _ + _
-    }
-    def sumFloat(xs: List[Float]): Float = xs.foldLeft(0f) {
-      _ + _
-    }
+    def sumInt(xs: List[Int]): Int = xs.foldLeft(0) { _ + _ }
+
+    def sumFloat(xs: List[Float]): Float = xs.foldLeft(0f) { _ + _ }
 
     sumInt(List(1, 2, 3)) shouldBe 6
     sumFloat(List(1f, 2f, 3f)) shouldBe 6f
@@ -39,8 +40,9 @@ class FuncPolymorphic extends FunSuite with Matchers {
     }
 
     def sumInt(xs: List[Int]): Int = xs.foldLeft(Int32MonoidStructure.zero) {
-      Int32MonoidStructure.append(_, _)
+      (a, b) => Int32MonoidStructure.append(a, b)
     }
+
     def sumFloat(xs: List[Float]): Float = xs.foldLeft(Float64MonoidStructure.zero) {
       Float64MonoidStructure.append(_, _)
     }
@@ -49,7 +51,7 @@ class FuncPolymorphic extends FunSuite with Matchers {
     sumFloat(List(1f, 10f, 20.5f)) shouldBe 31.5f
   }
 
-  test("very generalised Monoid Structure that applies on everything even on president of US, lets start with Int Monoid structure") {
+  test("very generalised Monoid Structure that applies on everything(Int) even on president of US, lets start with Int Monoid structure") {
 
     trait MonoidStructure[T] {
       def append(x: T, y: T): T
@@ -65,14 +67,14 @@ class FuncPolymorphic extends FunSuite with Matchers {
     }
 
     def sum(xs: List[Int], monoidStructure: MonoidStructure[Int]): Int = xs.foldLeft(monoidStructure.zero) {
-      monoidStructure.append(_, _)
+      monoidStructure.append
     }
 
     sum(List(10, 20, 30), Int32MonoidStructure) shouldBe 60
 
   }
 
-  test("very generalised Monoid Structure that applies on everything even on president of US") {
+  test("very generalised Monoid Structure that applies on everything(Float) even on president of US") {
 
     trait MonoidStructure[T] {
       def append(x: T, y: T): T
@@ -106,7 +108,7 @@ class FuncPolymorphic extends FunSuite with Matchers {
     sum(List(1f, 2f, 3f), Float64MonoidStructure) shouldBe 6f
   }
 
-  test("Almost there, now lets make the MonoidStructure to be implicit so the don't have to passed on sum method, and looks natural") {
+  test("Almost there, now lets make the MonoidStructure to be implicit so the don't have to pass on sum method, and looks natural") {
 
     trait MonoidStructure[T] {
       def append(x: T, y: T): T
