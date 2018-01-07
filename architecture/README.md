@@ -605,9 +605,13 @@ It is a critical security mechanism for isolating potentially malicious document
 
 ```
 An origin is defined by the scheme://host:port of a URL
+
+therefore http://localhost:8080 and http://localhost:9090 are 2 different domains (from browser's point of view)
 ```
 
 https://enable-cors.org/server.html
+
+For simple CrossOriginRS requests, the server only needs to add the following header to its response:
 
 ```bash
 Access-Control-Allow-Origin: *

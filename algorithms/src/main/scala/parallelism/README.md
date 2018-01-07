@@ -116,6 +116,22 @@ Runnable.run() is executed on the calling thread, just like any other method cal
 Thread.start() is required to actually create a new thread so that the runnable's run method is executed in parallel
 ```
 
+User vs Daemon threads
+----------------
+
+- User/Non-Daemon threads are like front performers. 
+- [Daemon threads are like assistants.](https://stackoverflow.com/a/2213348/432903)
+
+Assistants help performers to complete a job. When the job is completed, no help is needed 
+by performers to perform anymore. 
+
+As no help is needed the assistants leave the place. 
+So when the jobs of Non-Daemon threads is over, Daemon threads march away.
+
+- An example for user/non-daemon thread is the thread running the `main`.
+- Threads created by a user thread are user thread. 
+- When all of the non-daemon threads complete, daemon threads terminates automatically.
+
 [Shutting down threads cleanly](http://www.javaspecialists.eu/archive/Issue056.html)
 
 [Why Are Thread.stop, Thread.suspend, Thread.resume and Runtime.runFinalizersOnExit Deprecated?](http://docs.oracle.com/javase/1.5.0/docs/guide/misc/threadPrimitiveDeprecation.html)
@@ -168,9 +184,9 @@ hw.logicalcpu_max: 8
 
 ```
 The clock rate typically refers to the frequency at which a chip like a central processing unit (CPU),
-one core ofa multi-core processor, is running and is used as an indicator of the processor's speed.
+one core of a multi-core processor, is running and is used as an indicator of the processor's speed.
 
-It is measured inclock cycles per second or its equivalent, the SI unit hertz (Hz)
+It is measured in clock cycles per second or its equivalent, the SI unit hertz (Hz)
 
 sysctl -n machdep.cpu.brand_string
 Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
@@ -183,7 +199,7 @@ Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
 Load Balancing
 
 Load balancing refers to the practice of distributing approximately equal amounts of work among tasks so that
-all tasksare kept busy all of the time.
+all tasksi are kept busy all of the time.
 
 It can be considered a minimization of task idle time.
 
@@ -232,15 +248,55 @@ Process2     ---> wins lock on table2     <--- Process1 is waiting
              ---> waits in table2
 ```
 
-[Why is Node.js single threaded?](http://stackoverflow.com/a/17959746/432903), [What is heck is EventLoop? - The JavaScript Event Loop: Explained](http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/) sharethis, 2015
+[CPU intensive vs IO intensive?](https://stackoverflow.com/a/868577/432903)
+--------------------------------
+
+```
+A program is CPU bound if it would go faster if the CPU were faster, i.e. 
+it spends the majority of its time simply using the CPU (doing calculations). 
+
+eg. A program that computes new digits of π will typically be CPU-bound, it's just crunching numbers.
+
+* CPU bound processes spend more time doing computations, few very long CPU bursts.
+
+* CPU burst is when the process is being executed in the CPU
+
+https://www2.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/6_CPU_Scheduling.html
+```
+
+[How to check if an API is CPU-bound?](https://stackoverflow.com/q/3156334/432903)
+
+```
+Just run the application for some time on a dedicated machine and check the CPU counters. 
+
+If the app uses 100% of the CPU core it can access, it's CPU bound. 
+Otherwise, it spends time on other things like memory allocations and IOs.
+```
+
+IO bound
+
+```
+A program is I/O bound if it would go faster if the I/O subsystem was faster. 
+Which exact I/O system is meant can vary; I typically associate it with disk. 
+
+A program that looks through a huge file(eg. medical records file) for some data will often be I/O bound, 
+since the bottleneck is then the reading of the data from disk.
+
+* IO bound processes spend more time doing IO than computations, have many short CPU bursts.
+```
+
+Thread per request vs [EventLoop](http://berb.github.io/diploma-thesis/original/055_events.html) vs [Event based Actor](https://stackoverflow.com/a/7458958/432903)
+----------------------------------
+
+[Why is Node.js single threaded?](http://stackoverflow.com/a/17959746/432903), [What the heck is EventLoop? - The JavaScript Event Loop: Explained](http://blog.carbonfive.com/2013/10/27/the-javascript-event-loop-explained/) sharethis, 2015
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
 
 https://en.wikipedia.org/wiki/Event_loop
 
 ```
-the event loop, message dispatcher, message loop, message pump, or run loop is a programming construct that
-waits for and dispatches events or messages in a program.
+The event loop, message dispatcher, message loop, message pump, or run loop 
+is a programming construct that waits for and dispatches events or messages in a program.
 ```
 
 ![](http://blog.carbonfive.com/wp-content/uploads/2013/10/event-loop.png)
@@ -250,21 +306,23 @@ The issue with the "one thread per request" model for a server is that they don'
 scenarios compared to the event loop thread model.
 
 Typically, in I/O intensive scenarios the requests spend most of the time waiting for I/O to complete. 
+
 During this time, in the "one thread per request" model, the resources linked to the thread (such as memory) 
 are unused and memory is the limiting factor. 
 ```
 
 ```
-In the event loop model, the loop thread selects 
-the next event (I/O finished) to handle. So the thread is always busy (if you program it correctly of course).
+In the Event Loop model, the loop thread selects the next event (I/O finished) to handle. 
+So the thread is always busy (if you program it correctly of course).
 ```
 
 
 ```
 The event loop model as all new things seems shiny and the solution for all issues but which model to use will 
-depend on the scenario you need to tackle. If you have an intensive I/O scenario (like a proxy), 
-the event base model will rule, whereas a CPU intensive scenario with a low number of concurrent processes 
-will work best with the thread-based model.
+depend on the scenario you need to tackle. 
+If you have an intensive I/O scenario (like a proxy), the event base model will rule, 
+whereas a CPU intensive scenario with a low number of concurrent processes will work best with 
+the thread-based model.
 ```
 
 ```
@@ -300,7 +358,7 @@ Data Partitioning
 The actor model operates on message passing. Individual processes (actors) are allowed to send messages 
 asynchronously to each other. What distinguishes this from what we normally think of as the threading model, 
 is that there is (in theory at least) no shared state.
- 
+
 And if one believes that shared state is the root of all evil, then the actor model becomes very attractive.
 ```
 
