@@ -56,11 +56,13 @@ Static Loop Scheduling           | Dynamic Loop Scheduling | Guided Loop Schedul
 | TERMINATED   | A thread that has exited is in this state.|
 
 
-[Where is Thread Object created? Stack or JVM Heap Memory?](http://stackoverflow.com/a/19433994/432903)
+[Where is Thread Object created? Stack or JVM Heap Memory?](http://stackoverflow.com/a/19433994/432903) - I BBY, 2018
 
 ```
-val processor = new Thread() //new means always in heap memory
+val processor = new Thread() //new means allocated always in heap memory
 ```
+
+starting a thread will create a [new stack for that thread](https://stackoverflow.com/a/19433542/432903)
 
 ![](https://i.stack.imgur.com/kKDL2.gif)
 
@@ -69,6 +71,38 @@ val processor = new Thread() //new means always in heap memory
 ```
 Because otherwise they would be processes. That is the whole idea of threads, to share memory.
 ```
+
+[How many threads can OS vs Java VM support?](https://stackoverflow.com/a/764096/432903)
+
+For OS,
+
+```bash
+$ ulimit -a
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+file size               (blocks, -f) unlimited
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 256
+pipe size            (512 bytes, -p) 1
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 709
+virtual memory          (kbytes, -v) unlimited`
+```
+
+```bash
+$ ulimit -s
+8192
+```
+
+ie. each of threads will get [8192K amount of memory (8MB)](https://stackoverflow.com/a/9211891/432903) assigned for it's stack.
+
+For JVM,
+
+Default Oracle 64 bit JVM has 1M stack size per thread which means, 1 GB RAM = 1024/1MB = 1024 threads
+
+To raise the number of concurrent threads you should lower the default [StackSize(ss)](https://dzone.com/articles/java-what-limit-number-threads) `java -Xss 64k`
 
 [How to catch an Exception from a thread (in JVM)](http://stackoverflow.com/questions/6546193/how-to-catch-an-exception-from-a-thread), JWN 2016
 
