@@ -2,13 +2,20 @@ package functionalProg.tasks
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.language.implicitConversions
 
 object Concurrency {
 
   def main(args: Array[String]): Unit = {
 
-    sequentialFutures()
+    //sequentialTasks()
 
+    quickTask2()
+
+    Thread.sleep(30000)
+  }
+
+  private def quickTask2() = {
     for {
       x <- Future {
         100
@@ -17,11 +24,10 @@ object Concurrency {
       println(x)
       x
     }
-
-    Thread.sleep(30000)
   }
 
-  private def sequentialFutures() = {
+  private def sequentialTasks() = {
+
     def pick(item: String) = Future {
       println(s"picking $item\n")
       (1 to 100).foreach(x => println("pick - " + item))
@@ -31,7 +37,7 @@ object Concurrency {
 
     def pack(item: String) = Future {
       println(s"packing $item\n")
-      (1 to 100).foreach(x => println( "pack - " + item))
+      (1 to 100).foreach(x => println("pack - " + item))
       Thread.sleep(5000)
       s"$item packed"
     }

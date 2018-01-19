@@ -126,11 +126,11 @@ Assistants help performers to complete a job. When the job is completed, no help
 by performers to perform anymore. 
 
 As no help is needed the assistants leave the place. 
-So when the jobs of Non-Daemon threads is over, Daemon threads march away.
+So when the jobs of User/Non-Daemon threads is over, Daemon threads march away.
 
 - An example for user/non-daemon thread is the thread running the `main`.
 - Threads created by a user thread are user thread. 
-- When all of the non-daemon threads complete, daemon threads terminates automatically.
+- When all of the user/non-daemon threads complete, daemon threads terminates automatically.
 
 [Shutting down threads cleanly](http://www.javaspecialists.eu/archive/Issue056.html)
 
@@ -248,7 +248,7 @@ Process2     ---> wins lock on table2     <--- Process1 is waiting
              ---> waits in table2
 ```
 
-[CPU intensive vs IO intensive?](https://stackoverflow.com/a/868577/432903)
+[CPU intensive vs IO intensive?](https://stackoverflow.com/a/868577/432903), AMZN, 2018
 --------------------------------
 
 ```

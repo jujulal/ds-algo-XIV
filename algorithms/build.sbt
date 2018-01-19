@@ -2,8 +2,8 @@ name := "algorithms"
 
 version := "1.0"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.4"
 
 libraryDependencies ++= Seq(
-"org.scalactic" %% "scalactic" % "2.2.6",
-"org.scalatest" %% "scalatest" % "2.2.6" % "test")
+"org.scalactic" %% "scalactic" % "3.0.4",
+"org.scalatest" %% "scalatest" % "3.0.4" % "test")
