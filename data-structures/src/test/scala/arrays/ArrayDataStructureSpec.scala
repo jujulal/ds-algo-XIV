@@ -9,12 +9,6 @@ import org.scalatest.FlatSpec
 
 class ArrayDataStructureSpec extends FlatSpec {
 
-  "removeDuplicate" should "remove duplicate chars" in {
-    val sentence = "dreamss"
-    val word = RemoveDuplicatesFromString.removeDuplicate(sentence)
-    assert(word == "dreams")
-  }
-
   "uniqChars" should "count uniq chars" in {
     assert(!UniqueCharactersInString.hasUniqueCharacters("I am a dreamer in Portland"))
     assert(UniqueCharactersInString.hasUniqueCharacters("satle"))
