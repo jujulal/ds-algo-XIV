@@ -4,6 +4,7 @@ package hashTable
   * Created by prayagupd
   * on 1/21/18
   *
+  * facebook 2012, https://www.careercup.com/question?id=14959819
   * https://leetcode.com/problems/roman-to-integer/description/
   */
 
@@ -16,21 +17,38 @@ object RomanToInteger {
     'L' -> 50,
     'C' -> 100,
     'D' -> 500,
-    'M' -> 1000
-  )
+    'M' -> 1000)
 
-  def romanToInteger(roman: String): Long = {
+  /**
+    *
+    * complexity is O(n) as its sequential iteration.
+    */
+  def romanToIntegerRecursive(roman: String): Long = toInteger(roman, 0, 0)
+
+  private def toInteger(roman: String, index: Int, value: Long): Long = {
+
+    if (index == roman.length - 1)
+      value + romanToInteger(roman(index))
+
+    else if (romanToInteger(roman(index)) < romanToInteger(roman(index + 1)))
+      toInteger(roman, index + 1, value - romanToInteger(roman(index)))
+
+    else
+      toInteger(roman, index + 1, value + romanToInteger(roman(index)))
+  }
+
+  def romanToIntegerIterative(roman: String): Long = {
     var sum = 0
-    roman.zipWithIndex.foreach { case (char, i) =>
 
+    for (i <- 0 to roman.length - 1) {
       if (i == roman.length - 1)
-        sum = sum + romanToInteger(char)
+        sum = sum + romanToInteger(roman(i))
 
-      else if (romanToInteger(char) < romanToInteger(roman(i + 1)))
-        sum = sum - romanToInteger(char)
+      else if (romanToInteger(roman(i)) < romanToInteger(roman(i + 1)))
+        sum = sum - romanToInteger(roman(i))
 
       else
-        sum = sum + romanToInteger(char)
+        sum = sum + romanToInteger(roman(i))
     }
 
     sum
