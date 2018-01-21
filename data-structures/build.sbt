@@ -14,6 +14,8 @@ libraryDependencies ++= Seq(
   "org.scalaz" %% "scalaz-typelevel" % scalazVersion,
   "org.scalactic" %% "scalactic" % "2.2.6",
   "io.spray" %%  "spray-json" % "1.3.3",
+  "org.clojure" % "clojure" % "1.9.0",
+
   "org.scalatest" %% "scalatest" % "2.2.6" % "test",
   "org.scalaz" %% "scalaz-scalacheck-binding" % scalazVersion % "test"
 )
