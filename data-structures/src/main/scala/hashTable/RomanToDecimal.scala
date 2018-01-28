@@ -4,11 +4,12 @@ package hashTable
   * Created by prayagupd
   * on 1/21/18
   *
+  * facebook 2010, https://www.glassdoor.com/Interview/Write-a-function-that-takes-in-a-roman-numeral-string-and-returns-its-decimal-value-You-may-assume-input-is-a-valid-roman-QTN_56312.htm
   * facebook 2012, https://www.careercup.com/question?id=14959819
   * https://leetcode.com/problems/roman-to-integer/description/
   */
 
-object RomanToInteger {
+object RomanToDecimal {
 
   private val romanToInteger = Map(
     'I' -> 1,

@@ -2,6 +2,7 @@ package arrays
 
 /**
   * CTCI 1.3
+  *
   * Design an algorithm and write code to remove the duplicate characters in a string
   * without using any additional buffer. 
   *
@@ -13,7 +14,6 @@ package arrays
   *
   * https://www.careercup.com/question?id=6704038393413632
   */
-
 
 object RemoveDuplicatesFromString {
 

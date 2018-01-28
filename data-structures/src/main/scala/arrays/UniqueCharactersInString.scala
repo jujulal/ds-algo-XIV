@@ -12,14 +12,18 @@ package arrays
 object UniqueCharactersInString {
 	
 	def hasUniqueCharacters(sentence : String ) : Boolean = {
+
 		val characterSet = new Array[Boolean](255) //space of length n
+
 		for ( i <- 0 until sentence.length() by 1) {
 			val character = sentence.charAt(i)
 			if ( characterSet(character) )
 				return false
 			characterSet(character) = true
 		}
-		return true
+
+		true
+
 	}
 	
 }
