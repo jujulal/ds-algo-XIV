@@ -1,6 +1,8 @@
 (use
  '[clojure.string :only (split triml)])
 
+;; https://www.hackerrank.com/challenges/birthday-cake-candles/problem
+
 (defn possible-candles [age candles]
   (reverse (sort candles)))
 

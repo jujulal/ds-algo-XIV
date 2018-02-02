@@ -1,6 +1,8 @@
 (use
  '[clojure.string :only (split triml)])
 
+;; https://www.hackerrank.com/challenges/plus-minus/problem
+
 (defn number-type [x] (if (> x 0) 1 (if (< x 0) -1 0)))
 
 (defn count-nums [v n]

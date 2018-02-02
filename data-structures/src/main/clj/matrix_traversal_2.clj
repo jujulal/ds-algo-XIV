@@ -3,6 +3,7 @@
 
 
 ;; https://www.hackerrank.com/challenges/saveprincess2
+;; https://www.careercup.com/page?pid=matrix-interview-questions
 
 (defn find-princess [board r c]
   (let [char      (.charAt (.get board r) c)

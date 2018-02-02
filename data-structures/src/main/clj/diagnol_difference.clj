@@ -2,6 +2,7 @@
  '[clojure.string :only (split triml)])
 
 ;; https://www.hackerrank.com/challenges/diagonal-difference/problem
+;; https://www.careercup.com/question?id=6070849299808256, 2013
 
 (defn abs [x] (max x (- x)))
 

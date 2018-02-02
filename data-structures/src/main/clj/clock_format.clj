@@ -1,6 +1,9 @@
 (use
  '[clojure.string :only (split triml)])
 
+;; https://www.hackerrank.com/challenges/time-conversion/problem
+;; https://www.glassdoor.com/Interview/Given-an-analog-clock-how-would-you-tell-the-angle-QTN_458562.htm
+
 (defn am-clock [clock]
   (let [hms        (clojure.string/split clock #":")
         actual-hrs (Integer/parseInt (first hms))
