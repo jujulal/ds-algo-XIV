@@ -5,9 +5,9 @@ import org.scalatest.FunSuite
 class PairSpecs extends FunSuite {
 
   test("pair of differences") {
-    assert(Pair.diffPairs(Seq(), 2) == 0)
-    assert(Pair.diffPairs(Seq(1), 2) == 0)
-    assert(Pair.diffPairs(Seq(1, 5, 3, 4, 2), 2) == 3)
+    assert(Pair.diffPairsUsingSeq(Seq(), 2) == 0)
+    assert(Pair.diffPairsUsingSeq(Seq(1), 2) == 0)
+    assert(Pair.diffPairsUsingSeq(Seq(1, 5, 3, 4, 2), 2) == 3)
   }
 
   test("pair of differences - array") {

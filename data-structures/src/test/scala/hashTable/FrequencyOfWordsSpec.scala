@@ -15,12 +15,9 @@ class FrequencyOfWordsSpec extends FunSuite {
     val wordToFind = "Steven"
     val book = Array("Steven", "HandCannotErase", "Steven", "steven", wordToFind)
 
-    //when:
-    val table = FrequencyOfWords.buildFrequencyTable(book)
-
-    val f = FrequencyOfWords.getFrequency(table, wordToFind)
+    val freq = FrequencyOfWords.getFrequency(book, wordToFind)
 
     //then:
-    assert(f == 4)
+    assert(freq == 4)
   }
 }

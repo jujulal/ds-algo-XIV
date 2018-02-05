@@ -11,27 +11,29 @@ import scala.collection.mutable
 
 object FrequencyOfWords {
 
-	def buildFrequencyTable ( book : Array[String] ) : mutable.HashMap[String, Integer] = {
-		val hashTable = mutable.HashMap.empty[String, Integer] //Space complexity < n (length of dictionary array)
+  private def buildFrequencyTable(book: Array[String]): mutable.HashMap[String, Integer] = {
 
-		//Time complexity (n)
-		book.foreach { word =>
-			if (word.toLowerCase.trim() != "" ) {
-				if(!hashTable.contains(word.toLowerCase)) {
-					hashTable(word.toLowerCase) = 0
-				}
-				hashTable += word.toLowerCase -> (hashTable(word.toLowerCase) + 1)
-			}
-		}
-		println(hashTable)
-		hashTable
-	}
+    val hashTable = mutable.HashMap.empty[String, Integer] //Space complexity < n (length of dictionary array)
 
-	def getFrequency (frequencyTable : mutable.HashMap[String, Integer], word : String) : Int = {
-		if(frequencyTable.contains(word.toLowerCase)) {
-			return frequencyTable(word.toLowerCase)
-		}
-		0
-	}
+    //Time complexity (n)
+    book.foreach { word =>
+
+      if (word.toLowerCase.trim() != "") {
+        if (!hashTable.contains(word.toLowerCase)) hashTable(word.toLowerCase) = 0
+        hashTable += word.toLowerCase -> (hashTable(word.toLowerCase) + 1)
+      }
+
+    }
+
+    hashTable
+
+  }
+
+  def getFrequency(book: Array[String], word: String): Int = {
+    val freq = buildFrequencyTable(book)
+
+    if (freq.contains(word.toLowerCase)) freq(word.toLowerCase)
+    else 0
+  }
 
 }
