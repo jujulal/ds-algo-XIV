@@ -1,6 +1,7 @@
 package search
 
 /**
+  * level: Medium
   * https://www.hackerrank.com/challenges/pairs/problem
   *
   * Input:
@@ -11,7 +12,7 @@ package search
   * 3
   */
 
-object Pair {
+object DifferencePair {
 
   //Array
   def diffPairs(array: Array[Int], diff: Int): Long = {

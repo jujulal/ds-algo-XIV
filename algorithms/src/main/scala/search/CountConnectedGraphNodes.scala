@@ -36,6 +36,7 @@ object CountConnectedGraphNodes {
 
     var neighboursMap = scala.collection.mutable.Map.empty[(Int, Int), IndexedSeq[(Int, Int)]]
 
+    //O(n2) in worst case
     for (r <- 0 until matrix.length) {
       for (c <- 0 until matrix(r).length) {
 
