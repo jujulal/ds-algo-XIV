@@ -9,7 +9,7 @@ import scala.collection.mutable
  * on 5/25/16.
  */
 
-class RemoveDuplicatesSpec extends FunSuite {
+class RemoveDuplicateNodesSpec extends FunSuite {
 
   test("given string list with duplicate elements, should remove duplicates") {
 
@@ -26,7 +26,7 @@ class RemoveDuplicatesSpec extends FunSuite {
     println("artistsDocuments 2 => " + artistsDocuments(2))
     println("artistsDocuments 3 => " + artistsDocuments(3))
 
-    val uniqueArtists = RemoveDuplicates.removeDuplicates(artistsDocuments)
+    val uniqueArtists = RemoveDuplicateNodes.removeDuplicates(artistsDocuments)
 
     assert(uniqueArtists.size == 3)
     assert(uniqueArtists == mutable.LinkedList("Tycho", "Steven Wilson", "Gavin Guthrie"))

@@ -9,7 +9,7 @@ import scala.util.control.Breaks
  * on 5/31/16.
  */
 
-class SumSafeSpec extends FunSuite {
+class ElementEqualsArraySumSpec extends FunSuite {
 
   test("should sam safe") {
 
@@ -17,7 +17,7 @@ class SumSafeSpec extends FunSuite {
     val array = Array(1, 2, 3, -3)
 
     //then:
-    assert(SumSafe.hasAnElementEqualToSumOfArray(array))
+    assert(ElementEqualsArraySum.hasAnElementEqualToSumOfArray(array))
   }
 
 }

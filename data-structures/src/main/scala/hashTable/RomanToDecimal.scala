@@ -3,6 +3,7 @@ package hashTable
 /**
   * Created by prayagupd
   * on 1/21/18
+  * Easy: 30mins
   *
   * facebook 2010, https://www.glassdoor.com/Interview/Write-a-function-that-takes-in-a-roman-numeral-string-and-returns-its-decimal-value-You-may-assume-input-is-a-valid-roman-QTN_56312.htm
   * facebook 2012, https://www.careercup.com/question?id=14959819
@@ -22,7 +23,7 @@ object RomanToDecimal {
 
   /**
     *
-    * complexity is O(n) as its sequential iteration.
+    * time complexity is O(n) as its sequential iteration.
     */
   def romanToIntegerRecursive(roman: String): Long = toInteger(roman, 0, 0)
 

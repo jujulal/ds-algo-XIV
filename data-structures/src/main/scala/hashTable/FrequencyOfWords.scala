@@ -4,9 +4,11 @@ import scala.collection.mutable
 
 /**
   *
-  * 19.8 Design a method to find the frequency of occurrences of any given word in a book.
+  * Easy, 19.8 Design a method to find the frequency of occurrences of any given word in a book.
   *
   * Solution: Repetitive Queries
+  *
+  * https://leetcode.com/problemset/algorithms/?search=frequency
   */
 
 object FrequencyOfWords {

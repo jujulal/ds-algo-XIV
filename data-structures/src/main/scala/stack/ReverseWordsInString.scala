@@ -8,6 +8,8 @@ import scala.collection.mutable
   * Given an input string, reverse the string word by word.
   *
   * https://leetcode.com/problems/reverse-words-in-a-string/description/
+  * https://leetcode.com/problems/reverse-words-in-a-string-ii
+  * https://leetcode.com/problems/reverse-words-in-a-string-iii/description/
   *
   * https://www.glassdoor.com/Interview/Microsoft-Interview-RVW17855542.htm
   *

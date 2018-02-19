@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 /**
- * Write two static methods in Java to encode and decode a list of postings using VarInt.
+ * Write two methods in Java to encode and decode a list of postings using VarInt.
 
  1. byte[] encode(int[] values)
 

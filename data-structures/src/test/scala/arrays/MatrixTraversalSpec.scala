@@ -11,7 +11,7 @@ class MatrixTraversalSpec extends FunSuite {
       new String("-m-"),
       new String("p--"))
 
-    assert(MatrixTraversal.displayPathtoPrincess(3, matrix) == "DOWN\nLEFT")
+    assert(MatrixTraversal.displayPathToPrincess(3, matrix) == "DOWN\nLEFT")
   }
 
   test("traverse matrix in 5*5") {
@@ -22,7 +22,7 @@ class MatrixTraversalSpec extends FunSuite {
       new String("-----"),
       new String("p----"))
 
-    assert(MatrixTraversal.displayPathtoPrincess(5, matrix) == "DOWN\nDOWN\nLEFT\nLEFT")
+    assert(MatrixTraversal.displayPathToPrincess(5, matrix) == "DOWN\nDOWN\nLEFT\nLEFT")
   }
 
   test("traverse matrix in 5*5 II") {
@@ -33,6 +33,6 @@ class MatrixTraversalSpec extends FunSuite {
       new String("-----"),
       new String("-----"))
 
-    assert(MatrixTraversal.displayPathtoPrincess(5, matrix) == "LEFT\nLEFT\nLEFT")
+    assert(MatrixTraversal.displayPathToPrincess(5, matrix) == "LEFT\nLEFT\nLEFT")
   }
 }

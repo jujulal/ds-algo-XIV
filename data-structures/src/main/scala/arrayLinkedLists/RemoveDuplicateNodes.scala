@@ -5,18 +5,21 @@ import scala.collection.mutable
 //import scala.collection.mutable.LinkedList
 
 /**
- *
- * 2.1
- * Write code to remove duplicates from an unsorted linked list.
- *
- * FOLLOW UP
- * How would you solve this problem if a temporary buffer is not allowed?
- *
- * Ref : https://gist.github.com/xchuang/8167437
- * http://stackoverflow.com/a/20033310/432903 - O(n)
- */
+  *
+  * 2.1
+  * Write code to remove duplicates from an unsorted linked list.
+  *
+  * FOLLOW UP
+  * How would you solve this problem if a temporary buffer is not allowed?
+  *
+  * Easy, https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
+  * Medium, https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/
+  *
+  * Ref : https://gist.github.com/xchuang/8167437
+  * http://stackoverflow.com/a/20033310/432903 - O(n)
+  */
 
-object RemoveDuplicates {
+object RemoveDuplicateNodes {
 
   def removeDuplicates(linkedList: mutable.LinkedList[String]): mutable.LinkedList[String] = {
 
