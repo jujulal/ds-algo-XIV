@@ -4,6 +4,10 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /**
   * https://leetcode.com/problems/word-search/description/
+  * Given a 2D board and a word, find if the word exists in the grid.
+  *
+  * The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are
+  * those horizontally or vertically neighboring. The same letter cell may not be used more than once.
   */
 
 object MatrixSearch {
@@ -21,11 +25,11 @@ object MatrixSearch {
     } else if (currentNode._1 < graph.length && graph(currentNode._1)(currentNode._2) != searchWord.charAt(searchIndex)) {
       matches
     } else {
-      val horizontal = search((currentNode._1, currentNode._2 + 1), graph, searchIndex + 1, searchWord, matches :+ currentNode)
-      val vertical = search((currentNode._1 + 1, currentNode._2), graph, searchIndex + 1, searchWord, matches :+ currentNode)
+      val right = search((currentNode._1, currentNode._2 + 1), graph, searchIndex + 1, searchWord, matches :+ currentNode)
+      val bottom = search((currentNode._1 + 1, currentNode._2), graph, searchIndex + 1, searchWord, matches :+ currentNode)
 
-      if (horizontal.length == searchWord.length) horizontal
-      else if (vertical.length == searchWord.length) vertical
+      if (right.length == searchWord.length) right
+      else if (bottom.length == searchWord.length) bottom
       else matches
     }
 
